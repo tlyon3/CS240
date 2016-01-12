@@ -1,0 +1,98 @@
+import Image.java
+
+public class ImageEditor{
+
+  public static void main(String[] args){
+
+  }
+  
+  public Image grayscale(Image i){
+    int x = i.getWidth();
+    int y = i.getHeight();
+    Image newImage = new Image(x,y);
+    for(int i=0;i<x;i++){
+      for(int j=0;j<y;j++){
+        int average = (i.pixels[i][j].getRed() + i.pixles[i][j].getGreen() +
+        i.pixels[i][j].getBlue())/3;
+        newImage.pixels[i][j].setRed(average);
+        newImage.pixels[i][j].setGreen(average);
+        newImage.pixels[i][j].setBlue(average);
+      }
+    }
+    return newImage;
+  }
+
+  public Image embosse(Image i){
+    int x = i.getWidth();
+    int y = i.getHeight();
+    Image newImage = new Image(x,y);
+    for(int i=0;i<x;i++){
+      for(int j=0;j<y;j++){
+        if(i-1!=0||j-1!=0){
+          int redDiff = i.pixels[i][j].getRed() - i.pixels[i-1][j-1].getRed());
+          int greenDiff = i.pixels[i][j].getGreen() - i.pixels[i-1][j-1].getGreen());
+          int blueDiff = i.pixels[i][j].getBlue() - i.pixels[i-1][j-1].getBlue());
+          int max = Math.max(Math.max(blueDiff,greenDiff),redDiff);
+          max += 128;
+          if(max<0){
+            max=0;
+          }
+          else if(max>255){
+            max=255;
+          }
+        }
+        else{
+          int max=128;
+        }
+        newImage.pixels[i][j].setRed(max);
+        newImage.pixels[i][j].setGreen(max);
+        newImage.pixels[i][j].setBlue(max);
+      }
+    }
+    return newImage;
+  }
+  //use as much as you can. Pixels on edge will not change
+  public Image motionBlur(Image image,int n){
+    int x=image.getWidth();
+    int y=image.getHeight();
+    Image newImage = new Image(x,y);
+    for(int i=0;i<x;i++){
+      for(int j=0;j<y;j++){
+        int averageRed=0;
+        int averageGreen=0;
+        int averageBlue=0;
+        for(int k=i;k<(n+i);k++){
+          if(k==x){
+            break;
+          }
+          averageRed+= image.pixels[k][j].getRed();
+          averggeGreen += image.pixels[k][j].getGreen();
+          averageBlue += image.pixels[k][j].getBlue();
+        }
+        averageRed = averageRed/(n-1);
+        averageBlue = averageBlue/(n-1);
+        averageGreen = averageGreen/(n-1);
+        newImage.pixels[i][j].setRed(averageRed);
+        newImage.pixels[i][j].setGreen(averageGreen);
+        newImage.pixels[i][j].setBlue(averageBlue);
+      }
+    }
+    return newImage;
+  }
+  public Image inversion(Image image){
+    int x = image.getWidth();
+    int y = image.getHeight();
+    Image newImage = new Image(x,y);
+    for(int i=0;i<x;<i++){
+      for(int j=0;j<y;j++){
+        int invertedRed = abs(image.pixels[i][j].getRed() - 255);
+        int invertedGreen = abs(image.pixels[i][j].getGreen() - 255);
+        int invertedBlue = abs(image.pixels[i][j].getBlue() - 255);
+        newImage.pixels[i][j].setRed(invertedRed);
+        newImage.pixels[i][j].setGreen(invertedGreen);
+        newImage.pixels[i][j].setBlue(invertedBlue);
+      }
+    }
+    return newImage;
+  }
+}

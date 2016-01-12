@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 4 elements from project &apos;ImageEditor&apos;&#x0A;- Original project: &apos;ImageEditor&apos;&#x0A;- Original elements:&#x0A;     Image.class&#x0A;     ImageEditor.class&#x0A;     main.java&#x0A;     Pixel.class" description="Delete elements" element1="Pixel.class" element2="main.java" element3="Image.class" element4="ImageEditor.class" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="4" stamp="1452196448679" subPackages="false" version="1.0"/>
+</session>

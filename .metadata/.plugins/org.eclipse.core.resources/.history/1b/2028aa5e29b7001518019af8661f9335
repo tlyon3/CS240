@@ -1,0 +1,17 @@
+public class Pixel {
+  public Pixel(int r,int g,int b){
+    this.red=r;
+    this.green=g;
+    this.blue=b;
+  }
+  public Pixel(){}
+  private int red;
+  private int green;
+  private int blue;
+  public getRed(){return red;}
+  public getGreen(){return green;}
+  public getBlue(){return blue;}
+  public setRed(int r){red=r;}
+  public setGreen(int g){green=g;}
+  public setBlue(int b){blue=g;}
+}

@@ -1,0 +1,23 @@
+Image Editor Project:
+*see project details on class website*
+
+read and write text files (ppm file type)
+arrays
+classes:
+	imageEditor
+		grayscale()
+		inversion()
+		motionBlur()
+		etc...
+	image
+		2d array of pixels
+	pixel
+		rgb value
+scanner
+	native java class
+	use for reading in text files
+printWriter
+	native java class
+	use for writing to text files
+
+'static' keyword means that the following function/variable is a member of the class itself, not a member of an instance of the class

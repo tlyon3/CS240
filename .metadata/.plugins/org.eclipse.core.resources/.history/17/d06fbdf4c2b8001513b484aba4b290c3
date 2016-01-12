@@ -1,0 +1,183 @@
+import java.lang.Math;
+import java.util.Scanner;
+import java.io.*;
+
+public class ImageEditor{
+  public static void main(String[] args){
+//Get input file. If error, catch and output error
+	  String inputFileName = args[0];
+	  System.out.println("Input file name: " + inputFileName);
+	  try{
+		  File temp = new File(inputFileName);
+		  FileReader fileReader = new FileReader(temp);
+//		  System.out.println("Created File Reader");
+		  BufferedReader bufferedReader = new BufferedReader(fileReader);
+//		  System.out.println("Created Buffered Reader");
+		  //Successfully got input file. Set up scanner
+		  Scanner myScanner = new Scanner(temp);
+//		  System.out.println("Created Scanner");
+		  myScanner.useDelimiter("\\s*#.*\n\\s*|\\s+");//This delimiter will cut out all comments
+		  //while(myScanner.hasNext()){
+		  //	String temp = myScanner.next();
+		  //	System.out.println(temp);
+		  //}
+//		  System.out.println("Dilimeter set");
+		  System.out.println(myScanner.next() + " tag found");//P3 tag not used
+		  int width = myScanner.nextInt();
+		  System.out.print("Width = ");
+		  System.out.println(width);
+		  int height = myScanner.nextInt();
+		  System.out.print("Height = ");
+		  System.out.println(height);
+		  System.out.println("Max color value: "+ myScanner.nextInt());//Max color value (255 by default. This number will not be used for this lab)
+	//RGB colors, in sets of three
+		  Image myImage = new Image(width, height);
+		  for(int i=0;i<width;i++){
+			  for(int j=0;j<height;j++){
+				  //myImage.pixels[i][j] = new Pixel(myScanner.nextInt(),myScanner.nextInt(),myScanner.nextInt());
+				  myImage.pixels[i][j].setRed(myScanner.nextInt());
+				  myImage.pixels[i][j].setGreen(myScanner.nextInt());
+				  myImage.pixels[i][j].setBlue(myScanner.nextInt());
+			  }
+		  }
+		  bufferedReader.close();
+		  myScanner.close();
+		  System.out.println("Image setup complete");
+	//Image setup complete. Now perform transformation specified by user input
+		  ImageEditor editor = new ImageEditor();
+		  PrintWriter writer = new PrintWriter(args[1]);
+		  if(args[2].equals("motionblur")){
+			  int i = Integer.parseInt(args[3]);
+			  Image modifiedImage = new Image(width,height);
+			  modifiedImage = editor.motionBlur(myImage,i);
+			  String output = modifiedImage.toString();
+			  //Output to file
+			  writer.println(output);
+		  }
+		  else if(args[2].equals("embosse")){
+			  Image modifiedImage = new Image(width,height);
+			  modifiedImage = editor.embosse(myImage);
+			  String output = modifiedImage.toString();
+			  //Output to file
+			  writer.println(output);
+		  }
+		  else if(args[2].equals("invert")){
+			  Image modifiedImage = new Image(width,height);
+			  modifiedImage = editor.inversion(myImage);
+			  String output = modifiedImage.toString();
+			  //Output to file
+			  writer.println(output);
+		  }
+		  else if(args[2].equals("grayscale)")){
+			  Image modifiedImage = new Image(width,height);
+			  modifiedImage = editor.grayscale(myImage);
+			  String output = modifiedImage.toString();
+			  //Output to file
+			  writer.println(output);
+		  }
+		  writer.close();
+	  }
+	  catch(FileNotFoundException ex){
+		  System.out.println("Could not open file: '" + inputFileName + "'");
+	  }
+	  catch(IOException ex) {
+		  System.out.println("Error reading file '" + inputFileName + "'");                  
+	  }
+	  catch(ArrayIndexOutOfBoundsException ex){
+		  System.out.println("Number of arguments not correct. Please try again");
+		  System.out.println("Exception: " + ex);
+	  }
+  }
+  
+  public Image grayscale(Image image){
+    int x = image.getWidth();
+    int y = image.getHeight();
+    Image newImage = new Image(x,y);
+    for(int i=0;i<x;i++){
+      for(int j=0;j<y;j++){
+        int average = (image.pixels[i][j].getRed() + image.pixels[i][j].getGreen() +
+        image.pixels[i][j].getBlue())/3;
+        newImage.pixels[i][j].setRed(average);
+        newImage.pixels[i][j].setGreen(average);
+        newImage.pixels[i][j].setBlue(average);
+      }
+    }
+    return newImage;
+  }
+
+  public Image embosse(Image image){
+    int x = image.getWidth();
+    int y = image.getHeight();
+    Image newImage = new Image(x,y);
+    for(int i=0;i<x;i++){
+      for(int j=0;j<y;j++){
+    	  int max=0;
+        if(i-1!=0||j-1!=0){
+          int redDiff = image.pixels[i][j].getRed() - image.pixels[i-1][j-1].getRed();
+          int greenDiff = image.pixels[i][j].getGreen() - image.pixels[i-1][j-1].getGreen();
+          int blueDiff = image.pixels[i][j].getBlue() - image.pixels[i-1][j-1].getBlue();
+          max = Math.max(Math.max(blueDiff,greenDiff),redDiff);
+          max += 128;
+          if(max<0){
+            max=0;
+          }
+          else if(max>255){
+            max=255;
+          }
+        }
+        else{
+          max=128;
+        }
+        newImage.pixels[i][j].setRed(max);
+        newImage.pixels[i][j].setGreen(max);
+        newImage.pixels[i][j].setBlue(max);
+      }
+    }
+    return newImage;
+  }
+  //use as much as you can. Pixels on edge will not change
+  public Image motionBlur(Image image,int n){
+    int x=image.getWidth();
+    int y=image.getHeight();
+    Image newImage = new Image(x,y);
+    for(int i=0;i<x;i++){
+      for(int j=0;j<y;j++){
+        int averageRed=0;
+        int averageGreen=0;
+        int averageBlue=0;
+        for(int k=i;k<(n+i);k++){
+          if(k==x){
+            break;
+          }
+          averageRed+= image.pixels[k][j].getRed();
+          averageGreen += image.pixels[k][j].getGreen();
+          averageBlue += image.pixels[k][j].getBlue();
+        }
+        averageRed = averageRed/(n-1);
+        averageBlue = averageBlue/(n-1);
+        averageGreen = averageGreen/(n-1);
+        newImage.pixels[i][j].setRed(averageRed);
+        newImage.pixels[i][j].setGreen(averageGreen);
+        newImage.pixels[i][j].setBlue(averageBlue);
+      }
+    }
+    return newImage;
+  }
+  
+  public Image inversion(Image image){
+    int x = image.getWidth();
+    int y = image.getHeight();
+    Image newImage = new Image(x,y);
+    for(int i=0;i<x;i++){
+      for(int j=0;j<y;j++){
+        int invertedRed = Math.abs(image.pixels[i][j].getRed() - 255);
+        int invertedGreen = Math.abs(image.pixels[i][j].getGreen() - 255);
+        int invertedBlue = Math.abs(image.pixels[i][j].getBlue() - 255);
+        newImage.pixels[i][j].setRed(invertedRed);
+        newImage.pixels[i][j].setGreen(invertedGreen);
+        newImage.pixels[i][j].setBlue(invertedBlue);
+      }
+    }
+    return newImage;
+  }
+}
