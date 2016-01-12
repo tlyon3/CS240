@@ -32,8 +32,8 @@ public class ImageEditor{
 		  System.out.println("Max color value: "+ myScanner.nextInt());//Max color value (255 by default. This number will not be used for this lab)
 	//RGB colors, in sets of three
 		  Image myImage = new Image(width, height);
-		  for(int j=0;j<height;j++){
-			  for(int i=0;i<width;i++){
+		  for(int i=0;i<width;i++){
+			  for(int j=0;j<height;j++){
 				  //myImage.pixels[i][j] = new Pixel(myScanner.nextInt(),myScanner.nextInt(),myScanner.nextInt());
 				  myImage.pixels[i][j].setRed(myScanner.nextInt());
 				  myImage.pixels[i][j].setGreen(myScanner.nextInt());
@@ -126,40 +126,28 @@ public class ImageEditor{
     Image newImage = new Image(x,y);
     for(int i=0;i<x;i++){
       for(int j=0;j<y;j++){
+    	int v = 0;
     	max=0;
         if(i==0||j==0){
-//		  System.out.println("IT IS LESS THAN 0--------------");
         	max=128;
         }
         else{
-//          System.out.println("R: " + image.pixels[i][j].getRed() + 
-//        		  " G: " + image.pixels[i][j].getGreen() + 
-//        		  " B: " + image.pixels[i][j].getBlue());
-//          System.out.println("R: " + image.pixels[i-1][j-1].getRed() + 
-//        		  " G: " + image.pixels[i-1][j-1].getGreen() + 
-//        		  " B: " + image.pixels[i-1][j-1].getBlue());
           redDiff = image.pixels[i][j].getRed() - image.pixels[(i-1)][(j-1)].getRed();
           greenDiff = image.pixels[i][j].getGreen() - image.pixels[(i-1)][(j-1)].getGreen();
           blueDiff = image.pixels[i][j].getBlue() - image.pixels[(i-1)][(j-1)].getBlue();
-//          System.out.println("RD: " + redDiff + " GD: " + greenDiff + " BD: " + blueDiff);
-          max = Math.abs(blueDiff) > Math.abs(greenDiff) ? blueDiff : greenDiff;
-//		  System.out.println("MaxGB: " + max);
-          max = Math.abs(max) > Math.abs(redDiff) ? max : redDiff;
-//          System.out.println("Max: " + max);
-          max += 128;
-//		  System.out.println("Max after: " + max);
-//		  System.out.println("---------");
-          if(max<0){
-            max=0;
+          max = Math.abs(blueDiff) >= Math.abs(greenDiff) ? blueDiff : greenDiff;
+          max = Math.abs(max) >= Math.abs(redDiff) ? max : redDiff;
+          v = max+128;
+          if(v<0){
+            v=0;
           }
-          else if(max>255){
-            max=255;
+          else if(v>255){
+            v=255;
           }
-//		  System.out.println("Max after change: " + max);
         }
-        newImage.pixels[i][j].setRed(max);
-        newImage.pixels[i][j].setGreen(max);
-        newImage.pixels[i][j].setBlue(max);
+        newImage.pixels[i][j].setRed(v);
+        newImage.pixels[i][j].setGreen(v);
+        newImage.pixels[i][j].setBlue(v);
       }
     }
     return newImage;

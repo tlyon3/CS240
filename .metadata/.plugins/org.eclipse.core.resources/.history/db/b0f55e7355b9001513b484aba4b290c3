@@ -32,8 +32,8 @@ public class ImageEditor{
 		  System.out.println("Max color value: "+ myScanner.nextInt());//Max color value (255 by default. This number will not be used for this lab)
 	//RGB colors, in sets of three
 		  Image myImage = new Image(width, height);
-		  for(int j=0;j<height;j++){
-			  for(int i=0;i<width;i++){
+		  for(int i=0;i<width;i++){
+			  for(int j=0;j<height;j++){
 				  //myImage.pixels[i][j] = new Pixel(myScanner.nextInt(),myScanner.nextInt(),myScanner.nextInt());
 				  myImage.pixels[i][j].setRed(myScanner.nextInt());
 				  myImage.pixels[i][j].setGreen(myScanner.nextInt());
