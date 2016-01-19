@@ -2,8 +2,8 @@ car
 car
 car
 car
-kicker
 car
+kicker
 brick
 apple
 kick

@@ -102,9 +102,9 @@ public class SpellCorrector implements ISpellCorrector {
 			}
 		}
 		else{
-//			System.out.println("'"+inputWord+"' spelled correctly!");
-			return inputWord;
+			System.out.println("'"+inputWord+"' spelled correctly!");
 		}
+		return null;
 	}
 
 }
