@@ -1,7 +1,7 @@
 package spell;
 
 public class Node implements ITrie.INode{
-	Node(){
+	public Node(){
 		count = 0;
 		nodes = new Node[26];
 	}

@@ -26,8 +26,9 @@ public class Main {
 		
 		corrector.useDictionary(dictionaryFileName);
 		String suggestion = corrector.suggestSimilarWord(inputWord);
-		
-		System.out.println("Suggestion is: " + suggestion);
+		if(suggestion!=null){
+			System.out.println("Suggestion is: " + suggestion);
+		}
 	}
 
 }

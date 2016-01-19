@@ -3,9 +3,9 @@ import java.util.HashSet;
 import java.util.Set;
 public class Dictionary implements ITrie{
 	char[] alphabet = new char[26];
-	Dictionary(){
+	public Dictionary(){
 		root = new Node();
-		nodeCount = 0;
+		nodeCount = 1;
 		wordCount = 0;
 		alphabet[0] ='a';
 		alphabet[1] = 'b';
@@ -40,61 +40,67 @@ public class Dictionary implements ITrie{
 	private int wordCount;
 	@Override
 	public void add(String word) {
+		
 		word = word.toLowerCase();
-		System.out.println("Adding word: " + word);
-		word = word.toLowerCase();
-		Node currentNode = new Node();
+		Node currentNode = root;
+//		System.out.println("Adding word: "+ word);
 		for(int i=0;i<word.length();i++){
-			int index = word.charAt(i)-'a';
-			if(currentNode.nodes[index] == null){
-				currentNode.nodes[index] = new Node();
+			if(currentNode.nodes[word.charAt(i)-'a']==null){
+				currentNode.nodes[word.charAt(i)-'a'] = new Node();
 				nodeCount++;
-				System.out.println("Node count = " + nodeCount);
+//				System.out.println("\tNode count = "+nodeCount);
 			}
-			currentNode = currentNode.nodes[index];
-			if(i == word.length() - 1){
-				if(currentNode.getValue() == 0)
+			currentNode = currentNode.nodes[word.charAt(i)-'a'];
+			if(i==word.length()-1){
+				if(currentNode.getValue()==0)
 					wordCount++;
 				currentNode.increaseCount();
-				System.out.println("\tWord count = " +wordCount);
+//				System.out.println("\tNode count = "+nodeCount);
+//				System.out.println("\tCount for '"+word+"' = "+currentNode.getValue());
+//				System.out.println("\tWord count = "+wordCount);
 			}
-		}
-		//insertReflexive(root, word, 0, word.length());	
+		}	
 	}
-	
-//	private void insertReflexive(Node n, String s, int i, int max){
-//		if(i==max){
-//			if(n.getValue() == 0)
-//				wordCount++;
-//			n.increaseCount();
-//			System.out.println("  Added word: "+s);
-//			return;
-//		}
-//		if(n.nodes[s.charAt(i) - 'a'] == null){
-//			n.nodes[s.charAt(i) - 'a'] = new Node();
-//			nodeCount++;
-//			insertReflexive(n.nodes[s.charAt(i) - 'a'],s,++i,max);
-//		}
-//	}
 
 	@Override
 	public INode find(String word) {
-		return findReflexive(root, word, 0,word.length());
-		
+		//return findReflexive(root, word, 0,word.length());
+		Node currentNode = root;
+		for(int i=0;i<word.length();i++){
+			if(currentNode.nodes[word.charAt(i)-'a']==null)
+				return null;
+			else
+				currentNode = currentNode.nodes[word.charAt(i)-'a'];
+		}
+		if(currentNode != null && currentNode.getValue()>0)
+			return currentNode;
+		else return null;
+	}
+	public int findWordCount(String word){
+		Node currentNode = root;
+		for(int i=0;i<word.length();i++){
+			if(currentNode.nodes[word.charAt(i)-'a']==null)
+				return 0;
+			else
+				currentNode = currentNode.nodes[word.charAt(i)-'a'];
+		}
+		if(currentNode != null && currentNode.getValue()>0)
+			return currentNode.getValue();
+		else return 0;
 	}
 	
-	private INode findReflexive(Node n, String s, int i, int max){
-		if(n.nodes[s.charAt(i) - 'a'] == null){
-			return null;
-		}
-		if(i==max){
-			return n.nodes[s.charAt(i) - 'a'];
-		}
-		else{
-			return findReflexive(n.nodes[s.charAt(i)-'a'],s,++i,max);
-		}
-		
-	}
+//	private INode findReflexive(Node n, String s, int i, int max){
+//		if(n.nodes[s.charAt(i) - 'a'] == null){
+//			return null;
+//		}
+//		if(i==max){
+//			return n;
+//		}
+//		else{
+//			return findReflexive(n.nodes[s.charAt(i)-'a'],s,++i,max);
+//		}
+//		
+//	}
 	
 	@Override
 	public String toString(){
@@ -107,14 +113,14 @@ public class Dictionary implements ITrie{
 		if(n==null)
 			return;
 		if(n.getValue() > 0){
+//			System.out.println("\t"+word.toString() + ": "+n.getValue());
 			output.append(word.toString() + "\n");
 		}
-		else{
-			for(int i=0;i<26;i++){
-				word.append('a'+i);
-				toStringHelper(n.nodes[i],word,output);
-				word.setLength(word.length()-1);
-			}
+		for(int i=0;i<26;i++){
+			word.append(alphabet[i]);
+//			System.out.println("Current word: " + word.toString());
+			toStringHelper(n.nodes[i],word,output);
+			word.setLength(word.length()-1);
 		}
 	}
 //	public boolean equals(ITrie trie){
@@ -224,5 +230,36 @@ public class Dictionary implements ITrie{
 			}
 		}
 		return modifiedWords;
+	}
+	
+	@Override
+	public int hashCode(){
+		int hash = (this.nodeCount+(2*this.wordCount))%2000;
+		return hash;
+	}
+	@Override
+	public boolean equals(Object o){
+		if(o==null)
+			return false;
+		if(o.getClass()!=this.getClass())
+			return false;
+		Dictionary otherDict = (Dictionary)o;
+		if(this.wordCount!=otherDict.getWordCount() || this.nodeCount!=otherDict.getNodeCount())
+			return false;
+		else if(this.toString()!=otherDict.toString())
+			return false;
+		else return equalRecurrsive(this.root,otherDict.root);
+	}
+	private boolean equalRecurrsive(Node n1, Node n2){
+		for(int i=0;i<26;i++){
+//			if(n1.nodes[i]!=n2.nodes[i])
+//				return false;
+			if(n1.nodes[i]!=null && n2.nodes[i]!=null){
+				if(n1.nodes[i].getValue() != n2.nodes[i].getValue())
+					return false;
+			}
+			else equalRecurrsive(n1.nodes[i],n2.nodes[i]);
+		}
+		return true;
 	}
 }

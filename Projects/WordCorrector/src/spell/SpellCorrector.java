@@ -4,21 +4,24 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.TreeMap;
+import java.util.Map;
 public class SpellCorrector implements ISpellCorrector {
 	private Dictionary myDictionary;
-	SpellCorrector(){
+	public SpellCorrector(){
 		myDictionary = new Dictionary();
 	}
-	public static void main(String[] args) throws NoSimilarWordFoundException{
-		SpellCorrector sc = new SpellCorrector();
-		try{
-			sc.useDictionary(args[0]);
-			System.out.println("Dictionary:\n"+sc.myDictionary.toString());
-		}
-		catch(IOException ex){
-			System.out.println("Error reading file: '"+args[0]+"'");
-		}
-	}
+//	public static void main(String[] args) throws NoSimilarWordFoundException{
+//		SpellCorrector sc = new SpellCorrector();
+//		try{
+//			sc.useDictionary(args[0]);
+//			System.out.println("Dictionary:\n"+sc.myDictionary.toString());
+//			sc.suggestSimilarWord(args[1]);
+//		}
+//		catch(IOException ex){
+//			System.out.println("Error reading file: '"+args[0]+"'");
+//		}
+//	}
 	
 	@Override
 	public void useDictionary(String dictionaryFileName) throws IOException {
@@ -37,7 +40,7 @@ public class SpellCorrector implements ISpellCorrector {
 			System.out.println("Could not open file: '"+ dictionaryFileName + "'");
 		}
 	}
-
+	
 	@Override
 	public String suggestSimilarWord(String inputWord)
 			throws NoSimilarWordFoundException {
@@ -66,18 +69,30 @@ public class SpellCorrector implements ISpellCorrector {
 				}
 			}
 			else{//modified one word exists in dictionary. Find max count and return
-				//TODO
+				TreeMap<Integer,String> wordValueMap = new TreeMap<Integer, String>();
+				for(String word : modifiedInDictionary){
+					wordValueMap.put(myDictionary.findWordCount(word),word);
+				}
+//				System.out.println("Printing map");
+//				for(Map.Entry<Integer, String> entry : wordValueMap.entrySet()){
+//					System.out.println(entry.getKey()+": "+entry.getValue());
+//				}
+				return wordValueMap.lastEntry().getValue();
 			}
 			if(!found){
 				NoSimilarWordFoundException ex = new NoSimilarWordFoundException();
 				throw ex;
 			}
 			else{//modified two word exists in dictionary. Find max count and return
-				//TODO
+				TreeMap<Integer,String> wordValueMap = new TreeMap<Integer, String>();
+				for(String word : modifiedInDictionary){
+					wordValueMap.put(myDictionary.findWordCount(word),word);
+				}
+				return wordValueMap.lastEntry().getValue();
 			}
 		}
 		else{
-			System.out.println("Word spelled correctly!");
+			System.out.println("'"+inputWord+"' spelled correctly!");
 		}
 		return null;
 	}
