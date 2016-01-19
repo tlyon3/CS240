@@ -223,7 +223,7 @@ public class Dictionary implements ITrie{
 		Dictionary otherDict = (Dictionary)o;
 		if(this.wordCount!=otherDict.getWordCount() || this.nodeCount!=otherDict.getNodeCount())
 			return false;
-		else if(!this.toString().equals(otherDict.toString()))
+		else if(!this.toString().equals(otherDict.toString()));
 			return false;
 		else return equalRecurrsive(this.root,otherDict.root);
 	}
