@@ -68,7 +68,7 @@ public class Dictionary implements ITrie{
 	public INode find(String word) {
 		//return findReflexive(root, word, 0,word.length());
 		Node currentNode = root;
-		//System.out.println(word);
+		System.out.println(word);
 		if(word==null)
 			return null;
 		for(int i=0;i<word.length();i++){
@@ -152,44 +152,29 @@ public class Dictionary implements ITrie{
 	
 	public Set<String> modifyOne(String word){
 		Set<String> modifiedWords = new HashSet<String>();//avoid duplications
-		for(String modWord : deletion(word)){
-			if(word!=null)
-				modifiedWords.add(modWord);
-		}
-		for(String modWord : insertion(word)){
-			if(word!=null)
-				modifiedWords.add(modWord);
-			}
-		for(String modWord : alteration(word)){
-			if(word!=null)
-				modifiedWords.add(modWord);
-		}
-		for(String modWord : transposition(word)){
-			if(word!=null)
-				modifiedWords.add(modWord);
-		}
+		for(String modWord : deletion(word))
+			modifiedWords.add(modWord);
+		for(String modWord : insertion(word))
+			modifiedWords.add(modWord);
+		for(String modWord : alteration(word))
+			modifiedWords.add(modWord);
+		for(String modWord : transposition(word))
+			modifiedWords.add(modWord);
 		return modifiedWords;
 	}
 	
 	public Set<String> modifyTwo(Set<String> words){
 		Set<String> doubleModifiedWords = new HashSet<String>();
 		for(String word : words){
-			for(String modWord : deletion(word)){
-				if(word!=null)
-					doubleModifiedWords.add(modWord);
-			}
-			for(String modWord : insertion(word)){
-				if(word!=null)
-					doubleModifiedWords.add(modWord);
-			}
-			for(String modWord : alteration(word)){
-				if(word!=null)
-					doubleModifiedWords.add(modWord);
-			}			
-			for(String modWord : transposition(word)){
-				if(word!=null)
-					doubleModifiedWords.add(modWord);
-			}			
+			for(String modWord : deletion(word))
+				doubleModifiedWords.add(modWord);
+			for(String modWord : insertion(word))
+				doubleModifiedWords.add(modWord);
+			for(String modWord : alteration(word))
+				doubleModifiedWords.add(modWord);
+			for(String modWord : transposition(word))
+				doubleModifiedWords.add(modWord);
+			
 		}
 		return doubleModifiedWords;
 	}

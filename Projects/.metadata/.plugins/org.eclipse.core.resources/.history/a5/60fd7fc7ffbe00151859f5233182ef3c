@@ -68,7 +68,7 @@ public class Dictionary implements ITrie{
 	public INode find(String word) {
 		//return findReflexive(root, word, 0,word.length());
 		Node currentNode = root;
-		//System.out.println(word);
+		System.out.println(word);
 		if(word==null)
 			return null;
 		for(int i=0;i<word.length();i++){
@@ -160,14 +160,10 @@ public class Dictionary implements ITrie{
 			if(word!=null)
 				modifiedWords.add(modWord);
 			}
-		for(String modWord : alteration(word)){
-			if(word!=null)
-				modifiedWords.add(modWord);
-		}
-		for(String modWord : transposition(word)){
-			if(word!=null)
-				modifiedWords.add(modWord);
-		}
+		for(String modWord : alteration(word))
+			modifiedWords.add(modWord);
+		for(String modWord : transposition(word))
+			modifiedWords.add(modWord);
 		return modifiedWords;
 	}
 	

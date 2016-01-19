@@ -68,7 +68,7 @@ public class Dictionary implements ITrie{
 	public INode find(String word) {
 		//return findReflexive(root, word, 0,word.length());
 		Node currentNode = root;
-		//System.out.println(word);
+		System.out.println(word);
 		if(word==null)
 			return null;
 		for(int i=0;i<word.length();i++){
