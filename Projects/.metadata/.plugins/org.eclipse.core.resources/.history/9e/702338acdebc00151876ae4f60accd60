@@ -1,0 +1,14 @@
+package spell;
+
+public class Node{
+	Node(){
+		count = 0;
+		nodes = new String[26];
+	}
+	private int count = 0;
+	
+	public Node[] nodes = new String[26];
+	public void increaseCount(){
+		count++;
+	}
+}

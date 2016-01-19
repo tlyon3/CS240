@@ -1,0 +1,8 @@
+Hash Tables
+
+Methods:
+	add(Object o) //add object to hash table
+	contains(Object o) //return bool if object exists in hash table
+	remove(Object o) //remove Object from table if exists
+
+Each method calls hashCode() to get the index of the object. Then performs the function on that index.

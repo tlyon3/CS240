@@ -1,0 +1,6 @@
+package spell;
+
+public class Node{
+	private int count = 0;
+	public String[] nodes = new String[26];
+}

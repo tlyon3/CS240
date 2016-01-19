@@ -1,0 +1,50 @@
+For input  "cat"
+1. Convert all words to lower case
+2. char x = 'c'
+	int index = (x-'a');
+
+Write Trie class
+	TrieNode root
+	int wordCount
+	int nodeCount
+	toString()**
+		preOrder traversal
+			print out node before traverse on children
+	equals()
+		recursive helper method
+		check if two tries are equal
+			if ANYTHING is different, return false
+			first check if both wordCount and nodeCount are equal
+		pass in both nodes for both tries. traverse in tandem
+	hashCode()
+		fast, consistent, unique
+		if two objects are .equals, then hashCodes are equal
+		probably in the thousands
+Write TrieNode class
+	int count
+	TrieNode[]
+
+
+** 
+public String toString(){
+	StringBuilder word = new StringBuilder();
+	StringBuilder output = new StringBuilder();
+	toStringHelper(root, output);
+	return output.toString();
+}
+
+private void toStringHelper(TrieNode n, StringBuilder word, StringBuilder output ){
+	if(n==null)
+		return;
+	if(n.getCount()>0){
+		output.append(word.toString() + "\n");
+	}
+	else{
+		for(int i=0;i<26;i++){
+			word.append('a' + i);
+			toStringHelper(n.getChild(i), word, output);
+			word.setLength(word.getLength()-1);
+		}
+	}
+}
+**

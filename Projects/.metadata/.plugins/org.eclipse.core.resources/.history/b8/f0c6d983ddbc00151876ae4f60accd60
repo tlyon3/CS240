@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.Scanner;
+
+package spell;
+
+import java.io.IOException;
+
+public class SpellCorrector implements ISpellCorrector {
+
+	@Override
+	public void useDictionary(String dictionaryFileName) throws IOException {
+		// TODO Auto-generated method stub
+		try{
+			java.io.File temp = new File(dictionaryFileName);
+			
+		}
+		catch(java.io.FileNotFoundException ex){
+			System.out.println("Could not open file: '"+ dictionaryFileName + "'");
+		}
+	}
+
+	@Override
+	public String suggestSimilarWord(String inputWord)
+			throws NoSimilarWordFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
