@@ -241,8 +241,6 @@ public class Dictionary implements ITrie{
 				return false;
 			else if(n1.nodes[i]!=null&&n2.nodes[i]==null)
 				return false;
-			else if(n1.nodes[i]==null&&n2.nodes[i]==null)
-				return false;
 		}
 		return true;
 	}

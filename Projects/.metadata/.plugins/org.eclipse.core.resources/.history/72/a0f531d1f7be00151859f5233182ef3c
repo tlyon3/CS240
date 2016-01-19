@@ -237,12 +237,7 @@ public class Dictionary implements ITrie{
 					return false;
 				else equalRecurrsive(n1.nodes[i],n2.nodes[i]);
 			}
-			else if(n1.nodes[i]==null&&n2.nodes[i]!=null)
-				return false;
-			else if(n1.nodes[i]!=null&&n2.nodes[i]==null)
-				return false;
-			else if(n1.nodes[i]==null&&n2.nodes[i]==null)
-				return false;
+			else return false;
 		}
 		return true;
 	}
