@@ -125,8 +125,7 @@ public class Dictionary implements ITrie{
 			return;
 		if(n.getValue() > 0){
 //			System.out.println("\t"+word.toString() + ": "+n.getValue());
-			output.append(word.toString() + " ");
-			output.append(this.findWordCount(word.toString()) + "\n");
+			output.append(word.toString() + "\n");
 		}
 		for(int i=0;i<26;i++){
 			word.append(alphabet[i]);
@@ -244,7 +243,7 @@ public class Dictionary implements ITrie{
 		Dictionary otherDict = (Dictionary)o;
 		if(this.wordCount!=otherDict.getWordCount() || this.nodeCount!=otherDict.getNodeCount())
 			return false;
-		else if(!this.toStringWithValues().equals(otherDict.toStringWithValues()))
+		else if(!this.toString().equals(otherDict.toString()))
 			return false;
 		else return equalRecurrsive(this.root,otherDict.root);
 	}

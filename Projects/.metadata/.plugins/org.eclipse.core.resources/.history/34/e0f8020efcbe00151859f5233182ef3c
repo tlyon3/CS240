@@ -23,8 +23,8 @@ public class SpellCorrector implements ISpellCorrector {
 			sc2.useDictionary(args[1]);
 		
 			System.out.println(sc.myDictionary.equals(sc2.getDict()));
-			System.out.println("Dict1\n" + sc.myDictionary.toStringWithValues());
-			System.out.println("Dict2\n" + sc2.getDict().toStringWithValues());
+			System.out.println("Dict1\n" + sc.myDictionary.toString());
+			System.out.println("Dict2\n" +sc2.getDict().toString());
 		}
 		catch(IOException ex){
 			System.out.println("Error reading file '"+args[0]+"'");

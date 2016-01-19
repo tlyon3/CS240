@@ -8,9 +8,6 @@ import java.util.TreeMap;
 import java.util.Map;
 public class SpellCorrector implements ISpellCorrector {
 	private Dictionary myDictionary;
-	public Dictionary getDict(){
-		return myDictionary;
-	}
 	public SpellCorrector(){
 		myDictionary = new Dictionary();
 	}
@@ -18,13 +15,21 @@ public class SpellCorrector implements ISpellCorrector {
 		SpellCorrector sc = new SpellCorrector();
 		SpellCorrector sc2 = new SpellCorrector();
 		try{
-			
+			sc.myDictionary.add("car");
+			sc.myDictionary.add("car");
+			sc.myDictionary.add("car");
+			sc.myDictionary.add("car");
+			sc.myDictionary.add("car");
 			sc.useDictionary(args[0]);
-			sc2.useDictionary(args[1]);
+			sc2.myDictionary.add("car");
+			sc2.myDictionary.add("car");
+			sc2.myDictionary.add("car");
+			sc2.myDictionary.add("car");
+			sc2.myDictionary.add("car");
+			sc2.useDictionary(args[0]);
 		
-			System.out.println(sc.myDictionary.equals(sc2.getDict()));
-			System.out.println("Dict1\n" + sc.myDictionary.toStringWithValues());
-			System.out.println("Dict2\n" + sc2.getDict().toStringWithValues());
+			
+			System.out.println(sc.myDictionary.equals(otherDictionary));
 		}
 		catch(IOException ex){
 			System.out.println("Error reading file '"+args[0]+"'");

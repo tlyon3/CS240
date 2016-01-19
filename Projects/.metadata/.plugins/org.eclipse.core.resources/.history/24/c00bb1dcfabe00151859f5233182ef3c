@@ -8,28 +8,29 @@ import java.util.TreeMap;
 import java.util.Map;
 public class SpellCorrector implements ISpellCorrector {
 	private Dictionary myDictionary;
-	public Dictionary getDict(){
-		return myDictionary;
-	}
 	public SpellCorrector(){
 		myDictionary = new Dictionary();
 	}
 	public static void main(String[] args) throws NoSimilarWordFoundException{
 		SpellCorrector sc = new SpellCorrector();
-		SpellCorrector sc2 = new SpellCorrector();
 		try{
-			
+			sc.myDictionary.add("car");
+			sc.myDictionary.add("car");
+			sc.myDictionary.add("car");
+			sc.myDictionary.add("car");
+			sc.myDictionary.add("car");
 			sc.useDictionary(args[0]);
-			sc2.useDictionary(args[1]);
-		
-			System.out.println(sc.myDictionary.equals(sc2.getDict()));
-			System.out.println("Dict1\n" + sc.myDictionary.toStringWithValues());
-			System.out.println("Dict2\n" + sc2.getDict().toStringWithValues());
+			Dictionary otherDictionary = new Dictionary();
+			otherDictionary.add("car");
+			otherDictionary.add("car");
+			otherDictionary.add("car");
+			otherDictionary.add("car");
+			otherDictionary.add("car");
 		}
 		catch(IOException ex){
 			System.out.println("Error reading file '"+args[0]+"'");
 		}
-		
+		System.out.println(sc.myDictionary.equals(otherDictionary));
 
 	}
 	
