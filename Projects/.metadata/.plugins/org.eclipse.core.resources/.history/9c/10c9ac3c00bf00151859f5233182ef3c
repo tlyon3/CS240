@@ -59,7 +59,7 @@ public class SpellCorrector implements ISpellCorrector {
 //			System.out.println(word);
 //		}
 		if(inputWord.equals("")){
-			throw new NoSimilarWordFoundException();
+			throw new NoSimilarWordFoundException ex;
 		}
 		inputWord = inputWord.toLowerCase();
 		if(myDictionary.find(inputWord) == null){

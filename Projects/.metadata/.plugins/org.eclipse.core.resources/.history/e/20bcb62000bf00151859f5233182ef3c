@@ -58,9 +58,6 @@ public class SpellCorrector implements ISpellCorrector {
 //		for(String word : modifiedWords){
 //			System.out.println(word);
 //		}
-		if(inputWord.equals("")){
-			throw new NoSimilarWordFoundException();
-		}
 		inputWord = inputWord.toLowerCase();
 		if(myDictionary.find(inputWord) == null){
 			Set<String> modifiedWords = myDictionary.modifyOne(inputWord);
