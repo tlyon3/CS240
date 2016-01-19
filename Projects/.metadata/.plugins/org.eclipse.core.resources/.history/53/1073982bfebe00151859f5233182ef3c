@@ -166,10 +166,6 @@ public class Dictionary implements ITrie{
 				doubleModifiedWords.add(modWord);
 			for(String modWord : insertion(word))
 				doubleModifiedWords.add(modWord);
-			for(String modWord : alteration(word))
-				doubleModifiedWords.add(modWord);
-			for(String modWord : transposition(word))
-				doubleModifiedWords.add(modWord);
 			
 		}
 		return doubleModifiedWords;

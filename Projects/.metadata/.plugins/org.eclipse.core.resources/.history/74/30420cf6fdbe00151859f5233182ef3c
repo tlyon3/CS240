@@ -44,7 +44,7 @@ public class Dictionary implements ITrie{
 		
 		word = word.toLowerCase();
 		Node currentNode = root;
-		System.out.println("Adding word: "+ word);
+//		System.out.println("Adding word: "+ word);
 		for(int i=0;i<word.length();i++){
 			if(currentNode.nodes[word.charAt(i)-'a']==null){
 				currentNode.nodes[word.charAt(i)-'a'] = new Node();
@@ -56,9 +56,9 @@ public class Dictionary implements ITrie{
 				if(currentNode.getValue()==0)
 					wordCount++;
 				currentNode.increaseCount();
-				System.out.println("\tNode count = "+nodeCount);
-				System.out.println("\tCount for '"+word+"' = "+currentNode.getValue());
-				System.out.println("\tWord count = "+wordCount);
+//				System.out.println("\tNode count = "+nodeCount);
+//				System.out.println("\tCount for '"+word+"' = "+currentNode.getValue());
+//				System.out.println("\tWord count = "+wordCount);
 			}
 		}	
 	}
@@ -165,10 +165,6 @@ public class Dictionary implements ITrie{
 			for(String modWord : deletion(word))
 				doubleModifiedWords.add(modWord);
 			for(String modWord : insertion(word))
-				doubleModifiedWords.add(modWord);
-			for(String modWord : alteration(word))
-				doubleModifiedWords.add(modWord);
-			for(String modWord : transposition(word))
 				doubleModifiedWords.add(modWord);
 			
 		}
