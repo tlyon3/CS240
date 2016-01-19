@@ -235,8 +235,8 @@ public class Dictionary implements ITrie{
 			if(n1.nodes[i]!=null && n2.nodes[i]!=null){
 				if(n1.nodes[i].getValue() != n2.nodes[i].getValue())
 					return false;
-				else equalRecurrsive(n1.nodes[i],n2.nodes[i]);
 			}
+			else equalRecurrsive(n1.nodes[i],n2.nodes[i]);
 		}
 		return true;
 	}

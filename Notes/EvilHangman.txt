@@ -1,0 +1,27 @@
+EvilHangman
+
+use Collection classes
+  sets
+  maps
+  lists
+  trees
+
+1) read in dictionary file into a set
+2) trim dictionary down to correct length (given by user)
+3) ask user for guess (ex 'a')
+4) take set of words, partition into subsets
+  1) map<String, Set<String> >
+  2) iterate over each word in set and compute pattern string for each word
+    String makePattern(String word, char guess){
+      *iterate through characters in word
+      *if char matches, replace with char
+      *if not replace with '-'
+    }
+    (pattern string '--a--')
+  3) Add word to map key with matching pattern (pattern string is key. Word is value)
+  a) set of words with no 'a's at all
+  b) set of all words in 1st position only
+  c) set of all words in 2nd position only
+  d) etc...
+5) select largest subset, replace entire set for next round
+6) give feedback to user (was there an 'a' or not?)
