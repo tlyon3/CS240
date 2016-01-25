@@ -1,0 +1,78 @@
+package hangman;
+
+import java.util.Set;
+import java.util.HashSet;
+import java.io.*;
+import java.util.Scanner;
+
+public class EvilHangman implements IEvilHangmanGame {
+	EvilHangman(){
+		madeGuesses = new HashSet<Character>();
+		dict = new Dictionary();
+	}
+	Dictionary dict;
+	public static void main(String[] args){
+		try{
+			String dictionary = new String();
+			dictionary = args[0];
+			java.io.File temp = new File(dictionary);
+			int wordLength = Integer.parseInt(args[1]);
+			int guesses = Integer.parseInt(args[2]);
+			EvilHangman myGame = new EvilHangman();
+			myGame.startGame(temp, wordLength);
+			int i=0;
+			Scanner myScanner = new Scanner(System.in);
+			while(i!=guesses){
+				System.out.println("Make a guess!");
+				System.out.println("You have " + (guesses-i) + " guesses remaining");
+				System.out.print("Previous guesses: ");
+				for(char c : myGame.madeGuesses){
+					System.out.print(c+" ");
+				}
+				System.out.println();
+				Guess:
+				String guess = new String();
+				while(true){
+					guess = myScanner.next();
+					if(guess.length() != 1)
+						System.out.println("Invalid entry. Please enter a single character");
+					else
+						break;
+				}
+				char charGuess = guess.charAt(0);
+				myGame.dict.setWords(myGame.makeGuess(charGuess));
+				i++;
+			}
+			myScanner.close();
+		}
+		catch(ArrayIndexOutOfBoundsException ex){
+			System.out.println("Number of arguments invalid.");
+		}
+	}
+	 private HashSet<Character> madeGuesses;
+	@Override
+	public void startGame(File dictionary, int wordLength) {
+		// TODO Auto-generated method stub
+		try{
+			FileReader myReader = new FileReader(dictionary);
+			Scanner myScanner = new Scanner(dictionary);
+			while(myScanner.hasNext()){
+				String next = myScanner.next();//possible problem with memory?
+				if(next.length() == wordLength)
+					dict.addWord(next);
+			}
+			myReader.close();
+			myScanner.close();
+		}
+		catch(IOException ex){
+			System.out.println("Error reading file '" + dictionary.toString() + "'");
+		}
+	}
+
+	@Override
+	public Set<String> makeGuess(char guess) throws GuessAlreadyMadeException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

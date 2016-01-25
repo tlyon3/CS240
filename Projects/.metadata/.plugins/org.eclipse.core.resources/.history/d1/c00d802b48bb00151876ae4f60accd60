@@ -1,9 +1,0 @@
-package spell;
-
-public class Dictionary implements ISpellCorrector{
-	public String sugggestSimilarWord(String w){
-		
-		
-		return w;
-	}
-}

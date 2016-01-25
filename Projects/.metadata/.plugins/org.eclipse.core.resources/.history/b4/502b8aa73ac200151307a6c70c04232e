@@ -1,0 +1,14 @@
+package hangman;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Dictionary {
+	public Dictionary(){
+		words = new HashSet<String>();
+	}
+	private Set<String> words;
+	public void addWord(String w){
+		words.add(w);
+	}
+}

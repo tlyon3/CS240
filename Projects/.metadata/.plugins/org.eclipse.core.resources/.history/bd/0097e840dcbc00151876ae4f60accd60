@@ -1,5 +1,0 @@
-package spell;
-
-public class SpellCorrector implements ISpellCorrector {
-
-}

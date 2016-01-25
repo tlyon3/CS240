@@ -1,0 +1,42 @@
+package hangman;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Map;
+import java.util.HashMap;
+public class Dictionary {
+	public Dictionary(){
+		words = new HashSet<String>();
+		patternMap = new HashMap<String, Set<String> >();
+	}
+	private Map<String, Set<String> > patternMap;
+	private Set<String> words;
+	public void setWords(Set<String> s){
+		words = s;
+	}
+	public void addWord(String w){
+		words.add(w);
+	}
+	
+	public void trim(int wordLength){
+		Set<String> newWords = new HashSet<String>();
+		for(String word : words){
+			if(word.length() == wordLength)
+				newWords.add(word);
+		}
+		words = newWords;
+	}
+	
+	public void makePatternSet(char c){
+		for(String w:words){
+			StringBuilder sb = new StringBuilder();
+			for(int i=0;i<w.length();i++){
+				if(w.charAt(i) == c){
+					sb.append(c);
+				}
+				else
+					sb.append("-");
+			}
+		}
+	}
+}
