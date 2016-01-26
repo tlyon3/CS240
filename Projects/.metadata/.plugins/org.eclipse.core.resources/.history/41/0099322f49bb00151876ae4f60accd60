@@ -1,5 +1,0 @@
-package spell;
-
-public class TrieNode implements ITrie{
-
-}

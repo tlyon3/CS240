@@ -10,11 +10,15 @@ public class Dictionary {
 		words = new TreeSet<String>();
 		patternMap = new HashMap<String, Set<String> >();
 	}
+	
 	private Map<String, Set<String> > patternMap;
 	private Set<String> words;
 	
 	public void setWords(Set<String> s){
 		words = s;
+	}
+	public int getWordsSize(){
+		return words.size();
 	}
 	public void printDictionary(){
 		for(String w:words){
@@ -25,6 +29,7 @@ public class Dictionary {
 		this.patternMap = newMap;
 	}
 	public void addWord(String w){
+		w = w.toLowerCase();
 		words.add(w);
 		//System.out.println("Added word: "+w);
 	}

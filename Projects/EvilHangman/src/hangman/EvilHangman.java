@@ -9,13 +9,14 @@ import java.util.Map;
 import java.util.Iterator;
 
 public class EvilHangman implements IEvilHangmanGame {
-	EvilHangman(){
+	public EvilHangman(){
 		madeGuesses = new HashSet<Character>();
 		dict = new Dictionary();
 		correctGuesses = new HashSet<Character>();
 	}
 	Dictionary dict;
 	Set<Character> correctGuesses;
+	
 	public static void main(String[] args){
 		try{
 			String dictionary = new String();
@@ -23,8 +24,20 @@ public class EvilHangman implements IEvilHangmanGame {
 			java.io.File temp = new File(dictionary);
 			int wordLength = Integer.parseInt(args[1]);
 			int guesses = Integer.parseInt(args[2]);
+			if(wordLength < 2){
+				System.out.println("Word length must be at least 2!");
+				return;
+			}
+			if(guesses < 1){
+				System.out.println("Number of guesses must be at least 1!");
+				return;
+			}
 			EvilHangman myGame = new EvilHangman();
 			myGame.startGame(temp, wordLength);
+			if(myGame.dict.getWordsSize() == 0){
+				System.out.println("Dictionary file was empty!");
+				return;
+			}
 			StringBuilder tempSB = new StringBuilder();
 			for(int i=0;i<wordLength;i++){
 				tempSB.append("-");
@@ -44,6 +57,7 @@ public class EvilHangman implements IEvilHangmanGame {
 				}
 				if(tempCount == wordLength){
 					System.out.println("You won! The word was " + wordPattern);
+					userInput.close();
 					return;
 				}
 				System.out.println("You have " + (guesses-i) + " guesses remaining");
@@ -63,25 +77,28 @@ public class EvilHangman implements IEvilHangmanGame {
 							System.out.println("Please enter a single letter");
 						}
 						else if(!Character.isLetter(guess.charAt(0))){
+							System.out.print("That was not a letter. Please enter a single letter: ");
+						}
+						else if(guess.charAt(0) == '\n'){
 							System.out.print("Please enter a single letter: ");
 						}
 						else
 							break;
 					}
 					char charGuess = guess.charAt(0);
+					charGuess = Character.toLowerCase(charGuess);
 					if(myGame.madeGuesses.contains(charGuess)){
 						throw new GuessAlreadyMadeException();
 					}
 					Set<String> newWords = myGame.makeGuess(charGuess);
 					if(newWords.isEmpty()){//shouldn't ever get here
-						System.out.println("SET IS EMPTY");
 						System.out.println("Sorry! There is no '"+charGuess+"' in the word");
 					}
 					else{
 						myGame.dict.setWords(newWords);
 						wordPattern = myGame.getPattern(newWords.iterator().next(),myGame.correctGuesses,charGuess);
 						int count = 0;
-						//System.out.println("Checking pattern " + wordPattern + " for "+charGuess);
+//						System.out.println("Checking pattern " + wordPattern + " for "+charGuess);
 						for(int j=0;j<wordPattern.length();j++){
 							if(wordPattern.charAt(j) == charGuess){
 //								System.out.println("Char matches ("+charGuess+") at index "+j);
@@ -164,7 +181,7 @@ public class EvilHangman implements IEvilHangmanGame {
 				//resolve tie breaker
 				//1.Choose the group in which the letter does not appear at all
 				//2.If each group has the guess letter, choose the one with the fewest
-				System.out.println("Tie breaker");
+//				System.out.println("Tie breaker");
 				String patternCurrent = (String)pair.getKey();
 				int countCurrent = 0;
 				int countMax = 0;
