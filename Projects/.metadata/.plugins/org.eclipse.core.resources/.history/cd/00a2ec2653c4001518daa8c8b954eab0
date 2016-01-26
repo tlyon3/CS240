@@ -190,7 +190,7 @@ public class EvilHangman implements IEvilHangmanGame {
 					if(patternCurrent.charAt(i) == guess){
 						countCurrent++;
 					}
-					if(maxPattern.charAt(i) == guess)
+					else if(maxPattern.charAt(i) == guess)
 						countMax++;
 				}
 				if(countCurrent < countMax){
