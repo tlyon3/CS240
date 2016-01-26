@@ -212,18 +212,15 @@ public class EvilHangman implements IEvilHangmanGame {
 							maxPattern = patternCurrent;
 							break;
 						}
-						else if(patternCurrent.charAt(i) == '-' && maxPattern.charAt(i) !='-'){
-							break;
-						}
 					}
 				}
 			}
 		}
 //		System.out.println("Max pattern: " + maxPattern);
-		System.out.println("Words in set:");
-		for(String w:maxSet){
-			System.out.println(w);
-		}
+//		System.out.println("Words in set:");
+//		for(String w:maxSet){
+//			System.out.println(w);
+//		}
 		dict.setWords(maxSet);
 		return maxSet;
 	}

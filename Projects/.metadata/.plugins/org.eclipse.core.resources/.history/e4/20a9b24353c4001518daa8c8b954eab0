@@ -172,7 +172,7 @@ public class EvilHangman implements IEvilHangmanGame {
 		while(it.hasNext()){
 			Map.Entry pair = (Map.Entry)it.next();
 			Set<String> temp = (Set<String>)pair.getValue();
-			System.out.println("Checking '" + pair.getKey()+"'("+temp.size()+")" + " against max: '"+maxPattern+"'("+maxSet.size()+")");
+//			System.out.println("Checking '" + pair.getKey()+"'("+temp.size()+")" + " against max: '"+maxPattern+"'("+maxSet.size()+")");
 			if(temp.size() > maxSet.size()){
 				maxSet = temp;
 				maxPattern = (String)pair.getKey();
@@ -206,13 +206,10 @@ public class EvilHangman implements IEvilHangmanGame {
 //					System.out.println("\tpatternCurrent = " + patternCurrent);
 //					System.out.println("\tmaxPattern = "+maxPattern);
 					for(int i=patternCurrent.length()-1;i >= 0;i--){
-//						System.out.println("i = "+i);
+						System.out.println("i = "+i);
 						if(patternCurrent.charAt(i) != '-' && maxPattern.charAt(i) == '-'){
 							maxSet = temp;
 							maxPattern = patternCurrent;
-							break;
-						}
-						else if(patternCurrent.charAt(i) == '-' && maxPattern.charAt(i) !='-'){
 							break;
 						}
 					}
@@ -220,10 +217,10 @@ public class EvilHangman implements IEvilHangmanGame {
 			}
 		}
 //		System.out.println("Max pattern: " + maxPattern);
-		System.out.println("Words in set:");
-		for(String w:maxSet){
-			System.out.println(w);
-		}
+//		System.out.println("Words in set:");
+//		for(String w:maxSet){
+//			System.out.println(w);
+//		}
 		dict.setWords(maxSet);
 		return maxSet;
 	}
