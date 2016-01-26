@@ -221,7 +221,6 @@ public class EvilHangman implements IEvilHangmanGame {
 //		for(String w:maxSet){
 //			System.out.println(w);
 //		}
-		dict.setWords(maxSet);
 		return maxSet;
 	}
 	public String getPattern(String word,Set<Character> correctGuesses,char guess){
