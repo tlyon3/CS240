@@ -74,7 +74,7 @@ public class EvilHangman implements IEvilHangmanGame {
 					while(true){
 						guess = userInput.next();
 						if(guess.length() != 1){
-							System.out.print("Please enter a single letter");
+							System.out.println("Please enter a single letter");
 						}
 						else if(!Character.isLetter(guess.charAt(0))){
 							System.out.print("That was not a letter. Please enter a single letter: ");
@@ -90,17 +90,17 @@ public class EvilHangman implements IEvilHangmanGame {
 					if(myGame.madeGuesses.contains(charGuess)){
 						throw new GuessAlreadyMadeException();
 					}
-					Set<String> newWords = myGame.makeGuess(charGuess);//using the guess char, generate new set of words
+					Set<String> newWords = myGame.makeGuess(charGuess);
 					if(newWords.isEmpty()){//shouldn't ever get here
 						System.out.println("Sorry! There is no '"+charGuess+"' in the word");
 					}
 					else{
 						myGame.dict.setWords(newWords);
-						wordPattern = myGame.getPattern(newWords.iterator().next(),myGame.correctGuesses,charGuess);//get a word from the new set and generate string pattern
+						wordPattern = myGame.getPattern(newWords.iterator().next(),myGame.correctGuesses,charGuess);
 						int count = 0;
 //						System.out.println("Checking pattern " + wordPattern + " for "+charGuess);
 						for(int j=0;j<wordPattern.length();j++){
-							if(wordPattern.charAt(j) == charGuess){//check to see if any letters in the pattern match the guess
+							if(wordPattern.charAt(j) == charGuess){
 //								System.out.println("Char matches ("+charGuess+") at index "+j);
 								count++;
 							}
@@ -172,7 +172,7 @@ public class EvilHangman implements IEvilHangmanGame {
 		while(it.hasNext()){
 			Map.Entry pair = (Map.Entry)it.next();
 			Set<String> temp = (Set<String>)pair.getValue();
-//			System.out.println("Checking '" + pair.getKey()+"'("+temp.size()+")" + " against max: '"+maxPattern+"'("+maxSet.size()+")");
+			System.out.println("Checking '" + pair.getKey()+"'("+temp.size()+")" + " against max: '"+maxPattern+"'("+maxSet.size()+")");
 			if(temp.size() > maxSet.size()){
 				maxSet = temp;
 				maxPattern = (String)pair.getKey();

@@ -16,7 +16,7 @@ public class Dictionary implements ITrie{
 		alphabet[6] = 'g';
 		alphabet[7] = 'h';
 		alphabet[8] = 'i';
-		alphabet[9]= 'j';o
+		alphabet[9]= 'j';
 		alphabet[10] = 'k';
 		alphabet[11] = 'l';
 		alphabet[12] = 'm';

@@ -96,11 +96,11 @@ public class EvilHangman implements IEvilHangmanGame {
 					}
 					else{
 						myGame.dict.setWords(newWords);
-						wordPattern = myGame.getPattern(newWords.iterator().next(),myGame.correctGuesses,charGuess);//get a word from the new set and generate string pattern
+						wordPattern = myGame.getPattern(newWords.iterator().next(),myGame.correctGuesses,charGuess);
 						int count = 0;
 //						System.out.println("Checking pattern " + wordPattern + " for "+charGuess);
 						for(int j=0;j<wordPattern.length();j++){
-							if(wordPattern.charAt(j) == charGuess){//check to see if any letters in the pattern match the guess
+							if(wordPattern.charAt(j) == charGuess){
 //								System.out.println("Char matches ("+charGuess+") at index "+j);
 								count++;
 							}

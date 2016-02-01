@@ -90,6 +90,7 @@ public class SpellCorrector implements ISpellCorrector {
 //				for(Map.Entry<Integer, String> entry : wordValueMap.entrySet()){
 //					System.out.println(entry.getKey()+": "+entry.getValue());
 //				}
+				//will always return word with greatest value and first alphabetical
 				return wordValueMap.lastEntry().getValue();
 			}
 			if(!found){

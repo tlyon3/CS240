@@ -16,7 +16,7 @@ public class Dictionary implements ITrie{
 		alphabet[6] = 'g';
 		alphabet[7] = 'h';
 		alphabet[8] = 'i';
-		alphabet[9]= 'j';o
+		alphabet[9]= 'j';
 		alphabet[10] = 'k';
 		alphabet[11] = 'l';
 		alphabet[12] = 'm';
@@ -281,6 +281,8 @@ public class Dictionary implements ITrie{
 	
 	private boolean equalRecurrsive(Node n1, Node n2){
 		for(int i=0;i<26;i++){
+//			if(n1.nodes[i]!=n2.nodes[i])
+//				return false;
 			if(n1.nodes[i]!=null && n2.nodes[i]!=null){
 				if(n1.nodes[i].getValue() != n2.nodes[i].getValue())
 					return false;
