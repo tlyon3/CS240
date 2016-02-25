@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/tlyon/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0_7580ce535b26680cabecff53df07be468f3ee014.jar" />
+    </item>
+    <item
+        jar="/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/libs/json-simple-1.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5d6f9b6a9ddca2a28c0216cc44efb2e20d9c23b5">
+        <dex dex="/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/build/intermediates/pre-dexed/debug/json-simple-1.1.1_bd18ec6058199bdb740f48caaeb8f54ed9ddd65c.jar" />
+    </item>
+    <item
+        jar="/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
+        <dex dex="/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-19.1.0_6f249b92799576f4d7e1e26db2bd41c60dfdc076.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,93 @@
+Controller calls Model functions
+Controller also accesses DataAccess
+DataAccess interacts with Database
+
+C: = Class
+SC: = Subclass
+O: = Object
+M: = Method
+v: = value
+p: pointer
+AsteroidsGame
+  UI
+    MainActivity(provided)
+      Controller
+        ->DataAccess
+    ImportActivity(provided)
+      Controller
+        ->DataImporter
+    ShipBuilderActivity(provided)
+      Controller
+    GameActivity(provided)
+      Controller
+
+  Model
+    Classes
+      GameDefinition(data from JSON,DB)
+        C:AsteroidsGame
+        C:ImageObject
+          v:height
+          v:width
+          v:image
+          SC:AsteroidType
+            v:name
+            v:type
+          SC:BgObjectType
+        C:Level
+          v:number
+          v:hint
+          v:title
+          v:height
+          v:width
+          v:music
+          C:LevelObjects
+            ->BgObjectType
+          C:LevelAsteroids
+            ->AsteroidType
+      RunTime
+        C:Visible
+          M:update()
+          M:draw()
+          SC:ObjectWithPosition
+            v:xCoordinate
+            v:yCoordinate
+            SC:MovingObject
+              v:speed
+              C:Direction
+                v:sin
+                v:cos
+              SC:Asteroid
+                ->AsteroidType
+                SC:RegularAsteroid
+                SC:OcteroidAsteroid
+                SC:GrowingAsteroid
+              SC:Ship
+                C:ShipPart
+                  C:AttachPoint
+                    v:x
+                    v:y
+                  SC:Engine
+                    v:baseSpeed
+                    v:baseTurnRate
+                  SC:Cannon
+                  SC:ExtraPart
+                  SC:MainBody
+                  SC:PowerCore
+            SC:MiniMap
+            SC:BackgroundObject
+              ->BgObjectType
+            SC:Projectile
+          SC:Space
+    Algorithms
+      onCollision
+      shotAsteroid
+      bounceOfWall
+      etc...
+  DataAccess
+    ->Databse
+  Database
+  DataImporter
+    ->DataAccess
+    ->JSON
+  JSON
+  --------------

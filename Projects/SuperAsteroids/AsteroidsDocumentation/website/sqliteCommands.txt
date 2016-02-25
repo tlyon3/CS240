@@ -1,0 +1,104 @@
+create table levels
+(
+  id integer not null primary key autoincrement,
+  title varchar(255) not null,
+  hint varchar(255) not null,
+  height integer not null,
+  width integer not null,
+  music varchar(255) not null
+);
+
+create table levelAsteroids
+(
+  levelId integer not null,
+  asteroidId integer not null,
+  number integer not null
+);
+
+create table asteroids
+(
+  id integer not null primary key autoincrement,
+  name varchar(255) not null,
+  image varchar(255) not null,
+  type varchar(255) not null,
+  width integer not null,
+  height integer not null
+);
+
+create table backgroundObjects
+(
+  id integer not null primary key autoincrement,
+  image varchar(255) not null
+);
+
+create table levelObjects
+(
+  id integer not null primary key,
+  levelId integer not null,
+  objectId integer not null,
+  scale float not null,
+  positionX integer not null,
+  positionY integer not null
+);
+
+create table mainBodies
+(
+  id integer not null primary key autoincrement,
+  name varchar(255) not null,
+  attachCannonX integer not null,
+  attachCannonY integer not null,
+  attachExtraX integer not null,
+  attachExtraY integer not null,
+  attachEngineX integer not null,
+  attachEngineY integer not null,
+  image varchar(255) not null,
+  imageHeight integer not null,
+  imageWidth integer not null
+);
+
+create table cannons
+(
+  id integer not null primary key autoincrement,
+  attachX integer not null,
+  attachY integer not null,
+  emitX integer not null,
+  emitY integer not null,
+  image varchar(255) not null,
+  imageWidth integer not null,
+  imageHeight integer not null,
+  attackImage varchar(255) not null,
+  attackImageWidth integer not null,
+  attackImageHeight integer not null,
+  attackSound varchar(255) not null,
+  damage integer not null
+);
+
+create table extraParts
+(
+  id integer not null primary key autoincrement,
+  image varchar(255) not null,
+  attachX integer not null,
+  attachY integer not null,
+  imageHeight integer not null,
+  imageWidth integer not null
+);
+
+create table engines
+(
+  id integer not null primary key autoincrement,
+  image varchar(255) not null,
+  speed integer not null,
+  turningSpeed integer not null,
+  imageHeight integer not null,
+  imageWidth integer not null,
+  attachX integer not null,
+  attachY integer not null
+);
+
+create table powerCores
+(
+  id integer not null primary key autoincrement,
+  image varchar(255) not null,
+  cannonBoost integer not null,
+  engineBoost integer not null
+);

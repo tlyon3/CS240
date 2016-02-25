@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/build/intermediates/res/merged/debug/layout-xlarge-v4/row_import_file.xml",
+        "source": "/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/src/main/res/layout-xlarge/row_import_file.xml"
+    },
+    {
+        "merged": "/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/build/intermediates/res/merged/debug/layout-xlarge-v4/fragment_main.xml",
+        "source": "/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/src/main/res/layout-xlarge/fragment_main.xml"
+    },
+    {
+        "merged": "/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/build/intermediates/res/merged/debug/layout-xlarge-v4/fragment_import.xml",
+        "source": "/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/src/main/res/layout-xlarge/fragment_import.xml"
+    }
+]

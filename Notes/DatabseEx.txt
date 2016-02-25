@@ -1,0 +1,44 @@
+*check lecture notes on class website*
+How does the database get created?
+  On Android:
+    database is created when an app is run for the first time
+    but, you have to write the code that creates the actual tables
+
+public class DBOpenHelper extends SQLiteOpenHelper{
+  private static final String DB_NAME = "bookclub.sqlite";
+  private static final int DB_VERSION = 1;
+
+  public DBOpenHelper(Context context){
+    super(context,DB_NAME,null,DB_VERSION);
+  }
+
+  public void onCreate(SQLiteDatabase db){
+    final String SQL =
+      "create table book"+
+      "("+
+      " id integer not null primary key autoincrement,"+
+      " title varchar(255) not null,"+
+      " author varchar(255) not null," +
+      " genre varchar(255) not null," +
+      " constraint ck_genre check (genre in )(...)"
+  }
+}
+
+
+----
+DbOpenHelper dbOpenHelper = new DbOpenHelper(getBaseContext());
+SQLiteDatabse db = dbOpenHelper.getWritableDatabse();
+
+db.beginTransaction();
+
+BookDAO dao = new BookDAO(db);
+Book book = new Book();
+book.setTitle("Title");
+book.setAuthor("Author");
+book.setGenre(Genre.NonFiction);
+dao.addBook(book);
+
+db.setTransactionSuccfessful();
+db.endTransaction();
+
+dbOpenHelper.close();

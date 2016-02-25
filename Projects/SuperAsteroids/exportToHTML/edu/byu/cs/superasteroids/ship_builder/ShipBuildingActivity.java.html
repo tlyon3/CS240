@@ -1,0 +1,250 @@
+<html>
+<head>
+<title>ShipBuildingActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(147,199,99); }
+.s1 { color: rgb(224,226,228); }
+.s2 { color: rgb(232,226,183); }
+.s3 { color: rgb(125,140,147); }
+.s4 { color: rgb(255,205,34); }
+.s5 { color: rgb(128,128,128); font-style: italic; }
+</style>
+</head>
+<BODY BGCOLOR="#293134">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+ShipBuildingActivity.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<span class="s0">package </span><span class="s1">edu</span><span class="s2">.</span><span class="s1">byu</span><span class="s2">.</span><span class="s1">cs</span><span class="s2">.</span><span class="s1">superasteroids</span><span class="s2">.</span><span class="s1">ship_builder</span><span class="s2">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">content</span><span class="s2">.</span><span class="s1">Intent</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">os</span><span class="s2">.</span><span class="s1">Bundle</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">support</span><span class="s2">.</span><span class="s1">v4</span><span class="s2">.</span><span class="s1">app</span><span class="s2">.</span><span class="s1">Fragment</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">support</span><span class="s2">.</span><span class="s1">v4</span><span class="s2">.</span><span class="s1">view</span><span class="s2">.</span><span class="s1">GestureDetectorCompat</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">view</span><span class="s2">.</span><span class="s1">GestureDetector</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">view</span><span class="s2">.</span><span class="s1">MotionEvent</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">view</span><span class="s2">.</span><span class="s1">Window</span><span class="s2">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">ArrayList</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">List</span><span class="s2">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">edu</span><span class="s2">.</span><span class="s1">byu</span><span class="s2">.</span><span class="s1">cs</span><span class="s2">.</span><span class="s1">superasteroids</span><span class="s2">.</span><span class="s1">R</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">edu</span><span class="s2">.</span><span class="s1">byu</span><span class="s2">.</span><span class="s1">cs</span><span class="s2">.</span><span class="s1">superasteroids</span><span class="s2">.</span><span class="s1">base</span><span class="s2">.</span><span class="s1">ActivityView</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">edu</span><span class="s2">.</span><span class="s1">byu</span><span class="s2">.</span><span class="s1">cs</span><span class="s2">.</span><span class="s1">superasteroids</span><span class="s2">.</span><span class="s1">content</span><span class="s2">.</span><span class="s1">ContentManager</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">edu</span><span class="s2">.</span><span class="s1">byu</span><span class="s2">.</span><span class="s1">cs</span><span class="s2">.</span><span class="s1">superasteroids</span><span class="s2">.</span><span class="s1">game</span><span class="s2">.</span><span class="s1">GameActivity</span><span class="s2">;</span><span class="s1"> 
+ 
+</span><span class="s3">/** 
+ * The Android Activity used for the ship building process 
+ */</span><span class="s1"> 
+</span><span class="s0">public class </span><span class="s1">ShipBuildingActivity </span><span class="s0">extends </span><span class="s1">ActivityView </span><span class="s0">implements </span><span class="s1">IShipBuildingView </span><span class="s2">{</span><span class="s1"> 
+     
+    </span><span class="s0">private </span><span class="s1">GestureDetectorCompat mDetector</span><span class="s2">;</span><span class="s1">  
+     
+    </span><span class="s0">private </span><span class="s1">PartSelectionFragment mainBodyFragment </span><span class="s2">= </span><span class="s0">new </span><span class="s1">PartSelectionFragment</span><span class="s2">();</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">PartSelectionFragment engineFragment </span><span class="s2">= </span><span class="s0">new </span><span class="s1">PartSelectionFragment</span><span class="s2">();</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">PartSelectionFragment cannonFragment </span><span class="s2">= </span><span class="s0">new </span><span class="s1">PartSelectionFragment</span><span class="s2">();</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">PartSelectionFragment extraPartFragment </span><span class="s2">= </span><span class="s0">new </span><span class="s1">PartSelectionFragment</span><span class="s2">();</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">PartSelectionFragment powerCoreFragment </span><span class="s2">= </span><span class="s0">new </span><span class="s1">PartSelectionFragment</span><span class="s2">();</span><span class="s1"> 
+     
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">Bundle savedInstanceState</span><span class="s2">) {</span><span class="s1"> 
+        </span><span class="s0">super</span><span class="s2">.</span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">savedInstanceState</span><span class="s2">);</span><span class="s1"> 
+ 
+        </span><span class="s3">// remove title bar.</span><span class="s1"> 
+        requestWindowFeature</span><span class="s2">(</span><span class="s1">Window</span><span class="s2">.</span><span class="s1">FEATURE_NO_TITLE</span><span class="s2">);</span><span class="s1"> 
+ 
+        setContentView</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">activity_ship_building</span><span class="s2">);</span><span class="s1"> 
+ 
+ 
+        </span><span class="s3">//TODO: Set this activity's controller to an instance of your ShipBuildingController</span><span class="s1"> 
+        </span><span class="s3">//TODO: Pass the ShipBuildingController's constructor a reference to its IShipBuildingView (this)</span><span class="s1"> 
+        </span><span class="s3">//IShipBuildingController controller = new ShipBuildingController(this);</span><span class="s1"> 
+        </span><span class="s3">//setController(controller);</span><span class="s1"> 
+ 
+ 
+        </span><span class="s3">//Configure the part selection fragments</span><span class="s1"> 
+        mainBodyFragment</span><span class="s2">.</span><span class="s1">setPartView</span><span class="s2">(</span><span class="s1">PartSelectionView</span><span class="s2">.</span><span class="s1">MAIN_BODY</span><span class="s2">);</span><span class="s1"> 
+        mainBodyFragment</span><span class="s2">.</span><span class="s1">setController</span><span class="s2">(</span><span class="s1">getController</span><span class="s2">());</span><span class="s1"> 
+        mainBodyFragment</span><span class="s2">.</span><span class="s1">setPartsAdapter</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PartsAdapter</span><span class="s2">(</span><span class="s0">this</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Integer</span><span class="s2">&gt;()));</span><span class="s1"> 
+        engineFragment</span><span class="s2">.</span><span class="s1">setPartView</span><span class="s2">(</span><span class="s1">PartSelectionView</span><span class="s2">.</span><span class="s1">ENGINE</span><span class="s2">);</span><span class="s1"> 
+        engineFragment</span><span class="s2">.</span><span class="s1">setController</span><span class="s2">(</span><span class="s1">getController</span><span class="s2">());</span><span class="s1"> 
+        engineFragment</span><span class="s2">.</span><span class="s1">setPartsAdapter</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PartsAdapter</span><span class="s2">(</span><span class="s0">this</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Integer</span><span class="s2">&gt;()));</span><span class="s1"> 
+        cannonFragment</span><span class="s2">.</span><span class="s1">setPartView</span><span class="s2">(</span><span class="s1">PartSelectionView</span><span class="s2">.</span><span class="s1">CANNON</span><span class="s2">);</span><span class="s1"> 
+        cannonFragment</span><span class="s2">.</span><span class="s1">setController</span><span class="s2">(</span><span class="s1">getController</span><span class="s2">());</span><span class="s1"> 
+        cannonFragment</span><span class="s2">.</span><span class="s1">setPartsAdapter</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PartsAdapter</span><span class="s2">(</span><span class="s0">this</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Integer</span><span class="s2">&gt;()));</span><span class="s1"> 
+        extraPartFragment</span><span class="s2">.</span><span class="s1">setPartView</span><span class="s2">(</span><span class="s1">PartSelectionView</span><span class="s2">.</span><span class="s1">EXTRA_PART</span><span class="s2">);</span><span class="s1"> 
+        extraPartFragment</span><span class="s2">.</span><span class="s1">setController</span><span class="s2">(</span><span class="s1">getController</span><span class="s2">());</span><span class="s1"> 
+        extraPartFragment</span><span class="s2">.</span><span class="s1">setPartsAdapter</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PartsAdapter</span><span class="s2">(</span><span class="s0">this</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Integer</span><span class="s2">&gt;()));</span><span class="s1"> 
+        powerCoreFragment</span><span class="s2">.</span><span class="s1">setPartView</span><span class="s2">(</span><span class="s1">PartSelectionView</span><span class="s2">.</span><span class="s1">POWER_CORE</span><span class="s2">);</span><span class="s1"> 
+        powerCoreFragment</span><span class="s2">.</span><span class="s1">setController</span><span class="s2">(</span><span class="s1">getController</span><span class="s2">());</span><span class="s1"> 
+        powerCoreFragment</span><span class="s2">.</span><span class="s1">setPartsAdapter</span><span class="s2">(</span><span class="s0">new </span><span class="s1">PartsAdapter</span><span class="s2">(</span><span class="s0">this</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Integer</span><span class="s2">&gt;()));</span><span class="s1"> 
+ 
+        </span><span class="s0">if</span><span class="s2">(</span><span class="s1">getController</span><span class="s2">() != </span><span class="s0">null</span><span class="s2">)</span><span class="s1"> 
+            getController</span><span class="s2">().</span><span class="s1">loadContent</span><span class="s2">(</span><span class="s1">ContentManager</span><span class="s2">.</span><span class="s1">getInstance</span><span class="s2">());</span><span class="s1"> 
+ 
+ 
+        </span><span class="s3">//Move the main body  part selection view into this view</span><span class="s1"> 
+        getSupportFragmentManager</span><span class="s2">().</span><span class="s1">beginTransaction</span><span class="s2">().</span><span class="s1">add</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">id</span><span class="s2">.</span><span class="s1">fragment_container</span><span class="s2">, </span><span class="s1">mainBodyFragment</span><span class="s2">)</span><span class="s1"> 
+            </span><span class="s2">.</span><span class="s1">commit</span><span class="s2">();</span><span class="s1"> 
+         
+        mDetector </span><span class="s2">= </span><span class="s0">new </span><span class="s1">GestureDetectorCompat</span><span class="s2">(</span><span class="s0">this</span><span class="s2">, </span><span class="s0">new </span><span class="s1">FlingListener</span><span class="s2">());</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">onResume</span><span class="s2">() {</span><span class="s1"> 
+        </span><span class="s0">super</span><span class="s2">.</span><span class="s1">onResume</span><span class="s2">();</span><span class="s1"> 
+        </span><span class="s0">if</span><span class="s2">(</span><span class="s1">getController</span><span class="s2">() != </span><span class="s0">null</span><span class="s2">)</span><span class="s1"> 
+            getController</span><span class="s2">().</span><span class="s1">onResume</span><span class="s2">();</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+ 
+    @Override  
+    </span><span class="s0">public boolean </span><span class="s1">onTouchEvent</span><span class="s2">(</span><span class="s1">MotionEvent event</span><span class="s2">){</span><span class="s1">  
+        </span><span class="s0">this</span><span class="s2">.</span><span class="s1">mDetector</span><span class="s2">.</span><span class="s1">onTouchEvent</span><span class="s2">(</span><span class="s1">event</span><span class="s2">);</span><span class="s1"> 
+        </span><span class="s3">// Be sure to call the superclass implementation</span><span class="s1"> 
+        </span><span class="s0">return super</span><span class="s2">.</span><span class="s1">onTouchEvent</span><span class="s2">(</span><span class="s1">event</span><span class="s2">);</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">animateToView</span><span class="s2">(</span><span class="s1">PartSelectionView view</span><span class="s2">, </span><span class="s1">ViewDirection animationDirection</span><span class="s2">) {</span><span class="s1"> 
+        Fragment viewFragment </span><span class="s2">= </span><span class="s1">getPieceSelectionView</span><span class="s2">(</span><span class="s1">view</span><span class="s2">);</span><span class="s1"> 
+        </span><span class="s0">this</span><span class="s2">.</span><span class="s1">getSupportFragmentManager</span><span class="s2">().</span><span class="s1">beginTransaction</span><span class="s2">()</span><span class="s1"> 
+            </span><span class="s2">.</span><span class="s1">setCustomAnimations</span><span class="s2">(</span><span class="s1">getSlideInDirection</span><span class="s2">(</span><span class="s1">animationDirection</span><span class="s2">), </span><span class="s1">getSlideOutDirection</span><span class="s2">(</span><span class="s1">animationDirection</span><span class="s2">))</span><span class="s1"> 
+            </span><span class="s2">.</span><span class="s1">replace</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">id</span><span class="s2">.</span><span class="s1">fragment_container</span><span class="s2">, </span><span class="s1">viewFragment</span><span class="s2">)</span><span class="s1"> 
+            </span><span class="s2">.</span><span class="s1">commit</span><span class="s2">();</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+     
+    @Override 
+    </span><span class="s0">public </span><span class="s1">IShipBuildingController getController</span><span class="s2">() {</span><span class="s1"> 
+        </span><span class="s0">return </span><span class="s2">(</span><span class="s1">IShipBuildingController</span><span class="s2">)</span><span class="s0">super</span><span class="s2">.</span><span class="s1">getController</span><span class="s2">();</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+ 
+    </span><span class="s3">/** 
+     * A customized gesture detector used to detect and respond to flinging motions. 
+     */</span><span class="s1"> 
+    </span><span class="s0">class </span><span class="s1">FlingListener </span><span class="s0">extends </span><span class="s1">GestureDetector</span><span class="s2">.</span><span class="s1">SimpleOnGestureListener </span><span class="s2">{</span><span class="s1"> 
+ 
+        @Override 
+        </span><span class="s0">public boolean </span><span class="s1">onFling</span><span class="s2">(</span><span class="s1">MotionEvent event1</span><span class="s2">, </span><span class="s1">MotionEvent event2</span><span class="s2">,</span><span class="s1">  
+                </span><span class="s0">float </span><span class="s1">velX</span><span class="s2">, </span><span class="s0">float </span><span class="s1">velY</span><span class="s2">) {</span><span class="s1"> 
+ 
+            </span><span class="s0">if</span><span class="s2">(</span><span class="s1">getController</span><span class="s2">() != </span><span class="s0">null</span><span class="s2">) {</span><span class="s1"> 
+ 
+                </span><span class="s0">float </span><span class="s1">absX </span><span class="s2">= </span><span class="s1">Math</span><span class="s2">.</span><span class="s1">abs</span><span class="s2">(</span><span class="s1">event1</span><span class="s2">.</span><span class="s1">getRawX</span><span class="s2">() - </span><span class="s1">event2</span><span class="s2">.</span><span class="s1">getRawX</span><span class="s2">());</span><span class="s1"> 
+                </span><span class="s0">float </span><span class="s1">absY </span><span class="s2">= </span><span class="s1">Math</span><span class="s2">.</span><span class="s1">abs</span><span class="s2">(</span><span class="s1">event1</span><span class="s2">.</span><span class="s1">getRawY</span><span class="s2">() - </span><span class="s1">event2</span><span class="s2">.</span><span class="s1">getRawY</span><span class="s2">());</span><span class="s1"> 
+ 
+                </span><span class="s0">if </span><span class="s2">(</span><span class="s1">event2</span><span class="s2">.</span><span class="s1">getRawX</span><span class="s2">() &lt; </span><span class="s1">event1</span><span class="s2">.</span><span class="s1">getRawX</span><span class="s2">() &amp;&amp; </span><span class="s1">absX </span><span class="s2">&gt; </span><span class="s1">absY</span><span class="s2">) {</span><span class="s1"> 
+                    getController</span><span class="s2">().</span><span class="s1">onSlideView</span><span class="s2">(</span><span class="s1">ViewDirection</span><span class="s2">.</span><span class="s1">LEFT</span><span class="s2">);</span><span class="s1"> 
+                    </span><span class="s0">return true</span><span class="s2">;</span><span class="s1"> 
+                </span><span class="s2">}</span><span class="s1"> 
+                </span><span class="s0">if </span><span class="s2">(</span><span class="s1">event2</span><span class="s2">.</span><span class="s1">getRawX</span><span class="s2">() &gt; </span><span class="s1">event1</span><span class="s2">.</span><span class="s1">getRawX</span><span class="s2">()  &amp;&amp; </span><span class="s1">absX </span><span class="s2">&gt; </span><span class="s1">absY</span><span class="s2">) {</span><span class="s1"> 
+                    getController</span><span class="s2">().</span><span class="s1">onSlideView</span><span class="s2">(</span><span class="s1">ViewDirection</span><span class="s2">.</span><span class="s1">RIGHT</span><span class="s2">);</span><span class="s1"> 
+                    </span><span class="s0">return true</span><span class="s2">;</span><span class="s1"> 
+                </span><span class="s2">}</span><span class="s1"> 
+                </span><span class="s0">if </span><span class="s2">(</span><span class="s1">event2</span><span class="s2">.</span><span class="s1">getRawY</span><span class="s2">() &lt; </span><span class="s1">event1</span><span class="s2">.</span><span class="s1">getRawY</span><span class="s2">()  &amp;&amp; </span><span class="s1">absX </span><span class="s2">&lt; </span><span class="s1">absY</span><span class="s2">) {</span><span class="s1"> 
+                    getController</span><span class="s2">().</span><span class="s1">onSlideView</span><span class="s2">(</span><span class="s1">ViewDirection</span><span class="s2">.</span><span class="s1">UP</span><span class="s2">);</span><span class="s1"> 
+                    </span><span class="s0">return true</span><span class="s2">;</span><span class="s1"> 
+                </span><span class="s2">}</span><span class="s1"> 
+                </span><span class="s0">if </span><span class="s2">(</span><span class="s1">event2</span><span class="s2">.</span><span class="s1">getRawY</span><span class="s2">() &gt; </span><span class="s1">event1</span><span class="s2">.</span><span class="s1">getRawY</span><span class="s2">() &amp;&amp; </span><span class="s1">absX </span><span class="s2">&lt; </span><span class="s1">absY</span><span class="s2">) {</span><span class="s1"> 
+                    getController</span><span class="s2">().</span><span class="s1">onSlideView</span><span class="s2">(</span><span class="s1">ViewDirection</span><span class="s2">.</span><span class="s1">DOWN</span><span class="s2">);</span><span class="s1"> 
+                    </span><span class="s0">return true</span><span class="s2">;</span><span class="s1"> 
+                </span><span class="s2">}</span><span class="s1"> 
+ 
+</span><span class="s5">/* 
+                float absX = Math.abs(velX); 
+                float absY = Math.abs(velY); 
+                if (velX &lt; 0 &amp;&amp; absX &gt; absY) 
+                    getController().onSlideView(ViewDirection.LEFT); 
+                if (velX &gt; 0 &amp;&amp; absX &gt; absY) 
+                    getController().onSlideView(ViewDirection.RIGHT); 
+                if (velY &lt; 0 &amp;&amp; absX &lt; absY) 
+                    getController().onSlideView(ViewDirection.UP); 
+                if (velY &gt; 0 &amp;&amp; absX &lt; absY) 
+                    getController().onSlideView(ViewDirection.DOWN); 
+*/</span><span class="s1"> 
+            </span><span class="s2">}</span><span class="s1"> 
+             
+            </span><span class="s0">return false</span><span class="s2">;</span><span class="s1"> 
+        </span><span class="s2">}</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+     
+    </span><span class="s0">private </span><span class="s1">PartSelectionFragment getPieceSelectionView</span><span class="s2">(</span><span class="s1">PartSelectionView view</span><span class="s2">) {</span><span class="s1"> 
+        </span><span class="s0">switch</span><span class="s2">(</span><span class="s1">view</span><span class="s2">) {</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">MAIN_BODY</span><span class="s2">:     </span><span class="s0">return </span><span class="s1">mainBodyFragment</span><span class="s2">;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">EXTRA_PART</span><span class="s2">:    </span><span class="s0">return </span><span class="s1">extraPartFragment</span><span class="s2">;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">ENGINE</span><span class="s2">:        </span><span class="s0">return </span><span class="s1">engineFragment</span><span class="s2">;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">CANNON</span><span class="s2">:        </span><span class="s0">return </span><span class="s1">cannonFragment</span><span class="s2">;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">POWER_CORE</span><span class="s2">:    </span><span class="s0">return </span><span class="s1">powerCoreFragment</span><span class="s2">;</span><span class="s1"> 
+            </span><span class="s0">default</span><span class="s2">: </span><span class="s0">assert false</span><span class="s2">; </span><span class="s0">return null</span><span class="s2">;</span><span class="s1"> 
+        </span><span class="s2">}</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+     
+    </span><span class="s0">private int </span><span class="s1">getSlideInDirection</span><span class="s2">(</span><span class="s1">ViewDirection animationDirection</span><span class="s2">) {</span><span class="s1"> 
+        </span><span class="s0">switch</span><span class="s2">(</span><span class="s1">animationDirection</span><span class="s2">) {</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">LEFT</span><span class="s2">:      </span><span class="s0">return </span><span class="s1">android</span><span class="s2">.</span><span class="s1">R</span><span class="s2">.</span><span class="s1">anim</span><span class="s2">.</span><span class="s1">slide_in_left</span><span class="s2">;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">RIGHT</span><span class="s2">:     </span><span class="s0">return </span><span class="s1">R</span><span class="s2">.</span><span class="s1">anim</span><span class="s2">.</span><span class="s1">slide_in_right</span><span class="s2">;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">DOWN</span><span class="s2">:      </span><span class="s0">return </span><span class="s1">R</span><span class="s2">.</span><span class="s1">anim</span><span class="s2">.</span><span class="s1">abc_slide_in_bottom</span><span class="s2">;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">UP</span><span class="s2">:        </span><span class="s0">return </span><span class="s1">R</span><span class="s2">.</span><span class="s1">anim</span><span class="s2">.</span><span class="s1">abc_slide_in_top</span><span class="s2">;</span><span class="s1"> 
+            </span><span class="s0">default</span><span class="s2">:    </span><span class="s0">assert false</span><span class="s2">; </span><span class="s0">return </span><span class="s2">-</span><span class="s4">1</span><span class="s2">;</span><span class="s1"> 
+        </span><span class="s2">}</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+     
+    </span><span class="s0">private int </span><span class="s1">getSlideOutDirection</span><span class="s2">(</span><span class="s1">ViewDirection animationDirection</span><span class="s2">) {</span><span class="s1"> 
+        ViewDirection opposite </span><span class="s2">= </span><span class="s1">getOppositeDirection</span><span class="s2">(</span><span class="s1">animationDirection</span><span class="s2">);</span><span class="s1"> 
+        </span><span class="s0">switch</span><span class="s2">(</span><span class="s1">opposite</span><span class="s2">) {</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">LEFT</span><span class="s2">:      </span><span class="s0">return </span><span class="s1">R</span><span class="s2">.</span><span class="s1">anim</span><span class="s2">.</span><span class="s1">slide_out_left</span><span class="s2">;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">RIGHT</span><span class="s2">:     </span><span class="s0">return </span><span class="s1">android</span><span class="s2">.</span><span class="s1">R</span><span class="s2">.</span><span class="s1">anim</span><span class="s2">.</span><span class="s1">slide_out_right</span><span class="s2">;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">DOWN</span><span class="s2">:      </span><span class="s0">return </span><span class="s1">R</span><span class="s2">.</span><span class="s1">anim</span><span class="s2">.</span><span class="s1">abc_slide_out_bottom</span><span class="s2">;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">UP</span><span class="s2">:        </span><span class="s0">return </span><span class="s1">R</span><span class="s2">.</span><span class="s1">anim</span><span class="s2">.</span><span class="s1">abc_slide_out_top</span><span class="s2">;</span><span class="s1"> 
+            </span><span class="s0">default</span><span class="s2">:    </span><span class="s0">assert false</span><span class="s2">; </span><span class="s0">return </span><span class="s2">-</span><span class="s4">1</span><span class="s2">;</span><span class="s1"> 
+        </span><span class="s2">}</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+     
+    </span><span class="s0">private </span><span class="s1">ViewDirection getOppositeDirection</span><span class="s2">(</span><span class="s1">ViewDirection direction</span><span class="s2">) {</span><span class="s1"> 
+        </span><span class="s0">switch</span><span class="s2">(</span><span class="s1">direction</span><span class="s2">) {</span><span class="s1"> 
+        </span><span class="s0">case </span><span class="s1">LEFT</span><span class="s2">:      </span><span class="s0">return </span><span class="s1">ViewDirection</span><span class="s2">.</span><span class="s1">RIGHT</span><span class="s2">;</span><span class="s1"> 
+        </span><span class="s0">case </span><span class="s1">RIGHT</span><span class="s2">:     </span><span class="s0">return </span><span class="s1">ViewDirection</span><span class="s2">.</span><span class="s1">LEFT</span><span class="s2">;</span><span class="s1"> 
+        </span><span class="s0">case </span><span class="s1">DOWN</span><span class="s2">:      </span><span class="s0">return </span><span class="s1">ViewDirection</span><span class="s2">.</span><span class="s1">UP</span><span class="s2">;</span><span class="s1"> 
+        </span><span class="s0">case </span><span class="s1">UP</span><span class="s2">:        </span><span class="s0">return </span><span class="s1">ViewDirection</span><span class="s2">.</span><span class="s1">DOWN</span><span class="s2">;</span><span class="s1"> 
+        </span><span class="s0">default</span><span class="s2">:    </span><span class="s0">assert false</span><span class="s2">; </span><span class="s0">return null</span><span class="s2">;</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">setPartViewImageList</span><span class="s2">(</span><span class="s1">PartSelectionView view</span><span class="s2">, </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">Integer</span><span class="s2">&gt; </span><span class="s1">partImageIds</span><span class="s2">) {</span><span class="s1"> 
+        getPieceSelectionView</span><span class="s2">(</span><span class="s1">view</span><span class="s2">).</span><span class="s1">setPartImages</span><span class="s2">(</span><span class="s1">partImageIds</span><span class="s2">);</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">startGame</span><span class="s2">() {</span><span class="s1"> 
+        mainBodyFragment</span><span class="s2">.</span><span class="s1">stopDrawing</span><span class="s2">();</span><span class="s1"> 
+        extraPartFragment</span><span class="s2">.</span><span class="s1">stopDrawing</span><span class="s2">();</span><span class="s1"> 
+        cannonFragment</span><span class="s2">.</span><span class="s1">stopDrawing</span><span class="s2">();</span><span class="s1"> 
+        engineFragment</span><span class="s2">.</span><span class="s1">stopDrawing</span><span class="s2">();</span><span class="s1"> 
+        powerCoreFragment</span><span class="s2">.</span><span class="s1">stopDrawing</span><span class="s2">();</span><span class="s1"> 
+        Intent intent </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Intent</span><span class="s2">(</span><span class="s0">this</span><span class="s2">, </span><span class="s1">GameActivity</span><span class="s2">.</span><span class="s0">class</span><span class="s2">);</span><span class="s1"> 
+        intent</span><span class="s2">.</span><span class="s1">setFlags</span><span class="s2">(</span><span class="s1">android</span><span class="s2">.</span><span class="s1">content</span><span class="s2">.</span><span class="s1">Intent</span><span class="s2">.</span><span class="s1">FLAG_ACTIVITY_SINGLE_TOP</span><span class="s2">);</span><span class="s1"> 
+        </span><span class="s0">this</span><span class="s2">.</span><span class="s1">startActivity</span><span class="s2">(</span><span class="s1">intent</span><span class="s2">);</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">setStartGameButton</span><span class="s2">(</span><span class="s0">boolean </span><span class="s1">enabled</span><span class="s2">) {</span><span class="s1"> 
+        mainBodyFragment</span><span class="s2">.</span><span class="s1">setStartGameButton</span><span class="s2">(</span><span class="s1">enabled</span><span class="s2">);</span><span class="s1"> 
+        extraPartFragment</span><span class="s2">.</span><span class="s1">setStartGameButton</span><span class="s2">(</span><span class="s1">enabled</span><span class="s2">);</span><span class="s1"> 
+        cannonFragment</span><span class="s2">.</span><span class="s1">setStartGameButton</span><span class="s2">(</span><span class="s1">enabled</span><span class="s2">);</span><span class="s1"> 
+        engineFragment</span><span class="s2">.</span><span class="s1">setStartGameButton</span><span class="s2">(</span><span class="s1">enabled</span><span class="s2">);</span><span class="s1"> 
+        powerCoreFragment</span><span class="s2">.</span><span class="s1">setStartGameButton</span><span class="s2">(</span><span class="s1">enabled</span><span class="s2">);</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">setArrow</span><span class="s2">(</span><span class="s1">PartSelectionView partView</span><span class="s2">, </span><span class="s1">ViewDirection arrow</span><span class="s2">, </span><span class="s0">boolean </span><span class="s1">visible</span><span class="s2">, </span><span class="s1">String text</span><span class="s2">) {</span><span class="s1"> 
+        getPieceSelectionView</span><span class="s2">(</span><span class="s1">partView</span><span class="s2">).</span><span class="s1">setArrow</span><span class="s2">(</span><span class="s1">arrow</span><span class="s2">, </span><span class="s1">visible</span><span class="s2">, </span><span class="s1">text</span><span class="s2">);</span><span class="s1"> 
+    </span><span class="s2">}</span><span class="s1"> 
+</span><span class="s2">}</span><span class="s1"> 
+</span></pre>
+</body>
+</html>

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/build/intermediates/res/merged/debug/menu/menu_import.xml",
+        "source": "/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/src/main/res/menu/menu_import.xml"
+    },
+    {
+        "merged": "/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/build/intermediates/res/merged/debug/menu/menu_main.xml",
+        "source": "/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/src/main/res/menu/menu_main.xml"
+    },
+    {
+        "merged": "/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/Users/tlyon/School/Winter 2016/CS240/Projects/SuperAsteroids/app/src/main/res/menu/main.xml"
+    }
+]

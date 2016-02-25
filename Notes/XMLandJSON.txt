@@ -1,0 +1,39 @@
+*check files on class website*
+XML
+  format for representing data textually (not binary data)
+  looks very similar to HTML
+  XML parser (Java)
+    DOM parser
+      creates a tree in memory
+        pointers to both first and last child
+        children have pointers to their parents
+      entire data is loaded into memory
+    Streaming Parser
+      tokenizer
+        consist of start tags, end tags, and text
+      uses only enough memory for one token
+
+JSON
+  Supports data types: Objects, Arrays, Numbers,Strings,Boolean,Null
+  Objects delimited by {...} with comma-separated properties
+    {"name":"Bob", "age":32, "alive":true}
+  Arrays delimited by [...] with comma-separated elements
+    ["testing",1,2,3,{"gpa":3.4}]
+  JSON Parser (Java)
+    DOM and Streaming
+
+
+import ord.json
+
+public class JsonDomParserExample {
+  public static void run(Reader reader) throws Exception{
+    JSONObject rootObj = new JSONObject(makeString(reader))
+    JSONArray cdArr = rootObj.getJSONArray("CATALOG");
+    for(int i=0,icdArr.length();i++){
+      JSONObject elemObj = cdArr.getJSONObject(i);
+      JSONObject cdObj = elemObj.getJSONObject("CD");
+      String title = cdObj.getJSONObject("TITLE");
+      String artist = cdObj.getJSONObject("ARTIST");
+    }
+  }
+}

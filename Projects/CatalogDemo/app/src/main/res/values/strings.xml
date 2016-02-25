@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CatalogDemo</string>
+    <string name="action_settings">Settings</string>
+    <string name="instructions">Push the button to load the database from the JSON file.</string>
+    <string name="empty_name">Empty Database</string>
+    <string name="load_name">Load Database</string>
+    <string name="populate_name">Populate Model</string>
+</resources>
