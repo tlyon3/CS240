@@ -39,8 +39,7 @@ public class ShipBuildingActivity extends ActivityView implements IShipBuildingV
         setContentView(R.layout.activity_ship_building);
 
 
-        //TODO: Set this activity's controller to an instance of your ShipBuildingController
-        //TODO: Pass the ShipBuildingController's constructor a reference to its IShipBuildingView (this)
+
         IShipBuildingController controller = new ShipBuildingController(this);
         setController(controller);
 
@@ -107,7 +106,7 @@ public class ShipBuildingActivity extends ActivityView implements IShipBuildingV
     class FlingListener extends GestureDetector.SimpleOnGestureListener {
 
         @Override
-        public boolean onFling(MotionEvent event1, MotionEvent event2, 
+        public boolean onFling(MotionEvent event1, MotionEvent event2,
                 float velX, float velY) {
 
             if(getController() != null) {

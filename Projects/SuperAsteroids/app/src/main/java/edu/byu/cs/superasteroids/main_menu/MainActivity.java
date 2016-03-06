@@ -1,6 +1,7 @@
 package edu.byu.cs.superasteroids.main_menu;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,8 +13,17 @@ import android.view.ViewGroup;
 import edu.byu.cs.superasteroids.R;
 import edu.byu.cs.superasteroids.base.ActionBarActivityView;
 import edu.byu.cs.superasteroids.content.ContentManager;
+import edu.byu.cs.superasteroids.core.AsteroidsData;
+import edu.byu.cs.superasteroids.data.AsteroidsDAO;
+import edu.byu.cs.superasteroids.data.DbOpenHelper;
+import edu.byu.cs.superasteroids.data.LevelDAO;
+import edu.byu.cs.superasteroids.data.ShipPartsDAO;
 import edu.byu.cs.superasteroids.game.GameActivity;
+import edu.byu.cs.superasteroids.importer.DataImporter;
 import edu.byu.cs.superasteroids.importer.ImportActivity;
+import edu.byu.cs.superasteroids.model.runtime.Asteroid;
+import edu.byu.cs.superasteroids.model.runtime.Ship;
+import edu.byu.cs.superasteroids.model.runtime.Viewport;
 import edu.byu.cs.superasteroids.ship_builder.ShipBuildingActivity;
 
 public class MainActivity extends ActionBarActivityView implements IMainMenuView {
@@ -28,10 +38,10 @@ public class MainActivity extends ActionBarActivityView implements IMainMenuView
                     .commit();
         }
 
-        //TODO: Set this activity's controller to an instance of your MainMenuController
-        //TODO: Pass the MainMenuController's constructor a reference to its IMainMenuView (this)
         IMainMenuController controller = new MainMenuController(this);
+        controller.setView(this);
         setController(controller);
+
 
 
         ContentManager.getInstance().setResources(getResources());
@@ -78,17 +88,50 @@ public class MainActivity extends ActionBarActivityView implements IMainMenuView
     }
 
     public void startGame(View v) {
+        //load data
+        DbOpenHelper openHelper = new DbOpenHelper(this);
+        SQLiteDatabase db = openHelper.getWritableDatabase();
+        LevelDAO levelDAO = new LevelDAO(db);
+        AsteroidsDAO asteroidsDAO = new AsteroidsDAO(db);
+        ShipPartsDAO shipPartsDAO = new ShipPartsDAO(db);
+        AsteroidsData.getInstance().setBackgroundObjects(levelDAO.getAllBgObjects());
+        AsteroidsData.getInstance().setAsteroidTypes(asteroidsDAO.getAsteroids());
+        AsteroidsData.getInstance().setLevels(levelDAO.getLevels());
+        AsteroidsData.getInstance().setMainBodies(shipPartsDAO.getMainBodySet());
+        AsteroidsData.getInstance().setCannons(shipPartsDAO.getCannonSet());
+        AsteroidsData.getInstance().setExtraParts(shipPartsDAO.getExtraPartsSet());
+        AsteroidsData.getInstance().setEngines(shipPartsDAO.getEngineSet());
+        AsteroidsData.getInstance().setPowerCores(shipPartsDAO.getPowerCoreSet());
+        AsteroidsData.getInstance().setShip(new Ship());
+        Viewport.getInstance().setCurrentLevel(AsteroidsData.getInstance().getLevelWithId(1));
         Intent intent = new Intent(this, ShipBuildingActivity.class);
         startActivity(intent);
     }
 
     public void quickPlay(View v) {
+        //load data
+        DbOpenHelper openHelper = new DbOpenHelper(this);
+        SQLiteDatabase db = openHelper.getWritableDatabase();
+        LevelDAO levelDAO = new LevelDAO(db);
+        AsteroidsDAO asteroidsDAO = new AsteroidsDAO(db);
+        ShipPartsDAO shipPartsDAO = new ShipPartsDAO(db);
+
+        AsteroidsData.getInstance().setBackgroundObjects(levelDAO.getAllBgObjects());
+        AsteroidsData.getInstance().setAsteroidTypes(asteroidsDAO.getAsteroids());
+        AsteroidsData.getInstance().setLevels(levelDAO.getLevels());
+        AsteroidsData.getInstance().setMainBodies(shipPartsDAO.getMainBodySet());
+        AsteroidsData.getInstance().setCannons(shipPartsDAO.getCannonSet());
+        AsteroidsData.getInstance().setExtraParts(shipPartsDAO.getExtraPartsSet());
+        AsteroidsData.getInstance().setEngines(shipPartsDAO.getEngineSet());
+        AsteroidsData.getInstance().setPowerCores(shipPartsDAO.getPowerCoreSet());
+        AsteroidsData.getInstance().setShip(new Ship());
         if (getController() != null) {
             ((IMainMenuController) getController()).onQuickPlayPressed();
         }
     }
 
     public void startGame() {
+
         Intent intent = new Intent(this, GameActivity.class);
         intent.setFlags(android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP);
         this.startActivity(intent);

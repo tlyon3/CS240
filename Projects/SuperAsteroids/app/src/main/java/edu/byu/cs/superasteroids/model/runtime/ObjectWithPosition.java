@@ -5,6 +5,13 @@ package edu.byu.cs.superasteroids.model.runtime;
  */
 
 
+import android.graphics.Rect;
+import android.graphics.RectF;
+
+import edu.byu.cs.superasteroids.core.AsteroidsData;
+import edu.byu.cs.superasteroids.drawing.DrawingHelper;
+import edu.byu.cs.superasteroids.model.runtime.shipparts.Point;
+
 /** All objects that have a position on the screen */
 public class ObjectWithPosition extends Visible {
     public ObjectWithPosition(){
@@ -16,9 +23,11 @@ public class ObjectWithPosition extends Visible {
         yCoordinate=y;
     }
     /** The x-coordinate of the object in the level */
-    private double xCoordinate;
+    protected double xCoordinate;
     /** The y-coordinate of the object in the level */
-    private double yCoordinate;
+    protected double yCoordinate;
+
+    protected RectF bounds;
 
     public double getxCoordinate() {
         return xCoordinate;
@@ -34,5 +43,21 @@ public class ObjectWithPosition extends Visible {
 
     public void setyCoordinate(double yCoordinate) {
         this.yCoordinate = yCoordinate;
+    }
+
+    @Override
+    public void draw() {
+        DrawingHelper.drawImage(this.imageId,(float)xCoordinate,(float)yCoordinate,0.0f,
+                AsteroidsData.getInstance().getShipScale(),AsteroidsData.getInstance().getShipScale(),255);
+    }
+    public void drawBounds(){
+        Point viewTopLeft = Viewport.getInstance().convertToViewCoordinates(this.bounds.left,this.bounds.top);
+        Point viewBottomRight = Viewport.getInstance().convertToViewCoordinates(this.bounds.right,this.bounds.bottom);
+        Rect viewBounds = new Rect((int)viewTopLeft.getX(),(int)viewTopLeft.getY(),(int)viewBottomRight.getX(),(int)viewBottomRight.getY());
+        DrawingHelper.drawRectangle(viewBounds, 200, 255);
+    }
+
+    public RectF getBounds() {
+        return bounds;
     }
 }

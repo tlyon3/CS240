@@ -12,20 +12,20 @@ public class Point {
         y = 0;
     }
 
-    public Point(int newX, int newY) {
+    public Point(double newX, double newY) {
         this.x = newX;
         this.y = newY;
     }
     /** X component of Point */
-    private int x;
+    private double x;
     /** Y component of Point */
-    private int y;
+    private double y;
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 

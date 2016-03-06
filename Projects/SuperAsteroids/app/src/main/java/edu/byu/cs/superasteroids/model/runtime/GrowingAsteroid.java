@@ -12,6 +12,6 @@ public class GrowingAsteroid extends Asteroid{
         this.type = new AsteroidType("growing","growing");
         this.health=100;
         this.velocity=0;
-        this.direction=null;
+        this.direction=0.0;
     }
 }

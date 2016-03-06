@@ -7,6 +7,8 @@ package edu.byu.cs.superasteroids.model.runtime.shipparts;
 /** @author Trevor Lyon*/
 /** @version 1.0*/
 
+import android.graphics.PointF;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -60,6 +62,8 @@ public class Cannon extends ShipPart {
     private String attackSound;
     /** Damage of each projectile */
     private int damage;
+
+    private int projectileImageId;
 
     public Point getEmitPoint() {
         return emitPoint;
@@ -129,13 +133,12 @@ public class Cannon extends ShipPart {
         else return true;
     }
 
-    @Override
-    public int hashCode() {
-        int hashCode = 1;
-        hashCode += this.attackImageHeight;
-        hashCode = hashCode%(getAttackImageWidth()*this.attachPoint.getY());
-        hashCode = hashCode+this.damage;
-        
-        return hashCode;
+    public int getProjectileImageId() {
+        return projectileImageId;
     }
+
+    public void setProjectileImageId(int projectileImageId) {
+        this.projectileImageId = projectileImageId;
+    }
+
 }

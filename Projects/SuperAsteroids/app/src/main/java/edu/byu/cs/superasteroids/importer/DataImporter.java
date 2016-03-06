@@ -11,6 +11,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -110,7 +112,6 @@ public class DataImporter implements IGameDataImporter {
 
     @Override
     public boolean importData(InputStreamReader dataInputReader) {
-        // TODO: 2/18/16 Figure out how to delete existing tables
         asteroidsDAO.dropTable();
         levelDAO.dropAllTables();
         shipPartsDAO.dropAllTables();
@@ -124,6 +125,7 @@ public class DataImporter implements IGameDataImporter {
         JSONArray cannonArray = null;
         JSONArray extraPartArray = null;
         JSONArray powerCoreArray = null;
+
         try{
             JSONObject rootObject = new JSONObject(makeString(dataInputReader));
             JSONObject asteroidsGame = rootObject.getJSONObject("asteroidsGame");
@@ -132,6 +134,7 @@ public class DataImporter implements IGameDataImporter {
             objectsArray = asteroidsGame.getJSONArray("objects");
             importBackgroundObjects(objectsArray);
             Set<BGObjectType> objectTypes = levelDAO.getAllBgObjects();
+
             AsteroidsData.getInstance().setBackgroundObjects(objectTypes);
 
             //import asteroids
@@ -299,7 +302,47 @@ public class DataImporter implements IGameDataImporter {
             int number = object.getInt("number");
             int asteroidId = object.getInt("asteroidId");
             AsteroidType asteroidType = levelDAO.getAsteroidTypeForId(asteroidId);
-            levelDAO.addLevelAsteroid(asteroidType,levelNumber,number);
+            levelDAO.addLevelAsteroid(asteroidType, levelNumber, number);
         }
+    }
+
+    private List<Cannon> convertCannonsToList(Set<Cannon> cannonSet){
+        List<Cannon> result = new ArrayList<>();
+        for(Cannon cannon:cannonSet){
+            result.add(cannon);
+        }
+        return result;
+    }
+
+    private List<MainBody> convertMainBodiesToList(Set<MainBody> mainBodySet){
+        List<MainBody> result = new ArrayList<>();
+        for(MainBody mainBody:mainBodySet){
+            result.add(mainBody);
+        }
+        return result;
+    }
+
+    private List<Engine> convertEnginesToList(Set<Engine> engineSet){
+        List<Engine> result = new ArrayList<>();
+        for(Engine engine:engineSet){
+            result.add(engine);
+        }
+        return result;
+    }
+
+    private List<PowerCore> convertPowerCoresToList(Set<PowerCore> powerCoreSet){
+        List<PowerCore> result = new ArrayList<>();
+        for(PowerCore powerCore:powerCoreSet){
+            result.add(powerCore);
+        }
+        return result;
+    }
+
+    private List<ExtraPart> convertExtraPartsToList(Set<ExtraPart> extraPartSet){
+        List<ExtraPart> result = new ArrayList<>();
+        for(ExtraPart extraPart:extraPartSet){
+            result.add(extraPart);
+        }
+        return result;
     }
 }

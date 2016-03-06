@@ -28,6 +28,7 @@ public class ShipPart extends ImageObject {
     /** Attach point for the ship part*/
     protected Point attachPoint;
 
+
     public Point getAttachPoint() {
         return attachPoint;
     }
@@ -43,6 +44,7 @@ public class ShipPart extends ImageObject {
     public void setId(long id) {
         this.id = id;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -61,4 +63,5 @@ public class ShipPart extends ImageObject {
             return false;
         else return true;
     }
+
 }

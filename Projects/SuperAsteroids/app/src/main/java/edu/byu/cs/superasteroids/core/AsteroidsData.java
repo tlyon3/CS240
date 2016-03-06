@@ -1,5 +1,7 @@
 package edu.byu.cs.superasteroids.core;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import edu.byu.cs.superasteroids.model.gamedefinition.AsteroidType;
@@ -14,6 +16,7 @@ import edu.byu.cs.superasteroids.model.runtime.shipparts.PowerCore;
 
 /**
  * Created by tlyon on 2/19/16.
+ * Singleton pattern to store all data during runtime
  */
 public class AsteroidsData {
 
@@ -27,6 +30,8 @@ public class AsteroidsData {
     private Set<AsteroidType> asteroidTypes;
     private Set<Level> levels;
     private Ship ship;
+    float shipScale = 0.25f;
+    private int currentLevel;
 
     private AsteroidsData(){}
 
@@ -37,6 +42,20 @@ public class AsteroidsData {
         return asteroidsData;
     }
 
+    public void incrementLevel(){
+        this.currentLevel++;
+    }
+    /** @param id Id of level to return
+     *  @return Returns level object with the id*/
+    public Level getLevelWithId(int id){
+        for(Level level:levels){
+            if(level.getNumber() == id)
+                return level;
+        }
+        return null;
+    }
+
+    //Getters and setters---------------------------------------------------------------------------/
     public static AsteroidsData getAsteroidsData() {
         return asteroidsData;
     }
@@ -115,5 +134,37 @@ public class AsteroidsData {
 
     public void setShip(Ship ship) {
         this.ship = ship;
+    }
+
+    public float getShipScale() {
+        return shipScale;
+    }
+
+    public void setShipScale(float shipScale) {
+        this.shipScale = shipScale;
+    }
+
+    public List<String> getAsteroidImages(){
+        List<String> result = new ArrayList<>();
+        for(AsteroidType asteroid:asteroidTypes){
+            result.add(asteroid.getImagePath());
+        }
+        return result;
+    }
+
+    public List<String> getBackgroundObjectImages(){
+        List<String> result = new ArrayList<>();
+        for(BGObjectType bgObjectType:backgroundObjects){
+            result.add(bgObjectType.getImagePath());
+        }
+        return result;
+    }
+
+    public int getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public void setCurrentLevel(int currentLevel) {
+        this.currentLevel = currentLevel;
     }
 }

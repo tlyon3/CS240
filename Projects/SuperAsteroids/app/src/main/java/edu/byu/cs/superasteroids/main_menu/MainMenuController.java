@@ -9,7 +9,9 @@ import java.util.Set;
 
 import edu.byu.cs.superasteroids.base.IView;
 import edu.byu.cs.superasteroids.core.AsteroidsData;
+import edu.byu.cs.superasteroids.drawing.DrawingHelper;
 import edu.byu.cs.superasteroids.model.runtime.Ship;
+import edu.byu.cs.superasteroids.model.runtime.Viewport;
 import edu.byu.cs.superasteroids.model.runtime.shipparts.Cannon;
 import edu.byu.cs.superasteroids.model.runtime.shipparts.Engine;
 import edu.byu.cs.superasteroids.model.runtime.shipparts.ExtraPart;
@@ -22,7 +24,7 @@ import edu.byu.cs.superasteroids.model.runtime.shipparts.PowerCore;
 public class MainMenuController implements IMainMenuController {
 
     private Context mainContext;
-    private IView currentView;
+    private MainActivity currentView;
     List<Cannon> cannonList;
     List<MainBody> mainBodyList;
     List<ExtraPart> extraPartList;
@@ -35,6 +37,9 @@ public class MainMenuController implements IMainMenuController {
 
     @Override
     public void onQuickPlayPressed() {
+        //check if data was imported
+        if(AsteroidsData.getInstance().getShip() == null)
+            return;
         //generate random ship
         Set<Cannon> cannons = AsteroidsData.getInstance().getCannons();
         Set<MainBody> mainBodies = AsteroidsData.getInstance().getMainBodies();
@@ -58,8 +63,12 @@ public class MainMenuController implements IMainMenuController {
 
         Ship ship = new Ship(engine,cannon,powerCore,mainBody,extraPart);
 
-
         //call startGame()
+        AsteroidsData.getInstance().setShip(ship);
+        AsteroidsData.getInstance().setCurrentLevel(1);
+        Viewport.getInstance().setCurrentLevel(AsteroidsData.getInstance().getLevelWithId(1));
+        currentView.startGame();
+
     }
 
     @Override
@@ -69,8 +78,9 @@ public class MainMenuController implements IMainMenuController {
 
     @Override
     public void setView(IView view) {
-        this.currentView = view;
+        this.currentView = (MainActivity)view;
     }
+
 
     private List<Cannon> convertCannonsToList(Set<Cannon> cannonSet){
         List<Cannon> result = new ArrayList<>();

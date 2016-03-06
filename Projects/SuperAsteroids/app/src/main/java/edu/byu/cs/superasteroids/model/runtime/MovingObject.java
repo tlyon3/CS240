@@ -5,24 +5,25 @@ package edu.byu.cs.superasteroids.model.runtime;
  */
 /** Super-class for all objects that move */
 public class MovingObject extends ObjectWithPosition {
+    /** Speed of a moving object in the level */
+    protected int velocity;
+    protected int health;
+    /** Direction of moving object in radians */
+    protected double direction;
+    protected double directionSin;
+    protected double directionCos;
+
     public MovingObject(){
         velocity=0;
     }
     public MovingObject(int v){
         velocity=v;
     }
-
-    /** Speed of a moving object in the level */
-    protected int velocity;
-    protected int health;
-    /** Direction of moving object */
-    protected Direction direction;
-
-    public void setDirection(Direction direction) {
+    public void setDirection(double direction) {
         this.direction = direction;
     }
 
-    public Direction getDirection() {
+    public double getDirection() {
         return direction;
     }
 
@@ -35,15 +36,6 @@ public class MovingObject extends ObjectWithPosition {
         return velocity;
     }
 
-    /** Called when an object (mainly and probably only Asteroid objects)
-     * collides with the side of the level (position hits max pixel value of level).
-     * This will be called when MovingObject.update() sets the position outside the limits.
-     * If the MovingObject is a Projectile fired from the ship, the Projectile will be destroyed
-     * @return Returns a direction object holding the sin and cos components of the new direction*/
-    public Direction bounceOfWall(){
-        //TODO Compute new direction
-        return null;
-    }
     /** Takes 'd' amount of damage to object
      * If the object is an asteroid, and the total health has been reduced to 0, asteroids should
      * split
@@ -53,4 +45,6 @@ public class MovingObject extends ObjectWithPosition {
     public void takeDamage(int d){
         this.health-=d;
     }
+
+
 }

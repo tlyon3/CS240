@@ -16,7 +16,7 @@ import edu.byu.cs.superasteroids.model.gamedefinition.BGObjectType;
 public class Level {
     public Level(Map<BGObject, Integer> levelBackgroundObjectsMap,
                  Map<AsteroidType, Integer> levelAsteroidsMap,
-                 String title, String hint, long height, long width, String music,int number) {
+                 String title, String hint, int height, int width, String music,int number) {
         this.levelBackgroundObjectsMap = levelBackgroundObjectsMap;
         this.levelAsteroidsMap = levelAsteroidsMap;
         this.title = title;
@@ -29,7 +29,7 @@ public class Level {
 
     public Level(Map<BGObject, Integer> levelBackgroundObjectsMap,
                  Map<AsteroidType, Integer> levelAsteroidsMap, String title, String hint,
-                 long height, long width, String music, int number, long id) {
+                 int height, int width, String music, int number, long id) {
         this.levelBackgroundObjectsMap = levelBackgroundObjectsMap;
         this.levelAsteroidsMap = levelAsteroidsMap;
         this.title = title;
@@ -78,9 +78,9 @@ public class Level {
     /** Hint of level*/
     private String hint;
     /** Height of level*/
-    private long height;
+    private int height;
     /** Width of level*/
-    private long width;
+    private int width;
     /** Path to music file*/
     private String music;
     private int number;
@@ -110,11 +110,11 @@ public class Level {
         return hint;
     }
 
-    public long getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    public long getWidth() {
+    public int getWidth() {
         return width;
     }
 
@@ -138,11 +138,11 @@ public class Level {
         this.hint = hint;
     }
 
-    public void setHeight(long height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 
-    public void setWidth(long width) {
+    public void setWidth(int width) {
         this.width = width;
     }
 

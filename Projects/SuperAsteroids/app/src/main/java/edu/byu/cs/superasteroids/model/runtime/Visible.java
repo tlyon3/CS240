@@ -5,18 +5,39 @@ package edu.byu.cs.superasteroids.model.runtime;
  */
 /** Super-class for all visible objects */
 public class Visible {
-    public Visible(){
+    int imageId;
+    protected int height;
+    protected int width;
 
-    }
+    public Visible(){}
 
     /** Update the position and status of each visible object */
-    public void update(){
+    public void update(double time){}
 
+    /** Draw the object with its updated values*/
+    public void draw(){}
+
+    public int getHeight() {
+        return height;
     }
-    /** Draw the object with its updated values
-     * @param x x-coordinate of the image to be drawn
-     * @param y y-coordinate of the image to be drawn*/
-    public void draw(int x, int y){
 
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
     }
 }

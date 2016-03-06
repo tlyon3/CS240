@@ -15,7 +15,7 @@ public class BGObjectType extends ImageObject {
 
     public BGObjectType(JSONObject bgObject) throws JSONException{
         this.imagePath = bgObject.getString("image");
-        this.height = -1;
+        this.height = 0;
         this.width = -1;
     }
     public BGObjectType(String imagePath,int id) {

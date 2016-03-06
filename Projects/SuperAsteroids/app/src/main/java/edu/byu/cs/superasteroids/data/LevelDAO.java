@@ -18,6 +18,7 @@ import edu.byu.cs.superasteroids.model.gamedefinition.BGObjectType;
 import edu.byu.cs.superasteroids.model.runtime.Asteroid;
 import edu.byu.cs.superasteroids.model.runtime.BGObject;
 import edu.byu.cs.superasteroids.model.runtime.Level;
+import edu.byu.cs.superasteroids.model.runtime.shipparts.Point;
 
 /**
  * Created by tlyon on 2/10/16.
@@ -70,7 +71,6 @@ public class LevelDAO {
         values.put("width",level.getWidth());
         values.put("music",level.getMusic());
         values.put("number",level.getNumber());
-        // TODO: 2/19/16 Insert levelObjects and levelAsteroids
 
         long id = db.insert("levels", null, values);
 
@@ -197,6 +197,7 @@ public class LevelDAO {
                 Cursor bgobjectTypeCursor = db.rawQuery(statement, EMPTY_ARRAY_OF_STRINGS);
                 bgobjectTypeCursor.moveToFirst();
                 String image = bgobjectTypeCursor.getString(1);
+
                 BGObjectType bgObjectType = new BGObjectType(-1,-1,image);
                 bgObjectType.setId(objectId);
                 bgobjectTypeCursor.close();
@@ -303,6 +304,14 @@ public class LevelDAO {
         db.execSQL(DELETE_BACKGROUNDOBJECTS_TABLE);
     }
 
+    public SQLiteDatabase getDb() {
+        return db;
+    }
+
+    public void setDb(SQLiteDatabase db) {
+        this.db = db;
+    }
+
     private static final String[] EMPTY_ARRAY_OF_STRINGS = {};
     private static final String DELETE_LEVEL_TABLE = "DROP TABLE IF EXISTS LEVELS";
     private static final String DELETE_LEVELASTEROIDS_TABLE = "DROP TABLE IF EXISTS LEVELASTEROIDS";
@@ -315,4 +324,12 @@ public class LevelDAO {
     private static final String SELECT_ALL_LEVELOBJECTS = "select * from levelObjects";
     private static final String DELETE_ALL_ENTRIES_IN_BACKGROUNDOBJECTS = "delete from backgroundObjects";
     private final String TAG = this.getClass().getSimpleName();
+
+    protected Point makePoint(String pointString){
+        String[] parts = pointString.split(",");
+        int x = Integer.parseInt(parts[0]);
+        int y = Integer.parseInt(parts[1]);
+        Point result = new Point(x,y);
+        return result;
+    }
 }

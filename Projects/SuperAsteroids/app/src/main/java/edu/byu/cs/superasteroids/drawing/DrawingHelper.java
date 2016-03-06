@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
+import android.graphics.RectF;
 
 import edu.byu.cs.superasteroids.content.ContentManager;
 
@@ -135,7 +136,7 @@ public class DrawingHelper {
      * @param color The color of the rectangle
      * @param alpha The rectangle alpha (0 - 255, 0 = completely transparent, 255 = completely opaque)
      */
-    public static void drawFilledRectangle(Rect r, int color, int alpha) {
+    public static void drawFilledRectangle(RectF r, int color, int alpha) {
 
         if(canvas == null)
             return;

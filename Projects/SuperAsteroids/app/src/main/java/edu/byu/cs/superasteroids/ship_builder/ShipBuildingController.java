@@ -1,5 +1,7 @@
 package edu.byu.cs.superasteroids.ship_builder;
 
+import android.view.View;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -10,6 +12,7 @@ import edu.byu.cs.superasteroids.content.ContentManager;
 import edu.byu.cs.superasteroids.core.AsteroidsData;
 import edu.byu.cs.superasteroids.drawing.DrawingHelper;
 import edu.byu.cs.superasteroids.model.runtime.Ship;
+import edu.byu.cs.superasteroids.model.runtime.Viewport;
 import edu.byu.cs.superasteroids.model.runtime.shipparts.Cannon;
 import edu.byu.cs.superasteroids.model.runtime.shipparts.Engine;
 import edu.byu.cs.superasteroids.model.runtime.shipparts.ExtraPart;
@@ -184,6 +187,38 @@ public class ShipBuildingController implements IShipBuildingController {
     @Override
     public void onViewLoaded(IShipBuildingView.PartSelectionView partView) {
         this.currentSelectionView = partView;
+        switch (partView){
+            case MAIN_BODY:
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.RIGHT,true,"ENGINE");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.LEFT,true,"POWER CORES");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.UP,false,"");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.DOWN,false,"");
+                break;
+            case ENGINE:
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.RIGHT,true,"EXTRA PART");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.LEFT,true,"MAIN BODY");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.UP,false,"");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.DOWN,false,"");
+                break;
+            case EXTRA_PART:
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.RIGHT,true,"CANNON");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.LEFT,true,"ENGINE");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.UP,false,"");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.DOWN,false,"");
+                break;
+            case CANNON:
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.RIGHT,true,"POWER CORE");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.LEFT,true,"EXTRA PART");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.UP,false,"");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.DOWN,false,"");
+                break;
+            case POWER_CORE:
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.RIGHT,true,"MAIN BODY");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.LEFT,true,"CANNON");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.UP,false,"");
+                shipBuildingActivity.setArrow(partView, IShipBuildingView.ViewDirection.DOWN,false,"");
+                break;
+        }
     }
 
     @Override
@@ -317,6 +352,12 @@ public class ShipBuildingController implements IShipBuildingController {
     @Override
     public void onStartGamePressed() {
         //pass AsteroidsData ship?
+        AsteroidsData.getInstance().setShip(this.ship);
+        AsteroidsData.getInstance().setCurrentLevel(1);
+        AsteroidsData.getInstance().getShip().setxCoordinate((int)Viewport.getInstance().getxCoordinate() + (DrawingHelper.getGameViewWidth() / 2));
+        AsteroidsData.getInstance().getShip().setyCoordinate((int)Viewport.getInstance().getyCoordinate() + (DrawingHelper.getGameViewHeight() / 2));
+
+        ship.loadContent(content);
         shipBuildingActivity.startGame();
     }
 
@@ -345,7 +386,6 @@ public class ShipBuildingController implements IShipBuildingController {
 
     }
 
-    // TODO: 2/23/16 Drawing isn't working. Not drawing in correct place
     @Override
     public void draw() {
         Point gameViewCenter = new Point(DrawingHelper.getGameViewWidth()/2,DrawingHelper.getGameViewHeight()/2);
@@ -353,7 +393,7 @@ public class ShipBuildingController implements IShipBuildingController {
         if(mainBodyIndex>=0){
             MainBody body = ship.getMainBody();
             int bodyImageId = mainBodyImages.get(mainBodyIndex);
-            DrawingHelper.drawImage(bodyImageId,gameViewCenter.getX(),gameViewCenter.getY(),0,scale,scale,255);
+            DrawingHelper.drawImage(bodyImageId,(int)gameViewCenter.getX(),(int)gameViewCenter.getY(),0,scale,scale,255);
             int bodyCenterX = body.getWidth()/2;
             int bodyCenterY = body.getHeight()/2;
 
@@ -366,10 +406,10 @@ public class ShipBuildingController implements IShipBuildingController {
 
                 int engineCenterX = engine.getWidth()/2;
                 int engineCenterY = engine.getHeight()/2;
-                int attachFromPartToBodyX = engine.getAttachPoint().getX();
-                int attachFromPartToBodyY = engine.getAttachPoint().getY();
-                int attachFromBodyToPartX = body.getEngineAttach().getX();
-                int attachFromBodyToPartY = body.getEngineAttach().getY();
+                int attachFromPartToBodyX = (int)engine.getAttachPoint().getX();
+                int attachFromPartToBodyY = (int)engine.getAttachPoint().getY();
+                int attachFromBodyToPartX = (int)body.getEngineAttach().getX();
+                int attachFromBodyToPartY = (int)body.getEngineAttach().getY();
 
                 float offsetX = (attachFromBodyToPartX - bodyCenterX) + (engineCenterX - attachFromPartToBodyX);
                 float offsetY = (attachFromBodyToPartY - bodyCenterY) + (engineCenterY - attachFromPartToBodyY);
@@ -377,8 +417,8 @@ public class ShipBuildingController implements IShipBuildingController {
                 offsetX = offsetX * scale;
                 offsetY = offsetY * scale;
 
-                int drawPointX = (int)offsetX + gameViewCenter.getX();
-                int drawPointY = (int)offsetY + gameViewCenter.getY();
+                int drawPointX = (int)offsetX + (int)gameViewCenter.getX();
+                int drawPointY = (int)offsetY + (int)gameViewCenter.getY();
 
                 DrawingHelper.drawImage(engineImageId,drawPointX,drawPointY,0,scale,scale,255);
             }
@@ -388,10 +428,10 @@ public class ShipBuildingController implements IShipBuildingController {
 
                 int cannonCenterX = cannon.getWidth()/2;
                 int cannonCenterY = cannon.getHeight()/2;
-                int attachFromPartToBodyX = cannon.getAttachPoint().getX();
-                int attachFromPartToBodyY = cannon.getAttachPoint().getY();
-                int attachFromBodyToPartX = body.getCannonAttach().getX();
-                int attachFromBodyToPartY = body.getCannonAttach().getY();
+                int attachFromPartToBodyX = (int)cannon.getAttachPoint().getX();
+                int attachFromPartToBodyY = (int)cannon.getAttachPoint().getY();
+                int attachFromBodyToPartX = (int)body.getCannonAttach().getX();
+                int attachFromBodyToPartY = (int)body.getCannonAttach().getY();
 
                 float offsetX = (attachFromBodyToPartX - bodyCenterX) + (cannonCenterX - attachFromPartToBodyX);
                 float offsetY = (attachFromBodyToPartY - bodyCenterY) + (cannonCenterY - attachFromPartToBodyY);
@@ -399,8 +439,8 @@ public class ShipBuildingController implements IShipBuildingController {
                 offsetX = offsetX * scale;
                 offsetY = offsetY * scale;
 
-                int drawPointX = (int)offsetX + gameViewCenter.getX();
-                int drawPointY = (int)offsetY + gameViewCenter.getY();
+                int drawPointX = (int)offsetX + (int)gameViewCenter.getX();
+                int drawPointY = (int)offsetY + (int)gameViewCenter.getY();
 
                 DrawingHelper.drawImage(cannonImageId,drawPointX,drawPointY,0,scale,scale,255);
 
@@ -411,10 +451,10 @@ public class ShipBuildingController implements IShipBuildingController {
 
                 int extraCenterX = extraPart.getWidth()/2;
                 int extraCenterY = extraPart.getHeight()/2;
-                int attachFromPartToBodyX = extraPart.getAttachPoint().getX();
-                int attachFromPartToBodyY = extraPart.getAttachPoint().getY();
-                int attachFromBodyToPartX = body.getExtraAttach().getX();
-                int attachFromBodyToPartY = body.getExtraAttach().getY();
+                int attachFromPartToBodyX = (int)extraPart.getAttachPoint().getX();
+                int attachFromPartToBodyY = (int)extraPart.getAttachPoint().getY();
+                int attachFromBodyToPartX = (int)body.getExtraAttach().getX();
+                int attachFromBodyToPartY = (int)body.getExtraAttach().getY();
 
                 float offsetX = (attachFromBodyToPartX - bodyCenterX) + (extraCenterX - attachFromPartToBodyX);
                 float offsetY = (attachFromBodyToPartY - bodyCenterY) + (extraCenterY - attachFromPartToBodyY);
@@ -422,8 +462,8 @@ public class ShipBuildingController implements IShipBuildingController {
                 offsetX = offsetX * scale;
                 offsetY = offsetY * scale;
 
-                int drawPointX = (int)offsetX + gameViewCenter.getX();
-                int drawPointY = (int)offsetY + gameViewCenter.getY();
+                int drawPointX = (int)offsetX + (int)gameViewCenter.getX();
+                int drawPointY = (int)offsetY + (int)gameViewCenter.getY();
 
                 DrawingHelper.drawImage(extraPartImageId,drawPointX,drawPointY,0,scale,scale,255);
 

@@ -112,6 +112,7 @@ public class GraphicsUtils {
      */
     public static MoveObjectResult moveObject(PointF objPosition, RectF objBounds, double speed,
                                               double angleRadians, double elapsedTime) {
+        angleRadians -= HALF_PI;
         double angleCosine = Math.cos(angleRadians);
         double angleSine = Math.sin(angleRadians);
         return moveObject(objPosition, objBounds, speed, angleCosine, angleSine, elapsedTime);

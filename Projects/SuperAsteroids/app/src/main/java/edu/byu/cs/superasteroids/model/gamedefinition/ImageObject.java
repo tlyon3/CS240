@@ -52,6 +52,7 @@ public class ImageObject {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
+
     protected Point makePoint(String pointString){
         String[] parts = pointString.split(",");
         int x = Integer.parseInt(parts[0]);
