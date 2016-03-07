@@ -18,6 +18,15 @@ import edu.byu.cs.superasteroids.model.runtime.shipparts.Point;
 
 /** Super-class for all Asteroid objects*/
 public class Asteroid extends MovingObject {
+    /** Type of asteroid */
+    protected AsteroidType type;
+    /** Scale of the asteroid*/
+    private float scale;
+    /** Shield of asteroid. Used to prevent the ship from damaging it every tick*/
+    public int shield;
+    /** Boolean value if the asteroid should break again or not*/
+    public boolean alreadyBroken;
+
     public Asteroid(){
         this.type=null;
         this.direction=0;
@@ -46,14 +55,7 @@ public class Asteroid extends MovingObject {
         this.alreadyBroken = false;
         this.shield = 100;
     }
-    /** Type of asteroid */
-    protected AsteroidType type;
-    /** Scale of the asteroid*/
-    private float scale;
-    /** Shield of asteroid. Used to prevent the ship from damaging it every tick*/
-    public int shield;
-    /** Boolean value if the asteroid should break again or not*/
-    public boolean alreadyBroken;
+
     /** Updates the bounds of the asteroid based of off its position*/
     public void updateBounds(){
         float top = ((float)yCoordinate - (height/2)*scale);
@@ -69,6 +71,7 @@ public class Asteroid extends MovingObject {
         Rect viewBounds = new Rect((int)viewTopLeft.getX(),(int)viewTopLeft.getY(),(int)viewBottomRight.getX(),(int)viewBottomRight.getY());
         DrawingHelper.drawRectangle(viewBounds,200,255);
     }
+
     @Override
     public void draw() {
         Point drawPoint = Viewport.getInstance().convertToViewCoordinates(xCoordinate,yCoordinate);
@@ -100,6 +103,7 @@ public class Asteroid extends MovingObject {
         this.directionCos = ricochetResult.getNewAngleCosine();
     }
 
+    //Getters and setters---------------------------------------------------------------------------/
     public AsteroidType getType() {
         return type;
     }

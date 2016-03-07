@@ -6,6 +6,11 @@ package edu.byu.cs.superasteroids.model.runtime;
 
 /** Class to store the direction of a moving object*/
 public class Direction {
+    /** Sine component of the direction */
+    private float sin;
+    /** Cosine component of the direction */
+    private float cos;
+
     Direction(){
         sin=0;
         cos=0;
@@ -14,12 +19,6 @@ public class Direction {
         sin=s;
         cos=c;
     }
-
-    /** Sine component of the direction */
-    private float sin;
-    /** Cosine component of the direction */
-    private float cos;
-
     public float getSin() {
         return sin;
     }

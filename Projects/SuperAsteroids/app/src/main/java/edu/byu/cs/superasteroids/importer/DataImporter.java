@@ -52,54 +52,6 @@ public class DataImporter implements IGameDataImporter {
         this.shipPartsDAO = new ShipPartsDAO(db);
     }
 
-    public SQLiteDatabase getDb() {
-        return db;
-    }
-
-    public void setDb(SQLiteDatabase db) {
-        this.db = db;
-    }
-
-    public DbOpenHelper getOpenHelper() {
-        return openHelper;
-    }
-
-    public void setOpenHelper(DbOpenHelper openHelper) {
-        this.openHelper = openHelper;
-    }
-
-    public Context getBaseContext() {
-        return baseContext;
-    }
-
-    public void setBaseContext(Context baseContext) {
-        this.baseContext = baseContext;
-    }
-
-    public AsteroidsDAO getAsteroidsDAO() {
-        return asteroidsDAO;
-    }
-
-    public void setAsteroidsDAO(AsteroidsDAO asteroidsDAO) {
-        this.asteroidsDAO = asteroidsDAO;
-    }
-
-    public LevelDAO getLevelDAO() {
-        return levelDAO;
-    }
-
-    public void setLevelDAO(LevelDAO levelDAO) {
-        this.levelDAO = levelDAO;
-    }
-
-    public ShipPartsDAO getShipPartsDAO() {
-        return shipPartsDAO;
-    }
-
-    public void setShipPartsDAO(ShipPartsDAO shipPartsDAO) {
-        this.shipPartsDAO = shipPartsDAO;
-    }
-
     private static String makeString(Reader reader) throws IOException {
         StringBuilder sb = new StringBuilder();
         char[] buffer = new char[512];
@@ -344,5 +296,54 @@ public class DataImporter implements IGameDataImporter {
             result.add(extraPart);
         }
         return result;
+    }
+
+    //Getters and setters---------------------------------------------------------------------------/
+    public SQLiteDatabase getDb() {
+        return db;
+    }
+
+    public void setDb(SQLiteDatabase db) {
+        this.db = db;
+    }
+
+    public DbOpenHelper getOpenHelper() {
+        return openHelper;
+    }
+
+    public void setOpenHelper(DbOpenHelper openHelper) {
+        this.openHelper = openHelper;
+    }
+
+    public Context getBaseContext() {
+        return baseContext;
+    }
+
+    public void setBaseContext(Context baseContext) {
+        this.baseContext = baseContext;
+    }
+
+    public AsteroidsDAO getAsteroidsDAO() {
+        return asteroidsDAO;
+    }
+
+    public void setAsteroidsDAO(AsteroidsDAO asteroidsDAO) {
+        this.asteroidsDAO = asteroidsDAO;
+    }
+
+    public LevelDAO getLevelDAO() {
+        return levelDAO;
+    }
+
+    public void setLevelDAO(LevelDAO levelDAO) {
+        this.levelDAO = levelDAO;
+    }
+
+    public ShipPartsDAO getShipPartsDAO() {
+        return shipPartsDAO;
+    }
+
+    public void setShipPartsDAO(ShipPartsDAO shipPartsDAO) {
+        this.shipPartsDAO = shipPartsDAO;
     }
 }

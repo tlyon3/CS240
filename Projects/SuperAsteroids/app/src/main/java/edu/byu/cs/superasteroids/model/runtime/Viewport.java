@@ -23,6 +23,8 @@ public class Viewport extends ObjectWithPosition{
 
     }
 
+    /**Sets up the initial size of the viewport (this won't change) and the x and y coordinate
+     * Also initializes its bounds*/
     public void initialize(){
         this.height = DrawingHelper.getGameViewHeight();
         this.width = DrawingHelper.getGameViewWidth();
@@ -31,6 +33,50 @@ public class Viewport extends ObjectWithPosition{
 
         initializeBounds();
     }
+
+    public Point convertToViewCoordinates(double worldX, double worldY){
+        double x = worldX - this.xCoordinate;
+        double y = worldY - this.yCoordinate;
+        Point result = new Point(x,y);
+        return result;
+    }
+
+    public Point convertToWorldCoordinates(double viewX, double viewY){
+        double x = viewX + this.xCoordinate;
+        double y = viewY + this.yCoordinate;
+        Point result = new Point(x,y);
+        return result;
+    }
+
+    public static Viewport getInstance(){
+        if(viewport == null)
+            viewport = new Viewport();
+        return viewport;
+    }
+
+    /** Checks if an objects bounds intersects with the viewport's bounds
+     * @param obj object to check
+     * @return True if they do intersect. False if not.*/
+    public boolean isIntersectingWithViewport(ObjectWithPosition obj){
+        if(this.bounds.intersect(obj.getBounds()))
+            return true;
+        else return false;
+    }
+
+    /** Checks if an object's x and y coordinate is in the viewport
+     * @param obj object to check
+     * @return true if object is in the viewport. False if not.*/
+    public boolean isInViewport(ObjectWithPosition obj){
+        Point viewPoint = convertToViewCoordinates(obj.xCoordinate,obj.yCoordinate);
+        if(viewPoint.getX() > 0 && viewPoint.getX() < 1024){
+            if(viewPoint.getY() > 0 && viewPoint.getY() < 528){
+                return true;
+            }
+            else return false;
+        }
+        else return false;
+    }
+
     @Override
     public void update(double elapsedTime){
         this.height = DrawingHelper.getGameViewHeight();
@@ -72,60 +118,18 @@ public class Viewport extends ObjectWithPosition{
         RectF newBounds = new RectF(left,top,right,bottom);
         this.bounds = newBounds;
     }
-
-    public Point convertToViewCoordinates(double worldX, double worldY){
-        double x = worldX - this.xCoordinate;
-        double y = worldY - this.yCoordinate;
-        Point result = new Point(x,y);
-        return result;
-    }
-
-    public Point convertToWorldCoordinates(double viewX, double viewY){
-        double x = viewX + this.xCoordinate;
-        double y = viewY + this.yCoordinate;
-        Point result = new Point(x,y);
-        return result;
-    }
-
-    public static Viewport getInstance(){
-        if(viewport == null)
-            viewport = new Viewport();
-        return viewport;
-    }
-
-    public boolean isIntersectingWithViewport(ObjectWithPosition obj){
-        if(this.bounds.intersect(obj.getBounds()))
-            return true;
-        else return false;
-    }
-
-    public boolean isInViewport(ObjectWithPosition obj){
-        Point viewPoint = convertToViewCoordinates(obj.xCoordinate,obj.yCoordinate);
-        if(viewPoint.getX() > 0 && viewPoint.getX() < 1024){
-            if(viewPoint.getY() > 0 && viewPoint.getY() < 528){
-                return true;
-            }
-            else return false;
-        }
-        else return false;
-    }
-
-
     @Override
     public int getHeight() {
         return height;
     }
-
     @Override
     public void setHeight(int height) {
         this.height = height;
     }
-
     @Override
     public int getWidth() {
         return width;
     }
-
     @Override
     public void setWidth(int width) {
         this.width = width;

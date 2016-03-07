@@ -16,7 +16,6 @@ public class Engine extends ShipPart {
     public Engine(){
 
     }
-
     public Engine(JSONObject engine) throws JSONException{
         this.imagePath = engine.getString("image");
         this.baseSpeed = engine.getInt("baseSpeed");
@@ -62,18 +61,4 @@ public class Engine extends ShipPart {
     }
     /*-------------------------------------------------------------------------------------------*/
 
-    /* Override methods -------------------------------------------------------------------------*/
-    @Override
-    public boolean equals(Object o) {
-        if(!super.equals(o))
-            return false;
-        Engine engine = (Engine)o;
-        if(engine.getBaseSpeed()!=this.baseSpeed)
-            return false;
-        else if(engine.getBaseTurnRate()!=this.baseTurnRate)
-            return false;
-        else return true;
-    }
-
-    /*-------------------------------------------------------------------------------------------*/
 }

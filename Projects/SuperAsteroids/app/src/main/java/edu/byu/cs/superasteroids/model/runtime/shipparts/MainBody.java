@@ -70,19 +70,4 @@ public class MainBody extends ShipPart{
     }
     /*-------------------------------------------------------------------------------------------*/
 
-    /* Override Methods -------------------------------------------------------------------------*/
-
-    @Override
-    public boolean equals(Object o) {
-        if(!super.equals(o))
-            return false;
-        MainBody mainBody = (MainBody)o;
-        if(mainBody.getCannonAttach()!=this.cannonAttach)
-            return false;
-        else if(mainBody.getEngineAttach()!=this.engineAttach)
-            return false;
-        else if(mainBody.getExtraAttach()!=this.extraAttach)
-            return false;
-        else return true;
-    }
 }

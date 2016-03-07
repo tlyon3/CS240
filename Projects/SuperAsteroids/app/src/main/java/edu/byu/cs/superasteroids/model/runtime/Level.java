@@ -14,6 +14,23 @@ import edu.byu.cs.superasteroids.model.gamedefinition.BGObjectType;
 
 /** Object to store all data for a level*/
 public class Level {
+    /** Map from a background image to the number of each image on the level*/
+    private Map<BGObject,Integer> levelBackgroundObjectsMap;
+    /** Map from an AsteroidType to the number of each asteroids of that particular type in the level*/
+    private Map<AsteroidType,Integer> levelAsteroidsMap;
+    /** Title of level*/
+    private String title;
+    /** Hint of level*/
+    private String hint;
+    /** Height of level*/
+    private int height;
+    /** Width of level*/
+    private int width;
+    /** Path to music file*/
+    private String music;
+    private int number;
+    private long id;
+
     public Level(Map<BGObject, Integer> levelBackgroundObjectsMap,
                  Map<AsteroidType, Integer> levelAsteroidsMap,
                  String title, String hint, int height, int width, String music,int number) {
@@ -50,14 +67,6 @@ public class Level {
         this.music = levelObject.getString("music");
     }
 
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
     public Level() {
         this.title = null;
         this.hint = null;
@@ -69,22 +78,14 @@ public class Level {
         levelBackgroundObjectsMap=null;
     }
 
-    /** Map from a background image to the number of each image on the level*/
-    private Map<BGObject,Integer> levelBackgroundObjectsMap;
-    /** Map from an AsteroidType to the number of each asteroids of that particular type in the level*/
-    private Map<AsteroidType,Integer> levelAsteroidsMap;
-    /** Title of level*/
-    private String title;
-    /** Hint of level*/
-    private String hint;
-    /** Height of level*/
-    private int height;
-    /** Width of level*/
-    private int width;
-    /** Path to music file*/
-    private String music;
-    private int number;
-    private long id;
+    //Getters and setters---------------------------------------------------------------------------/
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
 
     public long getId() {
         return id;

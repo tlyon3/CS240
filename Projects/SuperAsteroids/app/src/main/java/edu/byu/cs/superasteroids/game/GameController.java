@@ -213,17 +213,26 @@ public class GameController implements IGameDelegate {
             return;
         if(ship.getHealth() == 0)
             endGame(false);
+
+        //update asteroids
         for(Asteroid asteroid:asteroids)
             asteroid.update(elapsedTime);
+
+        //update projectiles
         for(Projectile projectile:projectiles)
             projectile.update(elapsedTime);
+
+        //update ship
         ship.update(elapsedTime);
         if(ship.shield == 0){
             drawShield = false;
         }
         else drawShield = true;
-        //BUG
+
+        //update viewport
         Viewport.getInstance().update(elapsedTime);
+
+        //check for user input.
         if(InputManager.movePoint != null && this.fireDelay==0 && shouldFire){
             shouldFire = false;
             Projectile projectile = ship.fire();
@@ -234,6 +243,7 @@ public class GameController implements IGameDelegate {
             if(fireDelay==0)
                 this.fireDelay = 10;
         }
+        //reset the cannon fire when the user takes finger off of the tablet
         else if(InputManager.movePoint == null){
             shouldFire = true;
         }
@@ -241,14 +251,17 @@ public class GameController implements IGameDelegate {
             this.fireDelay-=1;
         Viewport.getInstance().update(elapsedTime);
 
-        //check for collisions
+        //check for all asteroids destroyed
         if(asteroids.size() == 0){
             nextLevel();
         }
+        //check for collisions
         else{
             List<Asteroid> asteroidsToDelete = new ArrayList<>();
             List<Asteroid> asteroidsToAdd = new ArrayList<>();
             for (Asteroid asteroid : asteroids) {
+
+                //check if ship ran into asteroid
                 if (ship.getBounds().intersect(asteroid.getBounds()) && ship.shield == 0) {
                     ship.takeDamage(1);
                     ship.shield = 100;
@@ -259,6 +272,7 @@ public class GameController implements IGameDelegate {
                         asteroid.shield -= 1;
                     }
                 }
+                //check if any projectiles hit an asteroid
                 List<Projectile> projectilesToDelete = new ArrayList<>();
                 for (Projectile projectile : projectiles) {
                     if (projectile.getBounds().intersect(asteroid.getBounds())) {
@@ -269,6 +283,7 @@ public class GameController implements IGameDelegate {
                 for(Projectile projectile:projectilesToDelete){
                     this.projectiles.remove(projectile);
                 }
+                //check if asteroid should be destroyed
                 if(asteroid.getHealth() == 0){
                     asteroidsToDelete.add(asteroid);
                     if(asteroid.getType().getType().equals("regular") && !asteroid.alreadyBroken) {
@@ -299,18 +314,17 @@ public class GameController implements IGameDelegate {
             }
 
         }
+        //update minimap
         miniMap.update(elapsedTime);
     }
     /** Loads all images for the game*/
     @Override
     public void loadContent(ContentManager content) {
         this.contentManager = content;
-//        this.asteroidImages = content.loadImages(AsteroidsData.getInstance().getAsteroidImages());
         for(Asteroid asteroid:asteroids){
             int imageId = content.loadImage(asteroid.getType().getImagePath());
             asteroid.setImageId(imageId);
         }
-       // this.backgroundImages = content.loadImages(AsteroidsData.getInstance().getBackgroundObjectImages());
         for(BGObject bgObject:bgObjects){
             int imageId = content.loadImage(bgObject.getType().getImagePath());
             bgObject.setImageId(imageId);
@@ -331,7 +345,6 @@ public class GameController implements IGameDelegate {
             Log.d("Sound","Unable to load sound");
         }
     }
-
     /** Unused right now*/
     @Override
     public void unloadContent(ContentManager content) {
@@ -375,6 +388,7 @@ public class GameController implements IGameDelegate {
         for(Projectile projectile:projectilesToDelete){
             this.projectiles.remove(projectile);
         }
+        //draw minimap
         miniMap.draw();
     }
 

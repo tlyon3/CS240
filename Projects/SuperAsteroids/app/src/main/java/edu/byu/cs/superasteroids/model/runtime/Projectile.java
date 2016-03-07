@@ -61,6 +61,8 @@ public class Projectile extends MovingObject {
         this.bounds.right = (float)this.xCoordinate+1;
         this.bounds.bottom = (float)this.yCoordinate+1;
     }
+
+    //Getters and setters---------------------------------------------------------------------------/
     public ProjectileType getType() {
         return type;
     }

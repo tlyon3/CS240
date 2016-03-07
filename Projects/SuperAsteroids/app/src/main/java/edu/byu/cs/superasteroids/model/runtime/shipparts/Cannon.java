@@ -17,6 +17,21 @@ import java.io.CharArrayReader;
 
 /** Class for ShipPart objects of type cannon */
 public class Cannon extends ShipPart {
+
+    private int projectileImageId;
+    /** Point where projectile is emitted*/
+    private Point emitPoint;
+    /** Path to image file for projectile*/
+    private String attackImage;
+    /** Width of projectile image */
+    private int attackImageWidth;
+    /** Height of projectile image */
+    private int attackImageHeight;
+    /** Path to cannon sound on fire */
+    private String attackSound;
+    /** Damage of each projectile */
+    private int damage;
+
     public Cannon(){
 
     }
@@ -46,25 +61,10 @@ public class Cannon extends ShipPart {
         this.attackSound = attackSound;
         this.damage = damage;
     }
-
     public Cannon(int emitX,int emitY){
         emitPoint = new Point(emitX,emitY);
     }
-    /** Point where projectile is emitted*/
-    private Point emitPoint;
-    /** Path to image file for projectile*/
-    private String attackImage;
-    /** Width of projectile image */
-    private int attackImageWidth;
-    /** Height of projectile image */
-    private int attackImageHeight;
-    /** Path to cannon sound on fire */
-    private String attackSound;
-    /** Damage of each projectile */
-    private int damage;
-
-    private int projectileImageId;
-
+    //Getters and setters---------------------------------------------------------------------------/
     public Point getEmitPoint() {
         return emitPoint;
     }
@@ -112,27 +112,6 @@ public class Cannon extends ShipPart {
     public void setDamage(int damage) {
         this.damage = damage;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if(!super.equals(o))
-            return false;
-        Cannon cannon = (Cannon)o;
-        if(cannon.getEmitPoint()!=this.emitPoint)
-            return false;
-        else if(cannon.getAttackImage()!=this.attackImage)
-            return false;
-        else if(cannon.getAttackImageHeight()!=this.attackImageHeight)
-            return false;
-        else if(cannon.getAttackImageWidth()!=this.attackImageWidth)
-            return false;
-        else if(cannon.getAttackSound()!=this.attackSound)
-            return false;
-        else if(cannon.getDamage()!=this.damage)
-            return false;
-        else return true;
-    }
-
     public int getProjectileImageId() {
         return projectileImageId;
     }

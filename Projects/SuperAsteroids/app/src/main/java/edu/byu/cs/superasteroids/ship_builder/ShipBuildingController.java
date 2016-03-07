@@ -225,8 +225,6 @@ public class ShipBuildingController implements IShipBuildingController {
     public void loadContent(ContentManager content) {
         if(this.content == null){
             this.content = content;
-//            loadContent(this.mainBodies,mainBodyImages,MAINBODY);
-//            loadContent(this.engines,engineImages,ENGINE);
         }
         this.cannons = AsteroidsData.getInstance().getCannons();
         this.engines = AsteroidsData.getInstance().getEngines();
@@ -240,7 +238,6 @@ public class ShipBuildingController implements IShipBuildingController {
         this.powerCoreList = convertPowerCoresToList(AsteroidsData.getInstance().getPowerCores());
         this.extraPartList = convertExtraPartsToList(AsteroidsData.getInstance().getExtraParts());
 
-        //returns a list of indexes???
         cannonImages = content.loadImages(getCannonImages());
         engineImages = content.loadImages(getEngineImages());
         extraPartImages = content.loadImages(getExtraPartsImages());
@@ -473,26 +470,4 @@ public class ShipBuildingController implements IShipBuildingController {
         setupStartGameButton();
     }
     /*-------------------------------------------------------------------------------------------*/
-
-//    private abstract class ShipBuilderState{
-//        public void onViewLoaded(IShipBuildingView.PartSelectionView partView){}
-//        public void onSlideView(IShipBuildingView.ViewDirection direction){}
-//        public void onPartSelected(int index){}
-//    }
-//
-//    private class MainBodyState extends ShipBuilderState {
-//        @Override
-//        public void onViewLoaded(IShipBuildingView.PartSelectionView partView) {
-//
-//        }
-//
-//        @Override
-//        public void onSlideView(IShipBuildingView.ViewDirection direction) {
-//        }
-//
-//        @Override
-//        public void onPartSelected(int index) {
-//
-//        }
-//    }
 }
