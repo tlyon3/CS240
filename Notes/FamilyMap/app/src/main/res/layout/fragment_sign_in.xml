@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight = "16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    tools:context = ".SignInFragment">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text = "Sign In"
+        android:textAlignment="center"/>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="4"
+        android:columnCount="2"
+        android:useDefaultMargins="false">
+
+        <!--Username-->
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Username:"/>
+        <EditText
+            android:inputType="text"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:id="@+id/usernameEditText"/>
+
+        <!--Password-->
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Password:"/>
+        <EditText
+            android:inputType="text"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:id="@+id/passwordEditText"/>
+
+        <!--Server Host-->
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Server Host:"/>
+        <EditText
+            android:inputType="number"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:id="@+id/serverHostEditText"/>
+
+        <!--Server Port-->
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Server Port:"/>
+        <EditText
+            android:inputType="number"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:id="@+id/serverPortEditText"/>
+    </GridLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/signInButton"
+        android:text="Sign In"/>
+
+</LinearLayout>
