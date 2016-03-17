@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AnalysisUIOptions">
-    <option name="SCOPE_TYPE" value="9" />
-  </component>
   <component name="AndroidLayouts">
     <shared>
       <config />
@@ -37,18 +34,123 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/game/GameController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="361" column="9" selection-start-line="361" selection-start-column="9" selection-end-line="361" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Ship.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/model/runtime/Ship.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="56" column="20" selection-start-line="56" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#Ship#0" expanded="false" />
+                <element signature="docComment;field#engine#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;field#cannon#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;field#powerCore#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;field#mainBody#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;field#extraPart#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;field#engineImage#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;field#cannonImage#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;field#mainBodyImage#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;field#extraPartImage#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;field#totalHeight#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;field#totalWidth#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;field#centerOfShip#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;field#emitPointInWorld#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;field#shield#0;class#Ship#0" expanded="false" />
+                <element signature="method#Ship#0;class#Ship#0" expanded="false" />
+                <element signature="method#Ship#1;class#Ship#0" expanded="false" />
+                <element signature="docComment;method#fire#0;class#Ship#0" expanded="false" />
+                <element signature="method#fire#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;method#isComplete#0;class#Ship#0" expanded="false" />
+                <element signature="method#isComplete#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;method#loadContent#0;class#Ship#0" expanded="false" />
+                <element signature="method#loadContent#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;method#calculateChangeInAngle#0;class#Ship#0" expanded="false" />
+                <element signature="method#calculateChangeInAngle#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;method#drawEngine#0;class#Ship#0" expanded="false" />
+                <element signature="method#drawEngine#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;method#drawCannon#0;class#Ship#0" expanded="false" />
+                <element signature="method#drawCannon#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;method#drawExtra#0;class#Ship#0" expanded="false" />
+                <element signature="method#drawExtra#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;method#calculateEmitWorldPoint#0;class#Ship#0" expanded="false" />
+                <element signature="method#calculateEmitWorldPoint#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;method#initializeBounds#0;class#Ship#0" expanded="false" />
+                <element signature="method#initializeBounds#0;class#Ship#0" expanded="false" />
+                <element signature="docComment;method#drawBounds#0;class#Ship#0" expanded="false" />
+                <element signature="method#drawBounds#0;class#Ship#0" expanded="false" />
+                <element signature="method#update#0;class#Ship#0" expanded="false" />
+                <element signature="e#15618#15631#0" expanded="false" />
+                <element signature="docComment;method#draw#0;class#Ship#0" expanded="false" />
+                <element signature="method#draw#0;class#Ship#0" expanded="false" />
+                <element signature="method#takeDamage#0;class#Ship#0" expanded="false" />
+                <element signature="method#setEmitPointInWorld#0;class#Ship#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/game/GameController.java">
+      <file leaf-file-name="ShipBuildingController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/ship_builder/ShipBuildingController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43656093">
-              <caret line="337" column="73" selection-start-line="336" selection-start-column="73" selection-end-line="337" selection-end-column="73" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="145" column="5" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
+              <folding>
+                <element signature="docComment;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#ShipBuildingController#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#getCannonImages#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#getEngineImages#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#getMainBodyImages#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#getExtraPartsImages#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#getPowerCoreImages#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#convertCannonsToList#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#convertMainBodiesToList#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#convertEnginesToList#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#convertPowerCoresToList#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#convertExtraPartsToList#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#setupStartGameButton#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#onViewLoaded#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#onSlideView#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#onPartSelected#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#onStartGamePressed#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#onResume#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#update#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#unloadContent#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="method#draw#0;class#ShipBuildingController#0" expanded="false" />
+                <element signature="e#16904#16970#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LevelDAOTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/edu/byu/cs/superasteroids/data/LevelDAOTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AsteroidsData.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/core/AsteroidsData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="154" column="24" selection-start-line="154" selection-start-column="24" selection-end-line="154" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -1555,7 +1657,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/importer/ImportActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/data/LevelDAO.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/main_menu/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/model/runtime/Ship.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/model/runtime/Viewport.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/game/GameController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/importer/DataImporter.java" />
@@ -1569,6 +1670,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/model/runtime/Level.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/model/runtime/ObjectWithPosition.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/model/runtime/Projectile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/model/runtime/Ship.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/ship_builder/ShipBuildingController.java" />
       </list>
     </option>
@@ -1587,10 +1689,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1440" />
-    <option name="y" value="-340" />
-    <option name="width" value="2560" />
-    <option name="height" value="1577" />
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -1616,86 +1717,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SuperAsteroids" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SuperAsteroids" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SuperAsteroids" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SuperAsteroids" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="superasteroids" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SuperAsteroids" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="superasteroids" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2002,6 +2023,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="superasteroids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperAsteroids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperAsteroids" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2076,6 +2131,86 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperAsteroids" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperAsteroids" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperAsteroids" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperAsteroids" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="superasteroids" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SuperAsteroids" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="superasteroids" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2400,8 +2535,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="-340" width="2560" height="1577" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34478202" sideWeight="0.48967552" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32601234" sideWeight="0.4710787" order="6" side_tool="false" content_ui="tabs" />
@@ -2409,28 +2544,28 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28137386" sideWeight="0.47496423" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890856" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16084874" sideWeight="0.4806867" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15984148" sideWeight="0.4806867" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.339498" sideWeight="0.4806867" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20727523" sideWeight="0.5190203" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32832617" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20727523" sideWeight="0.5190203" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11993646" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31563422" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22589168" sideWeight="0.5193133" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22589168" sideWeight="0.5193133" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2681638" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.339498" sideWeight="0.4806867" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31704095" sideWeight="0.49713877" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -2486,13 +2621,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/model/gamedefinition/ImageObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="5" selection-start-line="55" selection-start-column="4" selection-end-line="61" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/model/gamedefinition/AsteroidType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2602,19 +2730,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="132" column="16" selection-start-line="132" selection-start-column="16" selection-end-line="132" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#2204#2262#0" expanded="false" />
-            <element signature="docComment;class#PlaceholderFragment#0;class#MainActivity#0" expanded="false" />
-            <element signature="class#PlaceholderFragment#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#PlaceholderFragment#0;class#PlaceholderFragment#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onCreateView#0;class#PlaceholderFragment#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#5896#5897#0" expanded="false" />
-            <element signature="e#5929#5930#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2646,25 +2761,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/core/AsteroidsData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7728853">
-          <caret line="154" column="24" selection-start-line="154" selection-start-column="24" selection-end-line="154" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/data/AsteroidsDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0081112">
           <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/base/GameView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2679,61 +2779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#DataImporter#0" expanded="false" />
-            <element signature="method#DataImporter#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#makeString#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#importData#0;class#DataImporter#0" expanded="false" />
-            <element signature="docComment;method#importBackgroundObjects#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#importBackgroundObjects#0;class#DataImporter#0" expanded="false" />
-            <element signature="docComment;method#importAsteroids#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#importAsteroids#0;class#DataImporter#0" expanded="false" />
-            <element signature="docComment;method#importMainBodies#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#importMainBodies#0;class#DataImporter#0" expanded="false" />
-            <element signature="docComment;method#importCannons#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#importCannons#0;class#DataImporter#0" expanded="false" />
-            <element signature="docComment;method#importExtraParts#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#importExtraParts#0;class#DataImporter#0" expanded="false" />
-            <element signature="docComment;method#importEngines#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#importEngines#0;class#DataImporter#0" expanded="false" />
-            <element signature="docComment;method#importPowerCores#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#importPowerCores#0;class#DataImporter#0" expanded="false" />
-            <element signature="docComment;method#importLevels#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#importLevels#0;class#DataImporter#0" expanded="false" />
-            <element signature="docComment;method#importLevelObjects#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#importLevelObjects#0;class#DataImporter#0" expanded="false" />
-            <element signature="docComment;method#importLevelAsteroids#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#importLevelAsteroids#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#convertCannonsToList#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#convertMainBodiesToList#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#convertEnginesToList#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#convertPowerCoresToList#0;class#DataImporter#0" expanded="false" />
-            <element signature="method#convertExtraPartsToList#0;class#DataImporter#0" expanded="false" />
-            <element signature="e#12284#12285#0" expanded="true" />
-            <element signature="e#12309#12310#0" expanded="true" />
-            <element signature="e#12353#12354#0" expanded="true" />
-            <element signature="e#12381#12382#0" expanded="true" />
-            <element signature="e#12424#12425#0" expanded="true" />
-            <element signature="e#12457#12458#0" expanded="true" />
-            <element signature="e#12515#12516#0" expanded="true" />
-            <element signature="e#12559#12560#0" expanded="true" />
-            <element signature="e#12598#12599#0" expanded="true" />
-            <element signature="e#12632#12633#0" expanded="true" />
-            <element signature="e#12687#12688#0" expanded="true" />
-            <element signature="e#12733#12734#0" expanded="true" />
-            <element signature="e#12778#12779#0" expanded="true" />
-            <element signature="e#12813#12814#0" expanded="true" />
-            <element signature="e#12875#12876#0" expanded="true" />
-            <element signature="e#12923#12924#0" expanded="true" />
-            <element signature="e#12960#12961#0" expanded="true" />
-            <element signature="e#12991#12992#0" expanded="true" />
-            <element signature="e#13041#13042#0" expanded="true" />
-            <element signature="e#13081#13082#0" expanded="true" />
-            <element signature="e#13126#13127#0" expanded="true" />
-            <element signature="e#13161#13162#0" expanded="true" />
-            <element signature="e#13223#13224#0" expanded="true" />
-            <element signature="e#13271#13272#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2741,15 +2786,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-          <folding>
-            <element signature="docComment;class#MainMenuController#0" expanded="false" />
-            <element signature="method#onQuickPlayPressed#0;class#MainMenuController#0" expanded="false" />
-            <element signature="method#convertCannonsToList#0;class#MainMenuController#0" expanded="false" />
-            <element signature="method#convertMainBodiesToList#0;class#MainMenuController#0" expanded="false" />
-            <element signature="method#convertEnginesToList#0;class#MainMenuController#0" expanded="false" />
-            <element signature="method#convertPowerCoresToList#0;class#MainMenuController#0" expanded="false" />
-            <element signature="method#convertExtraPartsToList#0;class#MainMenuController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2778,38 +2814,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#Cannon#0" expanded="false" />
-            <element signature="docComment;field#emitPoint#0;class#Cannon#0" expanded="false" />
-            <element signature="docComment;field#attackImage#0;class#Cannon#0" expanded="false" />
-            <element signature="docComment;field#attackImageWidth#0;class#Cannon#0" expanded="false" />
-            <element signature="docComment;field#attackImageHeight#0;class#Cannon#0" expanded="false" />
-            <element signature="docComment;field#attackSound#0;class#Cannon#0" expanded="false" />
-            <element signature="docComment;field#damage#0;class#Cannon#0" expanded="false" />
-            <element signature="e#2245#2246#0" expanded="true" />
-            <element signature="e#2295#2296#0" expanded="true" />
-            <element signature="e#2431#2432#0" expanded="true" />
-            <element signature="e#2463#2464#0" expanded="true" />
-            <element signature="e#2501#2502#0" expanded="true" />
-            <element signature="e#2535#2536#0" expanded="true" />
-            <element signature="e#2575#2576#0" expanded="true" />
-            <element signature="e#2614#2615#0" expanded="true" />
-            <element signature="e#2655#2656#0" expanded="true" />
-            <element signature="e#2695#2696#0" expanded="true" />
-            <element signature="e#2733#2734#0" expanded="true" />
-            <element signature="e#2767#2768#0" expanded="true" />
-            <element signature="e#2797#2798#0" expanded="true" />
-            <element signature="e#2826#2827#0" expanded="true" />
-            <element signature="e#2875#2876#0" expanded="true" />
-            <element signature="e#2917#2918#0" expanded="true" />
-            <element signature="e#2971#2972#0" expanded="true" />
-            <element signature="e#3017#3018#0" expanded="true" />
-            <element signature="e#3309#3310#0" expanded="true" />
-            <element signature="e#3355#3356#0" expanded="true" />
-            <element signature="e#3396#3397#0" expanded="true" />
-            <element signature="e#3432#3433#0" expanded="true" />
-            <element signature="method#setProjectileImageId#0;class#Cannon#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2817,14 +2821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.608343">
           <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#Engine#0" expanded="false" />
-            <element signature="method#Engine#0;class#Engine#0" expanded="false" />
-            <element signature="method#Engine#1;class#Engine#0" expanded="false" />
-            <element signature="method#Engine#2;class#Engine#0" expanded="false" />
-            <element signature="docComment;field#baseSpeed#0;class#Engine#0" expanded="false" />
-            <element signature="docComment;field#baseTurnRate#0;class#Engine#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2832,40 +2828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="227" column="4" selection-start-line="227" selection-start-column="4" selection-end-line="227" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#ContentManager#0" expanded="false" />
-            <element signature="method#ContentManager#0;class#ContentManager#0" expanded="false" />
-            <element signature="e#1571#1611#0" expanded="false" />
-            <element signature="docComment;method#getInstance#0;class#ContentManager#0" expanded="false" />
-            <element signature="method#getInstance#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#getImageId#0;class#ContentManager#0" expanded="false" />
-            <element signature="method#getImageId#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#loadImage#0;class#ContentManager#0" expanded="false" />
-            <element signature="method#loadImage#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#loadImages#0;class#ContentManager#0" expanded="false" />
-            <element signature="method#loadImages#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#loadBitmap#0;class#ContentManager#0" expanded="false" />
-            <element signature="method#loadBitmap#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#unloadImage#0;class#ContentManager#0" expanded="false" />
-            <element signature="method#unloadImage#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#loadSound#0;class#ContentManager#0" expanded="false" />
-            <element signature="method#loadSound#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#unloadSound#0;class#ContentManager#0" expanded="false" />
-            <element signature="method#unloadSound#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#loadLoopSound#0;class#ContentManager#0" expanded="false" />
-            <element signature="method#loadLoopSound#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#unloadLoopSound#0;class#ContentManager#0" expanded="false" />
-            <element signature="method#unloadLoopSound#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#playLoop#0;class#ContentManager#0" expanded="false" />
-            <element signature="method#playLoop#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#pauseLoop#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#resetLoop#0;class#ContentManager#0" expanded="false" />
-            <element signature="method#playSound#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#setResources#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#getImage#0;class#ContentManager#0" expanded="false" />
-            <element signature="docComment;method#setAssets#0;class#ContentManager#0" expanded="false" />
-            <element signature="method#setAssets#0;class#ContentManager#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2873,7 +2835,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1911935">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2881,15 +2842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6257242">
           <caret line="71" column="4" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#MainBody#0" expanded="false" />
-            <element signature="method#MainBody#0;class#MainBody#0" expanded="false" />
-            <element signature="method#MainBody#1;class#MainBody#0" expanded="false" />
-            <element signature="method#MainBody#2;class#MainBody#0" expanded="false" />
-            <element signature="docComment;field#cannonAttach#0;class#MainBody#0" expanded="false" />
-            <element signature="docComment;field#engineAttach#0;class#MainBody#0" expanded="false" />
-            <element signature="docComment;field#extraAttach#0;class#MainBody#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2897,15 +2849,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45191193">
           <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#Point#0" expanded="false" />
-            <element signature="method#Point#0;class#Point#0" expanded="false" />
-            <element signature="method#Point#1;class#Point#0" expanded="false" />
-            <element signature="docComment;field#x#0;class#Point#0" expanded="false" />
-            <element signature="docComment;field#y#0;class#Point#0" expanded="false" />
-            <element signature="e#679#680#0" expanded="true" />
-            <element signature="e#705#706#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2913,7 +2856,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13904983">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2921,12 +2863,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
-          <folding>
-            <element signature="docComment;class#ShipPart#0" expanded="false" />
-            <element signature="method#ShipPart#1;class#ShipPart#0" expanded="false" />
-            <element signature="e#1055#1056#0" expanded="true" />
-            <element signature="e#1083#1084#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2934,17 +2870,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="73" column="4" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#Asteroid#0" expanded="false" />
-            <element signature="method#Asteroid#0;class#Asteroid#0" expanded="false" />
-            <element signature="method#Asteroid#1;class#Asteroid#0" expanded="false" />
-            <element signature="docComment;method#updateBounds#0;class#Asteroid#0" expanded="false" />
-            <element signature="method#updateBounds#0;class#Asteroid#0" expanded="false" />
-            <element signature="docComment;method#drawBounds#0;class#Asteroid#0" expanded="false" />
-            <element signature="method#drawBounds#0;class#Asteroid#0" expanded="false" />
-            <element signature="method#draw#0;class#Asteroid#0" expanded="false" />
-            <element signature="method#update#0;class#Asteroid#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2952,18 +2877,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#BGObject#0" expanded="false" />
-            <element signature="method#BGObject#1;class#BGObject#0" expanded="false" />
-            <element signature="method#BGObject#2;class#BGObject#0" expanded="false" />
-            <element signature="method#BGObject#3;class#BGObject#0" expanded="false" />
-            <element signature="docComment;method#makePoint#0;class#BGObject#0" expanded="false" />
-            <element signature="method#makePoint#0;class#BGObject#0" expanded="false" />
-            <element signature="docComment;method#draw#0;class#BGObject#0" expanded="false" />
-            <element signature="method#draw#0;class#BGObject#0" expanded="false" />
-            <element signature="docComment;method#updateBounds#0;class#BGObject#0" expanded="false" />
-            <element signature="method#updateBounds#0;class#BGObject#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2971,22 +2884,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#Viewport#0" expanded="false" />
-            <element signature="method#Viewport#0;class#Viewport#0" expanded="false" />
-            <element signature="docComment;method#initialize#0;class#Viewport#0" expanded="false" />
-            <element signature="method#initialize#0;class#Viewport#0" expanded="false" />
-            <element signature="method#convertToViewCoordinates#0;class#Viewport#0" expanded="false" />
-            <element signature="method#convertToWorldCoordinates#0;class#Viewport#0" expanded="false" />
-            <element signature="method#getInstance#0;class#Viewport#0" expanded="false" />
-            <element signature="docComment;method#isIntersectingWithViewport#0;class#Viewport#0" expanded="false" />
-            <element signature="method#isIntersectingWithViewport#0;class#Viewport#0" expanded="false" />
-            <element signature="docComment;method#isInViewport#0;class#Viewport#0" expanded="false" />
-            <element signature="method#isInViewport#0;class#Viewport#0" expanded="false" />
-            <element signature="method#update#0;class#Viewport#0" expanded="false" />
-            <element signature="e#3069#3092#0" expanded="false" />
-            <element signature="method#initializeBounds#0;class#Viewport#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2994,38 +2891,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/ship_builder/ShipBuildingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.2595596">
-          <caret line="471" column="99" selection-start-line="471" selection-start-column="99" selection-end-line="471" selection-end-column="99" />
-          <folding>
-            <element signature="docComment;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#ShipBuildingController#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#getCannonImages#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#getEngineImages#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#getMainBodyImages#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#getExtraPartsImages#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#getPowerCoreImages#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#convertCannonsToList#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#convertMainBodiesToList#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#convertEnginesToList#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#convertPowerCoresToList#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#convertExtraPartsToList#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#setupStartGameButton#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#onViewLoaded#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#onSlideView#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#onPartSelected#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#onStartGamePressed#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#onResume#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#update#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#unloadContent#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="method#draw#0;class#ShipBuildingController#0" expanded="false" />
-            <element signature="e#16904#16970#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3033,7 +2898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20857474">
           <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3041,23 +2905,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5307068">
           <caret line="80" column="101" selection-start-line="80" selection-start-column="101" selection-end-line="80" selection-end-column="101" />
-          <folding>
-            <element signature="docComment;class#Level#0" expanded="false" />
-            <element signature="docComment;field#levelBackgroundObjectsMap#0;class#Level#0" expanded="false" />
-            <element signature="docComment;field#levelAsteroidsMap#0;class#Level#0" expanded="false" />
-            <element signature="docComment;field#title#0;class#Level#0" expanded="false" />
-            <element signature="docComment;field#hint#0;class#Level#0" expanded="false" />
-            <element signature="docComment;field#height#0;class#Level#0" expanded="false" />
-            <element signature="docComment;field#width#0;class#Level#0" expanded="false" />
-            <element signature="docComment;field#music#0;class#Level#0" expanded="false" />
-            <element signature="method#Level#0;class#Level#0" expanded="false" />
-            <element signature="method#Level#1;class#Level#0" expanded="false" />
-            <element signature="method#Level#2;class#Level#0" expanded="false" />
-            <element signature="method#Level#3;class#Level#0" expanded="false" />
-            <element signature="method#getLevelBackgroundObjectsMap#0;class#Level#0" expanded="false" />
-            <element signature="method#setLevelBackgroundObjectsMap#0;class#Level#0" expanded="false" />
-            <element signature="method#setLevelAsteroidsMap#0;class#Level#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3065,13 +2912,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17381229">
           <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;class#MiniMap#0" expanded="false" />
-            <element signature="method#MiniMap#1;class#MiniMap#0" expanded="false" />
-            <element signature="method#convertToMiniMapCoordinates#0;class#MiniMap#0" expanded="false" />
-            <element signature="docComment;method#draw#0;class#MiniMap#0" expanded="false" />
-            <element signature="method#draw#0;class#MiniMap#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3079,14 +2919,43 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46929318">
           <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/model/runtime/Projectile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5040556">
+          <caret line="64" column="101" selection-start-line="64" selection-start-column="101" selection-end-line="64" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/model/runtime/ObjectWithPosition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/game/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="361" column="9" selection-start-line="361" selection-start-column="9" selection-end-line="361" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/base/GameView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/model/runtime/Ship.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5561993">
-          <caret line="399" column="23" selection-start-line="399" selection-start-column="23" selection-end-line="399" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="20" selection-start-line="56" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#Ship#0" expanded="false" />
             <element signature="docComment;field#engine#0;class#Ship#0" expanded="false" />
@@ -3135,37 +3004,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/model/runtime/Projectile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5040556">
-          <caret line="64" column="101" selection-start-line="64" selection-start-column="101" selection-end-line="64" selection-end-column="101" />
-          <folding>
-            <element signature="docComment;class#Projectile#0" expanded="false" />
-            <element signature="docComment;field#type#0;class#Projectile#0" expanded="false" />
-            <element signature="method#Projectile#0;class#Projectile#0" expanded="false" />
-            <element signature="docComment;method#Projectile#1;class#Projectile#0" expanded="false" />
-            <element signature="method#Projectile#1;class#Projectile#0" expanded="false" />
-            <element signature="method#update#0;class#Projectile#0" expanded="false" />
-            <element signature="method#draw#0;class#Projectile#0" expanded="false" />
-            <element signature="method#updateBounds#0;class#Projectile#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/model/runtime/ObjectWithPosition.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/ship_builder/ShipBuildingController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <caret line="145" column="5" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#ShipBuildingController#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#getCannonImages#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#getEngineImages#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#getMainBodyImages#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#getExtraPartsImages#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#getPowerCoreImages#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#convertCannonsToList#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#convertMainBodiesToList#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#convertEnginesToList#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#convertPowerCoresToList#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#convertExtraPartsToList#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#setupStartGameButton#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#onViewLoaded#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#onSlideView#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#onPartSelected#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#onStartGamePressed#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#onResume#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#update#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#unloadContent#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="method#draw#0;class#ShipBuildingController#0" expanded="false" />
+            <element signature="e#16904#16970#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/game/GameController.java">
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/edu/byu/cs/superasteroids/data/LevelDAOTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43656093">
-          <caret line="337" column="73" selection-start-line="336" selection-start-column="73" selection-end-line="337" selection-end-column="73" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/byu/cs/superasteroids/core/AsteroidsData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="154" column="24" selection-start-line="154" selection-start-column="24" selection-end-line="154" selection-end-column="24" />
           <folding />
         </state>
       </provider>

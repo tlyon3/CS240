@@ -40,14 +40,15 @@
             android:inputType="text"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
-            android:id="@+id/passwordEditText"/>
+            android:id="@+id/passwordEditText"
+            android:password="true" />
 
         <!--Server Host-->
         <TextView
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Server Host:"/>
         <EditText
-            android:inputType="number"
+            android:inputType="number|text"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
             android:id="@+id/serverHostEditText"/>
@@ -57,7 +58,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Server Port:"/>
         <EditText
-            android:inputType="number"
+            android:inputType="number|text"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
             android:id="@+id/serverPortEditText"/>
@@ -68,5 +69,4 @@
         android:layout_height="wrap_content"
         android:id="@+id/signInButton"
         android:text="Sign In"/>
-
 </LinearLayout>

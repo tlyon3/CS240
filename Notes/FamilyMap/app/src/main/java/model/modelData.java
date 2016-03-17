@@ -3,13 +3,23 @@ package model;
 /**
  * Created by tlyon on 3/17/16.
  */
-public class modelData {
-    private static modelData ourInstance = new modelData();
+public class ModelData {
+    private static ModelData ourInstance = new ModelData();
 
-    public static modelData getInstance() {
+    public static ModelData getInstance() {
         return ourInstance;
     }
 
-    private modelData() {
+    private ModelData() {
+    }
+
+    private User currentUser;
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
 }
