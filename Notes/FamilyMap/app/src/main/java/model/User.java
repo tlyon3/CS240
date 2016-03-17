@@ -1,0 +1,7 @@
+package model;
+
+/**
+ * Created by tlyon on 3/17/16.
+ */
+public class User {
+}
