@@ -1,12 +1,12 @@
-package webAccess.tasks;
+package edu.tlyon.familymap.webAccess.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import model.ModelData;
-import model.Person;
-import webAccess.ServerFacade;
+import edu.tlyon.familymap.model.ModelData;
+import edu.tlyon.familymap.model.Person;
+import edu.tlyon.familymap.webAccess.ServerFacade;
 
 /**
  * Created by tlyon on 3/16/16.

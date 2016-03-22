@@ -16,10 +16,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.tlyon.familymap.R;
-import model.ModelData;
-import model.User;
-import webAccess.ServerFacade;
-import webAccess.tasks.GetUserPersonTask;
+import edu.tlyon.familymap.model.ModelData;
+import edu.tlyon.familymap.model.User;
+import edu.tlyon.familymap.webAccess.ServerFacade;
+import edu.tlyon.familymap.webAccess.tasks.GetUserPersonTask;
 
 /**
  * Created by tlyon on 3/15/16.
@@ -32,6 +32,7 @@ public class SignInFragment extends android.support.v4.app.Fragment {
     private EditText serverHostEditText;
     private EditText serverPortEditText;
     private Button signInButton;
+
     public SignInFragment(){
 
     }
@@ -65,7 +66,6 @@ public class SignInFragment extends android.support.v4.app.Fragment {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 3/15/16 Execute sign in code
                 if (hasEmptyFields()) {
                     Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
                     return;
@@ -83,7 +83,8 @@ public class SignInFragment extends android.support.v4.app.Fragment {
 
         return v;
     }
-    //BUG
+
+    // TODO: 3/21/16 Put in check for empty credentials
     private boolean hasEmptyFields(){
         if(usernameEditText.toString().equals(null) || passwordEditText.toString().equals(null)||
                 serverHostEditText.toString().equals(null) || serverPortEditText.toString().equals(null))
@@ -97,7 +98,7 @@ public class SignInFragment extends android.support.v4.app.Fragment {
         public SignInTask(Context context){
             this.context = context;
         }
-        // TODO: 3/16/16 onPostExecute(). Process result from doInBackground
+        // Process result from doInBackground
         @Override
         protected void onPostExecute(JSONObject object) {
             if(object.has("message")){
@@ -106,21 +107,24 @@ public class SignInFragment extends android.support.v4.app.Fragment {
                     Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
                 }
                 catch (JSONException ex){
-                    Log.e("SignInFragment","No field 'message' in JSONObject");
+                    Log.e("SignInFragment","No field 'message' in JSONObject",ex);
                 }
             }
             else {
                 try {
-                    // TODO: 3/16/16 Login successful. Get authorizationCode
+                    // Login successful. Get authorizationCode
                     String authorizationCode = object.getString("Authorization");
                     String personId = object.getString("personId");
                     User user = new User(authorizationCode);
                     ModelData.getInstance().setCurrentUser(user);
-                    // TODO: 3/16/16 Display toast with user's first and last name
+                    // Display toast with user's first and last name
                     new GetUserPersonTask(this.context).execute(authorizationCode, personId);
+                    // TODO: 3/21/16 Move to mapFragment
+                    ((MainActivity)getActivity()).swapToMapFragment();
+
                 }
                 catch (JSONException ex){
-                    Log.e("SignInFragment","Error in getting string from field");
+                    Log.e("SignInFragment","Error in getting string from field",ex);
                 }
 
             }

@@ -1,4 +1,6 @@
-package model;
+package edu.tlyon.familymap.model;
+
+import java.util.List;
 
 /**
  * Created by tlyon on 3/17/16.
@@ -23,6 +25,15 @@ public class Person {
         this.motherId = motherId;
     }
 
+    // TODO: 3/21/16 Get events from ModelData
+    public List<Event> getLifeEvents(){
+        return null;
+    }
+
+    // TODO: 3/21/16 Sort chronologically
+    private List<Event> sortLifeEvents(List<Event> lifeEvents){
+        return null;
+    }
     public String getDescendant() {
         return descendant;
     }

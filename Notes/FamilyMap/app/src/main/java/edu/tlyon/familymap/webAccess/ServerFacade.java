@@ -1,4 +1,4 @@
-package webAccess;
+package edu.tlyon.familymap.webAccess;
 
 import android.util.Log;
 
@@ -13,8 +13,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import model.ModelData;
-import model.Person;
+import edu.tlyon.familymap.model.ModelData;
+import edu.tlyon.familymap.model.Person;
 
 /**
  * Created by tlyon on 3/16/16.
@@ -23,29 +23,32 @@ public class ServerFacade {
     private static ServerFacade serverFacade;
     private String host;
     private String port;
+
     public ServerFacade(){}
+
     public static ServerFacade getInstance(){
         if(serverFacade == null){
             serverFacade = new ServerFacade();
+
             return serverFacade;
         }
         else return serverFacade;
     }
-    public JSONObject login(String username, String password){
+
+    public JSONObject login(String username, String password) {
         try {
             URL url = new URL("http://"+ host + ":" + port + "/user/login");
             JSONObject postData = new JSONObject();
-            try {
-                postData.put("username", username);
-                postData.put("password", password);
-            } catch (JSONException ex) {
-
-            }
+            postData.put("username", username);
+            postData.put("password", password);
             JSONObject returnedData = doPost(url, postData);
             return returnedData;
         }
         catch (MalformedURLException ex){
             Log.e("ServerFacade.login()",ex.getMessage(),ex);
+        }
+        catch (JSONException ex) {
+
         }
         return null;
     }

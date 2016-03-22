@@ -1,28 +1,40 @@
 package edu.tlyon.familymap.ui;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
+
+import com.amazon.geo.mapsv2.MapFragment;
 
 import edu.tlyon.familymap.R;
+import edu.tlyon.familymap.model.ModelData;
 
 public class MainActivity extends AppCompatActivity {
 
     private SignInFragment signInFragment;
+    private MapFrag mapFrag;
+    private MapFragment mMapFragment;
+    private static final String MAP_FRAGMENT_TAG = "mapfragment";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // TODO: 3/15/16 Check for user already signed in
         setContentView(R.layout.activity_main);
         android.support.v4.app.FragmentManager fm = this.getSupportFragmentManager();
-        this.signInFragment = (SignInFragment)fm.findFragmentById(R.id.signInFrameLayout);
-        if(signInFragment == null){
-            this.signInFragment = SignInFragment.newInstance("Sign In");
+
+        if(ModelData.getInstance().getCurrentUser()==null) {
+            this.signInFragment = (SignInFragment) fm.findFragmentById(R.id.fragment_container);
+            if (signInFragment == null) {
+                this.signInFragment = SignInFragment.newInstance("Sign In");
+                fm.beginTransaction()
+                        .add(R.id.fragment_container, this.signInFragment)
+                        .commit();
+            }
+        }
+        else{
+            this.mapFrag = MapFrag.newInstance("mapfrag");
             fm.beginTransaction()
-                    .add(R.id.signInFrameLayout,this.signInFragment)
+                    .replace(R.id.fragment_container,this.mapFrag)
                     .commit();
         }
 
@@ -37,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
+    }
+    public void swapToMapFragment() {
+        if(this.mapFrag == null){
+            this.mapFrag = MapFrag.newInstance("mapfrag");
+        }
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container,this.mapFrag)
+                .commit();
     }
 
 }

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/signInFrameLayout">
+        android:id="@+id/fragment_container">
     </FrameLayout>
 
 </RelativeLayout>
