@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="edu.tlyon.familymap.ui.MainActivity">
+
+    <item
+        android:id="@+id/person_search_button"
+        android:title="@string/search"
+        app:showAsAction = "ifRoom|withText"/>
+    <item
+        android:id="@+id/person_filter"
+        android:title="@string/filter"
+        app:showAsAction = "ifRoom|withText"/>
+    <item android:id="@+id/person_settings"
+        android:title="@string/action_settings"
+        app:showAsAction="ifRoom|withText"/>
+    <item
+        android:id="@+id/person_action_go_to_top"
+        android:title="@string/go_to_top"
+        app:showAsAction = "ifRoom|withText"/>
+
+</menu>

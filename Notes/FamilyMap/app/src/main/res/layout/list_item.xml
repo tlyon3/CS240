@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#cbcbcb"
+    android:padding="12dp">
+    <ImageView
+        android:id="@+id/recycler_child_icon_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true" />
+    <TextView
+        android:id="@+id/recycler_child_event_details_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="put details here"
+        android:layout_toRightOf="@id/recycler_child_icon_image"/>
+    <TextView
+        android:id="@+id/recycler_child_event_details_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/recycler_child_icon_image"
+        android:layout_below="@id/recycler_child_event_details_top"
+        android:text="put name here"/>
+
+
+</RelativeLayout>

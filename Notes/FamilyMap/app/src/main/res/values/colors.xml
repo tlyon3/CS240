@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#FCFFFD</color>
+    <color name="colorPrimaryDark">#5D737E</color>
+    <color name="colorAccent">#64B6AC</color>
+    <color name="android_icon">#99A4C639</color>
+    <color name="female_icon">#FF90B3</color>
+    <color name="male_icon">#3F51B5</color>
 </resources>

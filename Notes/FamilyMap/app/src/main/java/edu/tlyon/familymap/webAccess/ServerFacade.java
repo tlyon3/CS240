@@ -2,6 +2,7 @@ package edu.tlyon.familymap.webAccess;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,40 +25,45 @@ public class ServerFacade {
     private String host;
     private String port;
 
-    public ServerFacade(){}
+    public ServerFacade() {
+    }
 
-    public static ServerFacade getInstance(){
-        if(serverFacade == null){
+    public static ServerFacade getInstance() {
+        if (serverFacade == null) {
             serverFacade = new ServerFacade();
 
             return serverFacade;
-        }
-        else return serverFacade;
+        } else return serverFacade;
     }
 
     public JSONObject login(String username, String password) {
         try {
-            URL url = new URL("http://"+ host + ":" + port + "/user/login");
+            URL url = new URL("http://" + host + ":" + port + "/user/login");
             JSONObject postData = new JSONObject();
             postData.put("username", username);
             postData.put("password", password);
             JSONObject returnedData = doPost(url, postData);
             return returnedData;
-        }
-        catch (MalformedURLException ex){
-            Log.e("ServerFacade.login()",ex.getMessage(),ex);
-        }
-        catch (JSONException ex) {
+        } catch (MalformedURLException ex) {
+            Log.e("ServerFacade.login()", ex.getMessage(), ex);
+            JSONObject result = new JSONObject();
+            try {
+                result.put("message", "Server host or port not correct");
+                return result;
+            } catch (JSONException e) {
+                return null;
+            }
+
+        } catch (JSONException ex) {
 
         }
         return null;
     }
 
-    public Person getPersonWithId(String id){
+    public Person getPersonWithId(String id) {
         try {
-            URL url = new URL("http://" + host + ":" + port + "/person/"+id);
+            URL url = new URL("http://" + host + ":" + port + "/person/" + id);
             JSONObject result = doGet(url);
-            // TODO: 3/16/16 Process returned information
             String descendant = result.getString("descendant");
             String personId = result.getString("personID");
             String firstName = result.getString("firstName");
@@ -65,23 +71,57 @@ public class ServerFacade {
             String gender = result.getString("gender");
             String fatherId = result.getString("father");
             String motherId = result.getString("mother");
-            Person newPerson = new Person(descendant,personId,firstName,lastName,gender,fatherId,motherId);
+            Person newPerson = new Person(descendant, personId, firstName, lastName, gender, fatherId, motherId);
             return newPerson;
-        }
-        catch (MalformedURLException e){
-            Log.e("ServerFacade",e.getMessage(),e);
+        } catch (MalformedURLException e) {
+            Log.e("ServerFacade", e.getMessage(), e);
             return null;
-        }
-        catch(JSONException ex){
-            Log.e("ServerFacade", ex.getMessage(),ex);
+        } catch (JSONException ex) {
+            Log.e("ServerFacade", ex.getMessage(), ex);
             return null;
         }
     }
 
-    private JSONObject doGet(URL url){
+    /**
+     * Gets the people associated with the current user
+     */
+    public JSONObject getPeople() {
+        try {
+            URL url = new URL("http://" + host + ":" + port + "/person/");
+            JSONObject result = doGet(url);
+            return result;
+        } catch (MalformedURLException ex) {
+            Log.e("ServerFacade", "Malformed url in getPeople", ex);
+            JSONObject result = new JSONObject();
+            try {
+                result.put("message", "There was an error downloading information.");
+                return result;
+            } catch (JSONException jsonexception) {
+                return null;
+            }
+        }
+    }
+
+    public JSONObject getEvents() {
+        try {
+            URL url = new URL("http://" + host + ":" + port + "/events/");
+            return doGet(url);
+        } catch (MalformedURLException ex) {
+            Log.e("ServerFacade", "Malformed url in getEvents");
+            JSONObject result = new JSONObject();
+            try {
+                result.put("message", "There was an error downloading information.");
+                return result;
+            } catch (JSONException jsonexception) {
+                return null;
+            }
+        }
+    }
+
+    private JSONObject doGet(URL url) {
         try {
 
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("GET");
 
@@ -111,29 +151,26 @@ public class ServerFacade {
                 try {
                     JSONObject result = new JSONObject(responseBodyData);
                     return result;
-                }
-                catch (JSONException ex){
-                    Log.e("ServerFacade",ex.getMessage(),ex);
+                } catch (JSONException ex) {
+                    Log.e("ServerFacade", ex.getMessage(), ex);
                     return null;
                 }
-            }
-            else {
-                Log.e("ServerFacade","HTTP Error");
+            } else {
+                Log.e("ServerFacade", "HTTP Error");
                 return null;
                 // SERVER RETURNED AN HTTP ERROR
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             // IO ERROR
         }
         return null;
     }
 
-    private  JSONObject doPost(URL url, JSONObject postData){
+    private JSONObject doPost(URL url, JSONObject postData) {
         //get code from lecture slides
         String data = postData.toString();
         try {
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("POST");
             connection.setDoOutput(true);
@@ -144,7 +181,6 @@ public class ServerFacade {
 //            connection.connect();
             // Write post data to request body
             OutputStream requestBody = connection.getOutputStream();
-//            requestBody.write(postData.getBytes());
             requestBody.write(data.getBytes());
             requestBody.close();
 
@@ -168,24 +204,27 @@ public class ServerFacade {
                 try {
                     JSONObject result = new JSONObject(responseBodyData);
                     return result;
-                }
-                catch (JSONException ex){
-                    Log.e("ServerFacade","Error creating jsonobject from returned string",ex);
+                } catch (JSONException ex) {
+                    Log.e("ServerFacade", "Error creating jsonobject from returned string", ex);
                     return null;
                 }
 
-            }
-            else {
-                Log.e("ServerFacade","HTTP Error");
+            } else {
+                Log.e("ServerFacade", "HTTP Error");
                 return null;
                 // SERVER RETURNED AN HTTP ERROR
             }
-        }
-        catch (IOException e) {
-            Log.e("ServerFacade","IOException",e);
+        } catch (IOException e) {
+            Log.e("ServerFacade", "IOException", e);
             // IO ERROR
+            JSONObject result = new JSONObject();
+            try {
+                result.put("message", "Server connection timed out.");
+                return result;
+            } catch (JSONException ex) {
+                return null;
+            }
         }
-        return null;
     }
 
     public String getPort() {

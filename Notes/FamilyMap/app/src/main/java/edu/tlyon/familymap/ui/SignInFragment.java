@@ -12,13 +12,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Time;
+import java.util.Iterator;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
 import edu.tlyon.familymap.R;
+import edu.tlyon.familymap.model.Event;
 import edu.tlyon.familymap.model.ModelData;
+import edu.tlyon.familymap.model.Person;
 import edu.tlyon.familymap.model.User;
 import edu.tlyon.familymap.webAccess.ServerFacade;
+
 import edu.tlyon.familymap.webAccess.tasks.GetUserPersonTask;
 
 /**
@@ -84,10 +94,9 @@ public class SignInFragment extends android.support.v4.app.Fragment {
         return v;
     }
 
-    // TODO: 3/21/16 Put in check for empty credentials
     private boolean hasEmptyFields(){
-        if(usernameEditText.toString().equals(null) || passwordEditText.toString().equals(null)||
-                serverHostEditText.toString().equals(null) || serverPortEditText.toString().equals(null))
+        if(usernameEditText.toString().matches("") || passwordEditText.toString().matches("")||
+                serverHostEditText.toString().matches("") || serverPortEditText.toString().matches(""))
             return true;
         else return false;
     }
@@ -104,7 +113,7 @@ public class SignInFragment extends android.support.v4.app.Fragment {
             if(object.has("message")){
                 try {
                     String message = object.getString("message");
-                    Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
                 }
                 catch (JSONException ex){
                     Log.e("SignInFragment","No field 'message' in JSONObject",ex);
@@ -119,14 +128,12 @@ public class SignInFragment extends android.support.v4.app.Fragment {
                     ModelData.getInstance().setCurrentUser(user);
                     // Display toast with user's first and last name
                     new GetUserPersonTask(this.context).execute(authorizationCode, personId);
-                    // TODO: 3/21/16 Move to mapFragment
-                    ((MainActivity)getActivity()).swapToMapFragment();
-
+                    //get all people associated with current user
+                    new GetPeopleTask(this.context).execute();
                 }
                 catch (JSONException ex){
                     Log.e("SignInFragment","Error in getting string from field",ex);
                 }
-
             }
         }
 
@@ -135,25 +142,136 @@ public class SignInFragment extends android.support.v4.app.Fragment {
             String username = params[0];
             String password = params[1];
             return ServerFacade.getInstance().login(username,password);
-//            HttpClient httpClient = new HttpClient();
-//            long totalSize = 0;
-//            for(int i=0;i<params.length;i++){
-//                String urlContent = httpClient.getURL(params[i]);
-//                if(urlContent != null){
-//                    totalSize += urlContent.length();
-//                }
-//                int progress = 0;
-//                if(i == params.length -1){
-//                    progress = 100;
-//                }
-//                else {
-//                    float cur = i+1;
-//                    float total = params.length;
-//                    progress = (int)((cur / total) * 100);
-//                }
-//                publishProgress(progress);
-//            }
-//            return totalSize;
         }
     }
+
+    private class GetEventsTask extends AsyncTask<String, Integer, JSONObject>{
+        private Context context;
+
+        public GetEventsTask(Context context){
+            this.context = context;
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... params) {
+            return ServerFacade.getInstance().getEvents();
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject jsonObject) {
+            try{
+                //error occurred
+                if(jsonObject.has("message")){
+                    String message = jsonObject.getString("message");
+                    Toast.makeText(this.context, message, Toast.LENGTH_SHORT).show();
+                }
+                //events downloaded
+                else{
+                    //add events to model
+                    addEventsToModel(jsonObject);
+                    ModelData.getInstance().populateEventTypes();
+                    ModelData.getInstance().populatePersonEventsMap();
+                    ((MainActivity) getActivity()).swapToMapFragment();
+                }
+            }
+            catch (JSONException ex){
+                Log.e("GetEventsTask","Error downloading events");
+                Toast.makeText(this.context, "An error occurred while downloading events",
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+        private void addEventsToModel(JSONObject jsonObject) throws JSONException{
+            JSONArray data = jsonObject.getJSONArray("data");
+            for(int i=0;i<data.length();i++){
+                JSONObject event = data.getJSONObject(i);
+                ModelData.getInstance().addEvent(new Event(event));
+            }
+        }
+    }
+
+    public class GetPeopleTask extends AsyncTask<String, Integer, JSONObject> {
+        private Context context;
+
+        public GetPeopleTask(Context context){
+            this.context = context;
+        }
+        @Override
+        protected JSONObject doInBackground(String... params) {
+            return ServerFacade.getInstance().getPeople();
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject object) {
+            //error occurred
+            if(object.has("message")){
+                try {
+                    Toast.makeText(this.context, object.getString("message"), Toast.LENGTH_SHORT).show();
+                }
+                catch (JSONException ex){
+                    Toast.makeText(this.context, "An error has occurred", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+            //got json object of jsonarray of people
+            else{
+                try {
+                    addPersonsToModel(object);
+                    ModelData.getInstance().populateMaternalAncestors();
+                    ModelData.getInstance().populatePaternalAncestors();
+                    new GetEventsTask(context).execute();
+                }
+                catch (JSONException ex){
+                    Log.e("GetPeopleTask","Error occurred parsing persons data",ex);
+                    Toast.makeText(this.context, "Error occurred with the data", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        private void addPersonsToModel(JSONObject object) throws JSONException{
+            assert object != null;
+            JSONArray data = object.getJSONArray("data");
+            for(int i=0;i<data.length();i++) {
+                JSONObject personObject = data.getJSONObject(i);
+                assert personObject != null;
+                Iterator<String> keys = personObject.keys();
+                Person newPerson = new Person();
+                while (keys.hasNext()) {
+                    String key = keys.next();
+                    assert key != null;
+                    String value = personObject.getString(key);
+                    assert value != null;
+                    switch (key) {
+                        case "descendant":
+                            newPerson.setDescendant(value);
+                            break;
+                        case "personID":
+                            newPerson.setPersonId(value);
+                            break;
+                        case "firstName":
+                            newPerson.setFirstName(value);
+                            break;
+                        case "lastName":
+                            newPerson.setLastName(value);
+                            break;
+                        case "gender":
+                            newPerson.setGender(value);
+                            break;
+                        case "father":
+                            newPerson.setFatherId(value);
+                            break;
+                        case "mother":
+                            newPerson.setMotherId(value);
+                            break;
+                        case "spouse":
+                            newPerson.setSpouseId(value);
+                            break;
+                    }
+                }
+                Log.e("GetPeopleTask","Added " + newPerson.getFirstName() + " " + newPerson.getLastName());
+                ModelData.getInstance().addPerson(newPerson);
+            }
+        }
+    }
+
+
 }

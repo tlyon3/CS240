@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.tlyon.familymap.ui.SettingsActivity">
+
+    <include
+        android:id="@+id/person_app_bar"
+        layout="@layout/app_bar" />
+
+    <RelativeLayout
+        android:id="@+id/settings_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/person_app_bar"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <RelativeLayout
+            android:id="@+id/life_story_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/item_touch_helper_max_drag_scroll_per_frame">
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Life Story Lines"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text1"
+                android:text="Show life story events" />
+
+
+            <Switch
+                android:id="@+id/life_story_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:switchMinWidth="50dp"
+                android:textOff="OFF"
+                android:textOn="ON" />
+
+            <Spinner
+                android:id="@+id/life_story_colors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/life_story_switch">
+
+            </Spinner>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/life_story_settings"
+            android:background="@color/colorPrimaryDark" />
+
+        <RelativeLayout
+            android:id="@+id/family_tree_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line1"
+            android:paddingBottom="@dimen/item_touch_helper_max_drag_scroll_per_frame"
+            android:paddingTop="@dimen/item_touch_helper_max_drag_scroll_per_frame">
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Family tree lines"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text2"
+                android:text="Show tree lines" />
+
+
+            <Switch
+                android:id="@+id/family_tree_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:switchMinWidth="50dp"
+                android:textOff="OFF"
+                android:textOn="ON" />
+
+            <Spinner
+                android:id="@+id/family_tree_colors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/family_tree_switch"></Spinner>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/family_tree_settings"
+            android:background="@color/colorPrimaryDark" />
+
+        <RelativeLayout
+            android:id="@+id/spouse_lines_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line3"
+            android:paddingBottom="@dimen/item_touch_helper_max_drag_scroll_per_frame"
+            android:paddingTop="@dimen/item_touch_helper_max_drag_scroll_per_frame">
+
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Spouse lines"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text3"
+                android:text="Show spouse lines" />
+
+
+            <Switch
+                android:id="@+id/spouse_lines_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:switchMinWidth="50dp"
+                android:textOff="OFF"
+                android:textOn="ON" />
+
+            <Spinner
+                android:id="@+id/spouse_lines_colors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/spouse_lines_switch">
+
+            </Spinner>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/spouse_lines_settings"
+            android:background="@color/colorPrimaryDark" />
+
+        <RelativeLayout
+            android:id="@+id/map_type_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line4"
+            android:paddingBottom="@dimen/item_touch_helper_max_drag_scroll_per_frame"
+            android:paddingTop="@dimen/item_touch_helper_max_drag_scroll_per_frame">
+
+            <TextView
+                android:id="@+id/text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Map type"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text4"
+                android:text="Background display on map" />
+
+            <Spinner
+                android:id="@+id/map_type_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"></Spinner>
+
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/map_type_settings"
+            android:background="@color/colorPrimaryDark" />
+
+        <RelativeLayout
+            android:id="@+id/resync_data_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line5"
+            android:paddingBottom="@dimen/item_touch_helper_max_drag_scroll_per_frame"
+            android:paddingTop="@dimen/item_touch_helper_max_drag_scroll_per_frame">
+
+            <TextView
+                android:id="@+id/text5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Re-sync Data"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text5"
+                android:text="From FamilyMap server" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/resync_data_view"
+            android:background="@color/colorPrimaryDark" />
+
+        <RelativeLayout
+            android:id="@+id/logout_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line6"
+            android:paddingBottom="@dimen/item_touch_helper_max_drag_scroll_per_frame"
+            android:paddingTop="@dimen/item_touch_helper_max_drag_scroll_per_frame">
+
+            <TextView
+                android:id="@+id/text6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text6"
+                android:text="Return to login screen" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line7"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/logout_view"
+            android:background="@color/colorPrimaryDark" />
+    </RelativeLayout>
+
+</RelativeLayout>

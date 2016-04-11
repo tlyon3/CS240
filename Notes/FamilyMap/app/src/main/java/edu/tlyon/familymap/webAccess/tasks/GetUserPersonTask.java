@@ -19,9 +19,7 @@ public class GetUserPersonTask extends AsyncTask<String, Void, Person> {
     @Override
     protected void onPostExecute(Person person) {
         ModelData.getInstance().getCurrentUser().setOwnPerson(person);
-        String firstName = person.getFirstName();
-        String lastName = person.getLastName();
-        Toast.makeText(this.context, "Welcome "+ firstName + " " + lastName + "!", Toast.LENGTH_SHORT).show();
+        new GetPeopleTask(context).execute();
     }
 
     @Override

@@ -1,6 +1,11 @@
 package edu.tlyon.familymap.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by tlyon on 3/17/16.
@@ -13,6 +18,8 @@ public class Person {
     private String gender;
     private String fatherId;
     private String motherId;
+    private String spouseId;
+    private Set<String> children;
 
     public Person(String descendant, String personId, String firstName, String lastName,
                   String gender, String fatherId, String motherId) {
@@ -23,17 +30,58 @@ public class Person {
         this.gender = gender;
         this.fatherId = fatherId;
         this.motherId = motherId;
+        this.children = new HashSet<>();
     }
 
-    // TODO: 3/21/16 Get events from ModelData
+    public Person() {
+        this.descendant = "";
+        this.personId = "";
+        this.firstName = "";
+        this.lastName = "";
+        this.gender = "";
+        this.fatherId = "";
+        this.motherId = "";
+        this.spouseId = "";
+        this.children = new HashSet<>();
+    }
+
+    public String getRelation(String otherId){
+        if(otherId.equals(this.spouseId))
+            return "Spouse";
+        else if(otherId.equals(this.fatherId))
+            return "Father";
+        else if(otherId.equals(this.motherId))
+            return "Mother";
+        else if(this.children.contains(otherId))
+            return "Child";
+        else
+            return "NORELATION";
+    }
+
+    public void addChild(String id){
+        this.children.add(id);
+    }
+
     public List<Event> getLifeEvents(){
-        return null;
+        List<String> lifeEventIds = ModelData.getInstance().getPersonEventsMap().get(this.personId);
+        List<Event> lifeEvents = new ArrayList<>();
+        for(String eventId:lifeEventIds){
+            Event event = ModelData.getInstance().getEventIdMap().get(eventId);
+            lifeEvents.add(event);
+        }
+        return sortLifeEvents(lifeEvents);
     }
 
-    // TODO: 3/21/16 Sort chronologically
     private List<Event> sortLifeEvents(List<Event> lifeEvents){
-        return null;
+        Collections.sort(lifeEvents, new Comparator<Event>() {
+            @Override
+            public int compare(Event lhs, Event rhs) {
+                return Integer.parseInt(lhs.getYear()) - Integer.parseInt(rhs.getYear());
+            }
+        });
+        return lifeEvents;
     }
+
     public String getDescendant() {
         return descendant;
     }
@@ -88,5 +136,21 @@ public class Person {
 
     public void setMotherId(String motherId) {
         this.motherId = motherId;
+    }
+
+    public String getSpouseId() {
+        return spouseId;
+    }
+
+    public void setSpouseId(String spouseId) {
+        this.spouseId = spouseId;
+    }
+
+    public Set<String> getChildren() {
+        return children;
+    }
+
+    public void setChildren(Set<String> children) {
+        this.children = children;
     }
 }
