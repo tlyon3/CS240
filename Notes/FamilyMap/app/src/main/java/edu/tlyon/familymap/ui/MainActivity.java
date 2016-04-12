@@ -13,12 +13,13 @@ import android.view.inputmethod.InputMethodManager;
 import com.joanzapata.android.iconify.IconDrawable;
 import com.joanzapata.android.iconify.Iconify;
 
-import java.util.Set;
 
 import edu.tlyon.familymap.R;
 import edu.tlyon.familymap.model.ModelData;
 import edu.tlyon.familymap.model.Settings;
 
+/** Main activity of the project. Holds either a SignInFragment or a MapFrag.
+ * User is returned to this activity anytime the go_to_top button is pressed in any activity*/
 public class MainActivity extends AppCompatActivity {
 
     private SignInFragment signInFragment;
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /** Replaces the SignInFragment with a MapFrag*/
     public void swapToMapFragment() {
         Settings.getInstance().setUpFilterSettings();
         //hide keyboard

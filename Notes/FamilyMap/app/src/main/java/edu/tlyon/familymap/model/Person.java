@@ -9,6 +9,7 @@ import java.util.Set;
 
 /**
  * Created by tlyon on 3/17/16.
+ * Class to hold all data members of a person
  */
 public class Person {
     private String descendant;

@@ -9,29 +9,32 @@ import java.util.Set;
 
 /**
  * Created by tlyon on 3/21/16.
+ * Keeps track of filter settings and settings in the SettingsActivity
  */
 public class Settings {
 
-
+    //map types
     public final int NORMAL = 0;
     public final int SATELLITE = 1;
     public final int HYBRID = 2;
 
+    //line colors
     public final int GREEN = 0;
     public final int RED = 2;
     public final int BLUE = 1;
 
-
-    //from settings activity
     private Boolean displayLifeStoryLines = true;
     private Boolean displayFamilyTreeLines = true;
     private Boolean displaySpouseLines = true;
+
     private int lifeStoryLinesColor = GREEN;
     private int familyTreeLinesColor = BLUE;
     private int spouseLinesColor = RED;
+
     private int mapType = NORMAL;
+
     private Map<String, Boolean> filterDisplaySettings = new HashMap<>();
-    private Map<String,Float> markerHueMap = new HashMap<>();
+    private Map<String, Float> markerHueMap = new HashMap<>();
 
     private static Settings ourInstance = new Settings();
 
@@ -43,22 +46,28 @@ public class Settings {
 
     }
 
-    public void setUpFilterSettings(){
+    /**
+     * Sets up the filterDisplaySettings. Populates the map from eventTypes from the Model
+     */
+    public void setUpFilterSettings() {
         this.filterDisplaySettings = new HashMap<>();
-        for(String eventType: ModelData.getInstance().getEventTypes()){
-            filterDisplaySettings.put(eventType,true);
+        for (String eventType : ModelData.getInstance().getEventTypes()) {
+            filterDisplaySettings.put(eventType, true);
         }
-        filterDisplaySettings.put("mother's side",true);
-        filterDisplaySettings.put("father's side",true);
-        filterDisplaySettings.put("male",true);
-        filterDisplaySettings.put("female",true);
+        filterDisplaySettings.put("mother's side", true);
+        filterDisplaySettings.put("father's side", true);
+        filterDisplaySettings.put("male", true);
+        filterDisplaySettings.put("female", true);
     }
 
-    public void updateFilterSettings(){
+    /**
+     * Adds and removes events in the list as necessary. Called when resync is called
+     */
+    public void updateFilterSettings() {
         //add new event types
-        for(String eventType:ModelData.getInstance().getEventTypes()){
-            if(!filterDisplaySettings.containsKey(eventType)){
-                filterDisplaySettings.put(eventType,true);
+        for (String eventType : ModelData.getInstance().getEventTypes()) {
+            if (!filterDisplaySettings.containsKey(eventType)) {
+                filterDisplaySettings.put(eventType, true);
             }
         }
         Set<String> typesToRemove = new HashSet<>();
@@ -67,20 +76,22 @@ public class Settings {
         typesToKeep.add("father's side");
         typesToKeep.add("male");
         typesToKeep.add("female");
+
         //remove old event types
         Iterator it = filterDisplaySettings.entrySet().iterator();
-        while(it.hasNext()){
-            Map.Entry pair = (Map.Entry)it.next();
-            String eventType = (String)pair.getKey();
-            if(!ModelData.getInstance().getEventTypes().contains(eventType) && !typesToKeep.contains(eventType)){
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+            String eventType = (String) pair.getKey();
+            if (!ModelData.getInstance().getEventTypes().contains(eventType) && !typesToKeep.contains(eventType)) {
                 typesToRemove.add(eventType);
             }
         }
-        for(String type : typesToRemove){
+        for (String type : typesToRemove) {
             filterDisplaySettings.remove(type);
         }
 
     }
+
     public Boolean getDisplayLifeStoryLines() {
         return displayLifeStoryLines;
     }

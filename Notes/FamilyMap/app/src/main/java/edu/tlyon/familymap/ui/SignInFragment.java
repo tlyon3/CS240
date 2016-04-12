@@ -16,11 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Time;
 import java.util.Iterator;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import edu.tlyon.familymap.R;
 import edu.tlyon.familymap.model.Event;
@@ -33,6 +29,7 @@ import edu.tlyon.familymap.webAccess.tasks.GetUserPersonTask;
 
 /**
  * Created by tlyon on 3/15/16.
+ * UIFragment used the MainActivity to allow the user to sign in.
  */
 public class SignInFragment extends android.support.v4.app.Fragment {
     private static final String ARG_TITLE = "title";
@@ -43,11 +40,11 @@ public class SignInFragment extends android.support.v4.app.Fragment {
     private EditText serverPortEditText;
     private Button signInButton;
 
-    public SignInFragment(){
+    public SignInFragment() {
 
     }
 
-    public static SignInFragment newInstance(String title){
+    public static SignInFragment newInstance(String title) {
         SignInFragment fragment = new SignInFragment();
         Bundle args = new Bundle();
         args.putString(ARG_TITLE, title);
@@ -58,7 +55,7 @@ public class SignInFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getArguments() != null){
+        if (getArguments() != null) {
             title = getArguments().getString(ARG_TITLE);
         }
     }
@@ -66,26 +63,25 @@ public class SignInFragment extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_sign_in,container,false);
+        View v = inflater.inflate(R.layout.fragment_sign_in, container, false);
 
-        this.usernameEditText = (EditText)v.findViewById(R.id.usernameEditText);
-        this.passwordEditText = (EditText)v.findViewById(R.id.passwordEditText);
-        this.serverHostEditText = (EditText)v.findViewById(R.id.serverHostEditText);
-        this.serverPortEditText = (EditText)v.findViewById(R.id.serverPortEditText);
-        this.signInButton = (Button)v.findViewById(R.id.signInButton);
+        this.usernameEditText = (EditText) v.findViewById(R.id.usernameEditText);
+        this.passwordEditText = (EditText) v.findViewById(R.id.passwordEditText);
+        this.serverHostEditText = (EditText) v.findViewById(R.id.serverHostEditText);
+        this.serverPortEditText = (EditText) v.findViewById(R.id.serverPortEditText);
+        this.signInButton = (Button) v.findViewById(R.id.signInButton);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (hasEmptyFields()) {
                     Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
                     return;
-                }
-                else{
+                } else {
                     String host = serverHostEditText.getText().toString();
                     String port = serverPortEditText.getText().toString();
                     ServerFacade.getInstance().setHost(host);
                     ServerFacade.getInstance().setPort(port);
-                   new SignInTask(getContext()).execute(usernameEditText.getText().toString(),
+                    new SignInTask(getContext()).execute(usernameEditText.getText().toString(),
                             passwordEditText.getText().toString());
                 }
             }
@@ -94,32 +90,37 @@ public class SignInFragment extends android.support.v4.app.Fragment {
         return v;
     }
 
-    private boolean hasEmptyFields(){
-        if(usernameEditText.toString().matches("") || passwordEditText.toString().matches("")||
+    /**
+     * Checks to see if any of the EditTexts have empty fields
+     */
+    private boolean hasEmptyFields() {
+        if (usernameEditText.toString().matches("") || passwordEditText.toString().matches("") ||
                 serverHostEditText.toString().matches("") || serverPortEditText.toString().matches(""))
             return true;
         else return false;
     }
 
+    /**
+     * Signs the user in to the FamilyMap server
+     */
     private class SignInTask extends AsyncTask<String, Integer, JSONObject> {
         private Context context;
 
-        public SignInTask(Context context){
+        public SignInTask(Context context) {
             this.context = context;
         }
+
         // Process result from doInBackground
         @Override
         protected void onPostExecute(JSONObject object) {
-            if(object.has("message")){
+            if (object.has("message")) {
                 try {
                     String message = object.getString("message");
                     Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+                } catch (JSONException ex) {
+                    Log.e("SignInFragment", "No field 'message' in JSONObject", ex);
                 }
-                catch (JSONException ex){
-                    Log.e("SignInFragment","No field 'message' in JSONObject",ex);
-                }
-            }
-            else {
+            } else {
                 try {
                     // Login successful. Get authorizationCode
                     String authorizationCode = object.getString("Authorization");
@@ -130,9 +131,8 @@ public class SignInFragment extends android.support.v4.app.Fragment {
                     new GetUserPersonTask(this.context).execute(authorizationCode, personId);
                     //get all people associated with current user
                     new GetPeopleTask(this.context).execute();
-                }
-                catch (JSONException ex){
-                    Log.e("SignInFragment","Error in getting string from field",ex);
+                } catch (JSONException ex) {
+                    Log.e("SignInFragment", "Error in getting string from field", ex);
                 }
             }
         }
@@ -141,14 +141,18 @@ public class SignInFragment extends android.support.v4.app.Fragment {
         protected JSONObject doInBackground(String... params) {
             String username = params[0];
             String password = params[1];
-            return ServerFacade.getInstance().login(username,password);
+            return ServerFacade.getInstance().login(username, password);
         }
     }
 
-    private class GetEventsTask extends AsyncTask<String, Integer, JSONObject>{
+    /**
+     * Async task that downloads all events from the server. Different than webAccess.tasks.GetEventsTask
+     * because swapToMapFragment is called at the end
+     */
+    private class GetEventsTask extends AsyncTask<String, Integer, JSONObject> {
         private Context context;
 
-        public GetEventsTask(Context context){
+        public GetEventsTask(Context context) {
             this.context = context;
         }
 
@@ -159,42 +163,47 @@ public class SignInFragment extends android.support.v4.app.Fragment {
 
         @Override
         protected void onPostExecute(JSONObject jsonObject) {
-            try{
+            try {
                 //error occurred
-                if(jsonObject.has("message")){
+                if (jsonObject.has("message")) {
                     String message = jsonObject.getString("message");
                     Toast.makeText(this.context, message, Toast.LENGTH_SHORT).show();
                 }
                 //events downloaded
-                else{
+                else {
                     //add events to model
                     addEventsToModel(jsonObject);
                     ModelData.getInstance().populateEventTypes();
                     ModelData.getInstance().populatePersonEventsMap();
                     ((MainActivity) getActivity()).swapToMapFragment();
                 }
-            }
-            catch (JSONException ex){
-                Log.e("GetEventsTask","Error downloading events");
+            } catch (JSONException ex) {
+                Log.e("GetEventsTask", "Error downloading events");
                 Toast.makeText(this.context, "An error occurred while downloading events",
                         Toast.LENGTH_SHORT).show();
             }
         }
-        private void addEventsToModel(JSONObject jsonObject) throws JSONException{
+
+        private void addEventsToModel(JSONObject jsonObject) throws JSONException {
             JSONArray data = jsonObject.getJSONArray("data");
-            for(int i=0;i<data.length();i++){
+            for (int i = 0; i < data.length(); i++) {
                 JSONObject event = data.getJSONObject(i);
                 ModelData.getInstance().addEvent(new Event(event));
             }
         }
     }
 
+    /**
+     * Async task that downloads all people from the server. Different than webAccess.tasks.GetEventsTask
+     * because swapToMapFragment is called at the end
+     */
     public class GetPeopleTask extends AsyncTask<String, Integer, JSONObject> {
         private Context context;
 
-        public GetPeopleTask(Context context){
+        public GetPeopleTask(Context context) {
             this.context = context;
         }
+
         @Override
         protected JSONObject doInBackground(String... params) {
             return ServerFacade.getInstance().getPeople();
@@ -203,34 +212,37 @@ public class SignInFragment extends android.support.v4.app.Fragment {
         @Override
         protected void onPostExecute(JSONObject object) {
             //error occurred
-            if(object.has("message")){
+            if (object.has("message")) {
                 try {
                     Toast.makeText(this.context, object.getString("message"), Toast.LENGTH_SHORT).show();
-                }
-                catch (JSONException ex){
+                } catch (JSONException ex) {
                     Toast.makeText(this.context, "An error has occurred", Toast.LENGTH_SHORT).show();
                     return;
                 }
             }
             //got json object of jsonarray of people
-            else{
+            else {
                 try {
                     addPersonsToModel(object);
                     ModelData.getInstance().populateMaternalAncestors();
                     ModelData.getInstance().populatePaternalAncestors();
                     new GetEventsTask(context).execute();
-                }
-                catch (JSONException ex){
-                    Log.e("GetPeopleTask","Error occurred parsing persons data",ex);
+                } catch (JSONException ex) {
+                    Log.e("GetPeopleTask", "Error occurred parsing persons data", ex);
                     Toast.makeText(this.context, "Error occurred with the data", Toast.LENGTH_SHORT).show();
                 }
             }
         }
 
-        private void addPersonsToModel(JSONObject object) throws JSONException{
+        /**
+         * Takes the JSONObject returned from the server, parses it, and adds the Person objects to the Model
+         *
+         * @param object JSONObject with JSONArray of Person objects returned from the server
+         */
+        private void addPersonsToModel(JSONObject object) throws JSONException {
             assert object != null;
             JSONArray data = object.getJSONArray("data");
-            for(int i=0;i<data.length();i++) {
+            for (int i = 0; i < data.length(); i++) {
                 JSONObject personObject = data.getJSONObject(i);
                 assert personObject != null;
                 Iterator<String> keys = personObject.keys();
@@ -267,7 +279,7 @@ public class SignInFragment extends android.support.v4.app.Fragment {
                             break;
                     }
                 }
-                Log.e("GetPeopleTask","Added " + newPerson.getFirstName() + " " + newPerson.getLastName());
+                Log.e("GetPeopleTask", "Added " + newPerson.getFirstName() + " " + newPerson.getLastName());
                 ModelData.getInstance().addPerson(newPerson);
             }
         }

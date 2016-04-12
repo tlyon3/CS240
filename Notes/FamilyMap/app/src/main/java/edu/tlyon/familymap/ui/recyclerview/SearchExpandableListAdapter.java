@@ -23,6 +23,7 @@ import edu.tlyon.familymap.model.Person;
 
 /**
  * Created by tlyon on 4/6/16.
+ * Same concept as ExpandableListAdapter, but optimized for SearchActivity.
  */
 public class SearchExpandableListAdapter extends BaseExpandableListAdapter{
     private Context context;

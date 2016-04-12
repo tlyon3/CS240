@@ -19,6 +19,7 @@ import edu.tlyon.familymap.model.Person;
 
 /**
  * Created by tlyon on 3/16/16.
+ * Handles all communication (GETs and POSTs) with the server
  */
 public class ServerFacade {
     private static ServerFacade serverFacade;
@@ -36,6 +37,12 @@ public class ServerFacade {
         } else return serverFacade;
     }
 
+    /**
+     * Logs the user in
+     *
+     * @param username Username provided by the user
+     * @param password password provided by the user
+     */
     public JSONObject login(String username, String password) {
         try {
             URL url = new URL("http://" + host + ":" + port + "/user/login");
@@ -60,6 +67,12 @@ public class ServerFacade {
         return null;
     }
 
+    /**
+     * Finds the person with the matching id from the server
+     *
+     * @param id Id of the person to find
+     * @return Returns a person object with the matching id
+     */
     public Person getPersonWithId(String id) {
         try {
             URL url = new URL("http://" + host + ":" + port + "/person/" + id);
@@ -102,6 +115,9 @@ public class ServerFacade {
         }
     }
 
+    /**
+     * Downloads all the events for the user
+     */
     public JSONObject getEvents() {
         try {
             URL url = new URL("http://" + host + ":" + port + "/events/");

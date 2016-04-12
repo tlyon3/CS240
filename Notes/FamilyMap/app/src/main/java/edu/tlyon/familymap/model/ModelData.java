@@ -11,6 +11,7 @@ import java.util.Set;
 
 /**
  * Created by tlyon on 3/17/16.
+ * Singleton pattern class to hold data for the application
  */
 public class ModelData {
     private User currentUser;
@@ -117,7 +118,7 @@ public class ModelData {
         }
     }
 
-    // Gets a set of all current event types
+    /** Creates a set of all the current event types in the Model*/
     public void populateEventTypes(){
         Iterator it = eventIdMap.entrySet().iterator();
         while(it.hasNext()){
@@ -129,6 +130,8 @@ public class ModelData {
         }
     }
 
+
+    //getters and setters
     public User getCurrentUser() {
         return currentUser;
     }

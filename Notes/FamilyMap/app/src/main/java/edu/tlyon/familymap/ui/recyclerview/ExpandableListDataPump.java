@@ -13,26 +13,29 @@ import edu.tlyon.familymap.model.Person;
 
 /**
  * Created by tlyon on 4/5/16.
+ * Populates the expandableListDetail map with pertinent data
  */
 public class ExpandableListDataPump {
-    public static HashMap<String, List<String>> getData(Person person){
-        HashMap<String,List<String>> expandableListDetail = new HashMap<>();
+    public static HashMap<String, List<String>> getData(Person person) {
+        HashMap<String, List<String>> expandableListDetail = new HashMap<>();
         List<String> events = ModelData.getInstance().getPersonEventsMap().get(person.getPersonId());
         List<String> family = new ArrayList<>();
         //add parents to list
-        if(!person.getFatherId().equals("")){
+        if (!person.getFatherId().equals("")) {
             family.add(person.getFatherId());
         }
-        if(!person.getMotherId().equals("")){
+        if (!person.getMotherId().equals("")) {
             family.add(person.getMotherId());
         }
         //add spouse
-        if(!person.getSpouseId().equals("")){
+        if (!person.getSpouseId().equals("")) {
             family.add(person.getSpouseId());
         }
+
         Set<String> children = person.getChildren();
+
         //add children to list
-        for(String childId:children){
+        for (String childId : children) {
             family.add(childId);
         }
         Collections.sort(events, new Comparator<String>() {

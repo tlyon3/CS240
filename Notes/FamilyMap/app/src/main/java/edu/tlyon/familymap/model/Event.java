@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 /**
  * Created by tlyon on 3/21/16.
+ * Class that holds the data for an event
  */
 public class Event {
     private String eventId;
@@ -16,14 +17,6 @@ public class Event {
     private String city;
     private String year;
     private String descendant;
-
-//    @Override
-//    public int compareTo(Event another) {
-//        int thisYear = Integer.parseInt(this.year);
-//        int otherYear = Integer.parseInt(another.getYear());
-//        return thisYear < otherYear ? -1 : thisYear > otherYear ? 1 : 0;
-//    }
-
 
     public Event(JSONObject object) throws JSONException{
         this.eventId = object.getString("eventID");

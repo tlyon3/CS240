@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.List;
@@ -18,6 +17,7 @@ import edu.tlyon.familymap.model.Settings;
 
 /**
  * Created by tlyon on 4/9/16.
+ * ArrayAdapter class to handle the dynamic list of event types
  */
 public class FilterAdapter extends ArrayAdapter<String> {
     private Context context;
@@ -44,7 +44,7 @@ public class FilterAdapter extends ArrayAdapter<String> {
     public View getView(final int position, View convertView, ViewGroup parent) {
         try {
             View row = convertView;
-            Holder holder = null;
+            Holder holder;
             if (row == null) {
                 LayoutInflater inflater = ((Activity) context).getLayoutInflater();
                 row = inflater.inflate(layoutResourceId, parent, false);

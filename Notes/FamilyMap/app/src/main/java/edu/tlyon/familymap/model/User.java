@@ -2,6 +2,7 @@ package edu.tlyon.familymap.model;
 
 /**
  * Created by tlyon on 3/17/16.
+ * Stores the authorizationKey and the currentUser's own person information
  */
 public class User {
     private String authorizationKey;

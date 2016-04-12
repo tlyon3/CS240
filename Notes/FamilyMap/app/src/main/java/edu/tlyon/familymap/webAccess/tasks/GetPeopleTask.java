@@ -18,13 +18,16 @@ import edu.tlyon.familymap.webAccess.ServerFacade;
 
 /**
  * Created by tlyon on 3/22/16.
+ * Used to download people from the server. Different from the nested class in SignInFragment.
+ * At the end of the task, the user is taken back to the main activity. SwapToMapFragment() is not called.
  */
 public class GetPeopleTask extends AsyncTask<String, Integer, JSONObject> {
     private Context context;
 
-    public GetPeopleTask(Context context){
+    public GetPeopleTask(Context context) {
         this.context = context;
     }
+
     @Override
     protected JSONObject doInBackground(String... params) {
         return ServerFacade.getInstance().getPeople();
@@ -33,34 +36,32 @@ public class GetPeopleTask extends AsyncTask<String, Integer, JSONObject> {
     @Override
     protected void onPostExecute(JSONObject object) {
         //error occurred
-        if(object.has("message")){
+        if (object.has("message")) {
             try {
                 Toast.makeText(this.context, object.getString("message"), Toast.LENGTH_SHORT).show();
-            }
-            catch (JSONException ex){
+            } catch (JSONException ex) {
                 Toast.makeText(this.context, "An error has occurred", Toast.LENGTH_SHORT).show();
                 return;
             }
         }
         //got json object of jsonarray of people
-        else{
+        else {
             try {
                 addPersonsToModel(object);
                 ModelData.getInstance().populateMaternalAncestors();
                 ModelData.getInstance().populatePaternalAncestors();
                 new GetEventsTask(context).execute();
-            }
-            catch (JSONException ex){
-                Log.e("GetPeopleTask","Error occurred parsing persons data",ex);
+            } catch (JSONException ex) {
+                Log.e("GetPeopleTask", "Error occurred parsing persons data", ex);
                 Toast.makeText(this.context, "Error occurred with the data", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    private void addPersonsToModel(JSONObject object) throws JSONException{
+    private void addPersonsToModel(JSONObject object) throws JSONException {
         assert object != null;
         JSONArray data = object.getJSONArray("data");
-        for(int i=0;i<data.length();i++) {
+        for (int i = 0; i < data.length(); i++) {
             JSONObject personObject = data.getJSONObject(i);
             assert personObject != null;
             Iterator<String> keys = personObject.keys();

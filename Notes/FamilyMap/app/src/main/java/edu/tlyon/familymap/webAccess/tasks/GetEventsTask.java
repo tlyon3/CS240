@@ -20,6 +20,8 @@ import edu.tlyon.familymap.webAccess.ServerFacade;
 
 /**
  * Created by tlyon on 3/22/16.
+ * Used to download events from the server. Different from the nested class in SignInFragment.
+ * At the end of the task, the user is taken back to the main activity. SwapToMapFragment() is not called.
  */
 public class GetEventsTask extends AsyncTask<String, Integer, JSONObject>{
     private Context context;
@@ -58,6 +60,7 @@ public class GetEventsTask extends AsyncTask<String, Integer, JSONObject>{
                     Toast.LENGTH_SHORT).show();
         }
     }
+
     private void addEventsToModel(JSONObject jsonObject) throws JSONException{
         JSONArray data = jsonObject.getJSONArray("data");
         for(int i=0;i<data.length();i++){

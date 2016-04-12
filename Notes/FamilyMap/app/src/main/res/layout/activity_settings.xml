@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="Life Story Lines"
+                android:text="@string/lifestory_lines_top"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text1"
-                android:text="Show life story events" />
+                android:text="@string/lifestory_lines_bottom" />
 
 
             <Switch
@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="Family tree lines"
+                android:text="@string/familytree_lines_top"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -90,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text2"
-                android:text="Show tree lines" />
+                android:text="@string/familytree_lines_bottom" />
 
 
             <Switch
@@ -106,7 +106,7 @@
                 android:id="@+id/family_tree_colors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toStartOf="@id/family_tree_switch"></Spinner>
+                android:layout_toStartOf="@id/family_tree_switch"/>
 
         </RelativeLayout>
 
@@ -130,7 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="Spouse lines"
+                android:text="@string/spouse_lines_top"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -138,7 +138,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text3"
-                android:text="Show spouse lines" />
+                android:text="@string/spouse_lines_bottom" />
 
 
             <Switch
@@ -180,7 +180,7 @@
                 android:id="@+id/text4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Map type"
+                android:text="@string/map_type_top"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -188,13 +188,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text4"
-                android:text="Background display on map" />
+                android:text="@string/map_type_bottom" />
 
             <Spinner
                 android:id="@+id/map_type_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"></Spinner>
+                android:layout_alignParentEnd="true"/>
 
 
         </RelativeLayout>
@@ -218,7 +218,7 @@
                 android:id="@+id/text5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Re-sync Data"
+                android:text="@string/resync_data_top"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -226,7 +226,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text5"
-                android:text="From FamilyMap server" />
+                android:text="@string/resync_data_bottom" />
 
         </RelativeLayout>
 
@@ -249,7 +249,7 @@
                 android:id="@+id/text6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Logout"
+                android:text="@string/logout_top"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -257,7 +257,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text6"
-                android:text="Return to login screen" />
+                android:text="@string/logout_bottom" />
 
         </RelativeLayout>
 

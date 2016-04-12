@@ -26,6 +26,9 @@ import edu.tlyon.familymap.model.Person;
 import edu.tlyon.familymap.ui.recyclerview.ExpandableListAdapter;
 import edu.tlyon.familymap.ui.recyclerview.ExpandableListDataPump;
 
+/**
+ * Displays the Persons relatives and his/her life events
+ */
 public class PersonActivity extends AppCompatActivity {
     private Person person;
     private Toolbar toolbar;
@@ -130,7 +133,7 @@ public class PersonActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.person_action_go_to_top:
-                Utils.startTopActivity(this,true);
+                Utils.startTopActivity(this, true);
                 return true;
             default:
                 return false;

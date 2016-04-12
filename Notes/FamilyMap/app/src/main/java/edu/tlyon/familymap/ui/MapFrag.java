@@ -43,6 +43,7 @@ import edu.tlyon.familymap.model.Settings;
 
 /**
  * Created by tlyon on 3/21/16.
+ * UIFragment that holds the AmazonMaps component
  */
 public class MapFrag extends Fragment {
     private static final String ARG_TITLE = "title";
@@ -130,17 +131,19 @@ public class MapFrag extends Fragment {
 
                 }
                 map.setOnMarkerClickListener(new AmazonMap.OnMarkerClickListener() {
+                    //When a marker is clicked, lines will be drawn on the map connecting related events
                     @Override
                     public boolean onMarkerClick(Marker marker) {
-                        //this.map.addPolyLine
-                        //
+
                         removeLines();
                         lines.clear();
                         Event event = markerEventMap.get(marker);
                         selectedEvent = event;
-                        if(!markerEventMap.containsKey(event)){
+                        if (!markerEventMap.containsKey(event)) {
                             removeAddedMarkers();
                         }
+
+                        //get information to display on event details at bottom of screen
                         String firstName = ModelData.getInstance().getPersonIdMap().get(event.getPersonId()).getFirstName();
                         String lastName = ModelData.getInstance().getPersonIdMap().get(event.getPersonId()).getLastName();
                         eventDetailName.setText(firstName + " " + lastName);
@@ -149,6 +152,8 @@ public class MapFrag extends Fragment {
                         String date = event.getYear();
                         String details = type + ": " + location + "(" + date + ")";
                         eventDetailDate.setText(details);
+
+                        //get icon for event
                         Drawable eventIcon = new IconDrawable(getContext(), Iconify.IconValue.fa_map_marker).colorRes(R.color.colorPrimaryDark).sizeDp(40);
                         icon.setImageDrawable(eventIcon);
 
@@ -167,6 +172,9 @@ public class MapFrag extends Fragment {
     }
 
 
+    /**
+     * Loads the markers for events. Filter settings are taken into account here
+     */
     public void loadMarkers() {
         //this.map.addMarker(Options)
         Map<String, Event> eventMap = ModelData.getInstance().getEventIdMap();
@@ -177,13 +185,15 @@ public class MapFrag extends Fragment {
             Event event = (Event) pair.getValue();
             String eventType = event.getEventType();
             String personId = event.getPersonId();
-            if(personId.equals(ModelData.getInstance().getCurrentUser().getOwnPerson().getPersonId())){
+            if (personId.equals(ModelData.getInstance().getCurrentUser().getOwnPerson().getPersonId())) {
                 loadM(event);
             }
 
             //find if on mother's side or father's side
             //father's side
             if (ModelData.getInstance().getPaternalAncestors().contains(personId)) {
+                //check if should display father side
+                //check if should display event type
                 if (Settings.getInstance().getFilterDisplaySettings().get("father's side") &&
                         Settings.getInstance().getFilterDisplaySettings().get(eventType)) {
                     //check should display male/female
@@ -197,6 +207,8 @@ public class MapFrag extends Fragment {
 
             //mother's side
             else {
+                //check if should display mother's side
+                //check if should display event type
                 if (Settings.getInstance().getFilterDisplaySettings().get("mother's side") &&
                         Settings.getInstance().getFilterDisplaySettings().get(eventType)) {
                     //check should display male/female events
@@ -212,6 +224,12 @@ public class MapFrag extends Fragment {
         }
     }
 
+    /**
+     * Loads a marker for the event. Called after loadMarkers() verifies it should be loaded.
+     * Also called if it needs to be drawn when lifeStory, spouse, or family tree lines needs it
+     *
+     * @param event Event that a marker should be loaded for.
+     */
     public Marker loadM(Event event) {
         float markerHue = getMarkerHue(event);
         Double latitude = Double.parseDouble(event.getLatitude());
@@ -229,12 +247,20 @@ public class MapFrag extends Fragment {
         return m;
     }
 
+    /**
+     * Removes all polylines from the map
+     */
     private void removeLines() {
         for (Polyline line : lines) {
             line.remove();
         }
     }
 
+    /**
+     * Draws lines for the lifeStory, spouse, and family tree events for the particular event
+     *
+     * @param selectedEvent event to draw the lines from
+     */
     private void drawLines(Event selectedEvent) {
         Person selectedPerson = ModelData.getInstance().getPersonIdMap().get(selectedEvent.getPersonId());
         if (!selectedPerson.getSpouseId().equals("") && Settings.getInstance().getDisplaySpouseLines()) {
@@ -243,6 +269,7 @@ public class MapFrag extends Fragment {
             drawSpouseLine(selectedEvent, spouseEvent);
         }
 
+        //check if should display family tree lines
         if (Settings.getInstance().getDisplayFamilyTreeLines()) {
             String motherId = selectedPerson.getMotherId();
             if (!motherId.equals("")) {
@@ -259,6 +286,12 @@ public class MapFrag extends Fragment {
             drawLifeStoryLines(selectedEvent);
     }
 
+    /**
+     * Called from drawLines(). Draws a line between event1 and event2
+     *
+     * @param event1 First event to draw line from
+     * @param event2 Second event to draw line from
+     */
     private void drawSpouseLine(Event event1, Event event2) {
         Marker marker1 = eventMarkerMap.get(event1);
         if (marker1 == null) {
@@ -281,6 +314,13 @@ public class MapFrag extends Fragment {
         lines.add(p);
     }
 
+    /**
+     * Draws the lines for the familyTree. Recursively called until all generations are drawn.
+     *
+     * @param event     Event to draw line from
+     * @param parent    Parent who's birth event (or first available event) a line should be drawn to
+     * @param thickness Thickness of the line. Decreases by half each successive generation
+     */
     private void drawParentLine(Event event, Person parent, float thickness) {
         Event parentFirstEvent = parent.getLifeEvents().get(0);
 
@@ -309,7 +349,7 @@ public class MapFrag extends Fragment {
         String grandfatherId = parent.getFatherId();
         if (!grandfatherId.equals("")) {
             Person grandfather = ModelData.getInstance().getPersonIdMap().get(grandfatherId);
-            float lineWidth = p.getWidth()/2;
+            float lineWidth = p.getWidth() / 2;
             if (lineWidth < 0.0f)
                 lineWidth = 1.0f;
             drawParentLine(parentFirstEvent, grandfather, lineWidth);
@@ -317,7 +357,7 @@ public class MapFrag extends Fragment {
         String grandmotherId = parent.getMotherId();
         if (!grandmotherId.equals("")) {
             Person grandmother = ModelData.getInstance().getPersonIdMap().get(grandmotherId);
-            float lineWidth = p.getWidth()/2;
+            float lineWidth = p.getWidth() / 2;
             if (lineWidth < 0.0f)
                 lineWidth = 1.0f;
             drawParentLine(parentFirstEvent, grandmother, lineWidth);
@@ -325,6 +365,11 @@ public class MapFrag extends Fragment {
     }
 
 
+    /**
+     * Draws the life-story lines for the Person of the Event
+     *
+     * @param event Event selected on the map.
+     */
     private void drawLifeStoryLines(Event event) {
         Person person = ModelData.getInstance().getPersonIdMap().get(event.getPersonId());
         List<Event> lifeEvents = person.getLifeEvents();
@@ -361,6 +406,11 @@ public class MapFrag extends Fragment {
         this.selectedEvent = selectedEvent;
     }
 
+    /**
+     * Zooms the map to the event
+     *
+     * @param event Event to zoom map to
+     */
     public void zoomToEvent(Event event) {
         double lat = Double.parseDouble(event.getLatitude());
         double lon = Double.parseDouble(event.getLongitude());
@@ -369,26 +419,33 @@ public class MapFrag extends Fragment {
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
     }
 
-    private float getMarkerHue(Event event){
+    /**
+     * Either gets the eventTypes marker hue or randomly generates one if the eventType does not already have one
+     *
+     * @param event Event to get marker hue for
+     */
+    private float getMarkerHue(Event event) {
         String eventType = event.getEventType();
-        if(Settings.getInstance().getMarkerHueMap().containsKey(eventType)){
+        if (Settings.getInstance().getMarkerHueMap().containsKey(eventType)) {
             return Settings.getInstance().getMarkerHueMap().get(eventType);
-        }
-        else{
+        } else {
             boolean validFloat = false;
             float markerHue = 0.0f;
-            while(!validFloat){
-                markerHue = (float) Math.random()*360;
-                if(!Settings.getInstance().getMarkerHueMap().containsValue(markerHue))
+            while (!validFloat) {
+                markerHue = (float) Math.random() * 360;
+                if (!Settings.getInstance().getMarkerHueMap().containsValue(markerHue))
                     validFloat = true;
             }
-            Settings.getInstance().getMarkerHueMap().put(eventType,markerHue);
+            Settings.getInstance().getMarkerHueMap().put(eventType, markerHue);
             return markerHue;
         }
     }
 
-    private void removeAddedMarkers(){
-        for(Marker marker:markersToRemove){
+    /** Removes the markers added from clicked on an event. If birth events are filtered off, the family tree lines
+     * will cause the ancestors birth events to be marked on the map. This function removes those added markers
+     * when another event is clicked on*/
+    private void removeAddedMarkers() {
+        for (Marker marker : markersToRemove) {
             marker.remove();
             eventMarkerMap.remove(markerEventMap.get(marker));
             markerEventMap.remove(marker);

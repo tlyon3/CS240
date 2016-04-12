@@ -23,14 +23,17 @@ import edu.tlyon.familymap.model.Person;
 
 /**
  * Created by tlyon on 4/5/16.
+ * Adapter class for the expandable list in the PersonActivity
  */
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
+    //Title of the expandable lists (i.e "Family" or "Events")
     private List<String> expandableListTitle;
+    //Detail of each of the lists (the related Persons or life Events)
     private HashMap<String, List<String>> expandableListDetail;
     private Person person;
 
-    public ExpandableListAdapter(Context context, List<String> expandableListTitle, HashMap<String, List<String>> expandableListDetail,Person person) {
+    public ExpandableListAdapter(Context context, List<String> expandableListTitle, HashMap<String, List<String>> expandableListDetail, Person person) {
         this.context = context;
         this.expandableListTitle = expandableListTitle;
         this.expandableListDetail = expandableListDetail;
@@ -49,7 +52,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getGroup(int groupPosition) {
-        return  this.expandableListTitle.get(groupPosition);
+        return this.expandableListTitle.get(groupPosition);
     }
 
     @Override
@@ -76,9 +79,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         String listTitle = (String) getGroup(groupPosition);
         //set up if family
-        if(convertView == null){
+        if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.list_group,null);
+            convertView = layoutInflater.inflate(R.layout.list_group, null);
         }
         TextView listTitleTextView = (TextView) convertView.findViewById(R.id.listTitle);
         listTitleTextView.setTypeface(null, Typeface.BOLD);
@@ -89,14 +92,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         final String id = (String) getChild(groupPosition, childPosition);
-        if(convertView == null){
+        if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_item, null);
         }
 
-        String group = (String)getGroup(groupPosition);
-        if(group.equals("Family")){
+        String group = (String) getGroup(groupPosition);
+        if (group.equals("Family")) {
 
             //set icon (male or female)
             Person familyMember = ModelData.getInstance().getPersonIdMap().get(id);
@@ -105,12 +108,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             TextView relation = (TextView) convertView.findViewById(R.id.recycler_child_event_details_bottom);
 
             //set icon
-            if(familyMember.getGender().equals("m")){
+            if (familyMember.getGender().equals("m")) {
                 Drawable icon = new IconDrawable(context, Iconify.IconValue.fa_male).colorRes(R.color.male_icon).sizeDp(40);
                 personIcon.setImageDrawable(icon);
-            }
-            else{
-                Drawable icon = new IconDrawable(context,Iconify.IconValue.fa_female).colorRes(R.color.female_icon).sizeDp(40);
+            } else {
+                Drawable icon = new IconDrawable(context, Iconify.IconValue.fa_female).colorRes(R.color.female_icon).sizeDp(40);
                 personIcon.setImageDrawable(icon);
             }
             String fullName = familyMember.getFirstName() + " " + familyMember.getLastName();
@@ -118,7 +120,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             relation.setText(person.getRelation(id));
         }
         //is event
-        else{
+        else {
             Event event = ModelData.getInstance().getEventIdMap().get(id);
             ImageView icon = (ImageView) convertView.findViewById(R.id.recycler_child_icon_image);
             Drawable eventIcon = new IconDrawable(context, Iconify.IconValue.fa_map_marker).colorRes(R.color.colorPrimaryDark).sizeDp(40);

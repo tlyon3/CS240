@@ -40,6 +40,9 @@ public class SearchActivity extends AppCompatActivity {
     private MenuItem searchButton;
     private MenuItem goToTopButton;
 
+    /**
+     * Allows the user to search through all the ModelData (persons and events)
+     */
     public SearchActivity() {
 
     }
@@ -116,6 +119,11 @@ public class SearchActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Finds all events and people that match the search prompt
+     *
+     * @param prompt Search prompt provided by the user"
+     */
     private void search(String prompt) {
         expandableListDetail = new HashMap<>();
         expandableListDetail.put("People", getPersonSearchResults(prompt));
@@ -125,6 +133,11 @@ public class SearchActivity extends AppCompatActivity {
         expandableListView.setAdapter(expandableListAdapter);
     }
 
+    /**
+     * Returns a list of eventId's that matched the search prompt
+     *
+     * @param prompt Search prompt provided by the user
+     */
     private List<String> getEventSearchResults(String prompt) {
         List<String> result = new ArrayList<>();
         Map<String, Event> events = ModelData.getInstance().getEventIdMap();
@@ -142,6 +155,11 @@ public class SearchActivity extends AppCompatActivity {
         return result;
     }
 
+    /**
+     * Returns a list of personId's that matched the search prompt
+     *
+     * @param prompt Search prompt provided by the user
+     */
     private List<String> getPersonSearchResults(String prompt) {
         List<String> result = new ArrayList<>();
         Map<String, Person> people = ModelData.getInstance().getPersonIdMap();
@@ -157,6 +175,9 @@ public class SearchActivity extends AppCompatActivity {
         return result;
     }
 
+    /**
+     * Allows the String.contains() function to ignore case
+     */
     private boolean containsIgnoreCase(String term, String search) {
         String t = term.toLowerCase();
         String s = search.toLowerCase();

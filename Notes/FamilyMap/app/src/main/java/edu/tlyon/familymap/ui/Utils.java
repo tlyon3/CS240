@@ -12,24 +12,22 @@ import edu.tlyon.familymap.model.ModelData;
  */
 public class Utils {
 
-    public static void startTopActivity(Context context, boolean newInstance){
-        Intent intent = new Intent(context,MainActivity.class);
-        if(newInstance){
+    /** Starts the main activity*/
+    public static void startTopActivity(Context context, boolean newInstance) {
+        Intent intent = new Intent(context, MainActivity.class);
+        if (newInstance) {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        }
-        else{
+        } else {
             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }
         context.startActivity(intent);
     }
 
-    public static void setShowMenuItems(Menu menu, boolean visible){
-        for(int i=0;i<menu.size();i++){
-            menu.getItem(i).setVisible(visible);
-        }
-    }
-
-    public static void logout(Activity activity){
+    /**
+     * Logs the current user out. This deletes everything from the Model and returns the user to
+     * the MainActivity with a SignInFragment
+     */
+    public static void logout(Activity activity) {
         ModelData.getInstance().setCurrentUser(null);
         ModelData.getInstance().getEventIdMap().clear();
         ModelData.getInstance().getEventTypes().clear();
@@ -38,7 +36,7 @@ public class Utils {
         ModelData.getInstance().getFamilyTree().clear();
         ModelData.getInstance().getMaternalAncestors().clear();
         ModelData.getInstance().getPaternalAncestors().clear();
-        Intent intent = new Intent(activity,MainActivity.class);
+        Intent intent = new Intent(activity, MainActivity.class);
         activity.startActivity(intent);
     }
 }

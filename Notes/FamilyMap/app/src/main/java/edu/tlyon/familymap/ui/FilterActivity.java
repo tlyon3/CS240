@@ -1,21 +1,19 @@
 package edu.tlyon.familymap.ui;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Switch;
-
-import java.util.List;
-import java.util.logging.Filter;
 
 import edu.tlyon.familymap.R;
 import edu.tlyon.familymap.model.ModelData;
 
+/**
+ * Activity where filters can be turned on/off. Can use by event type (baptism, birth, etc),
+ * family side (father's side, mother's side) or by gender (male/female)
+ * */
 public class FilterActivity extends AppCompatActivity {
 
     private ListView listView;
@@ -64,8 +62,6 @@ public class FilterActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-//        Intent intent = new Intent(this, MainActivity.class);
-//        this.startActivity(intent);
         Utils.startTopActivity(this,true);
         return true;
     }

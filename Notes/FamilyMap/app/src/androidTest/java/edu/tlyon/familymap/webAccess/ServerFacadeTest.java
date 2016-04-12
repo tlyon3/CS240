@@ -12,11 +12,13 @@ import edu.tlyon.familymap.model.User;
  */
 public class ServerFacadeTest extends TestCase {
 
-    /** Test the login() method in the server facade.
+    /**
+     * Test the login() method in the server facade.
      * The Strings host and port are hardcoded. Will need to be changed if server is restarted
      * on another network.
      * goodResult will have a "message" field if the getEvents() was unsuccessful.
-     * result should have a "message" field because incorrect credentials were provided.*/
+     * result should have a "message" field because incorrect credentials were provided.
+     */
     public void testLogin() throws Exception {
         //check if there was an error with correct info
         String host = "10.10.19.230";
@@ -25,20 +27,22 @@ public class ServerFacadeTest extends TestCase {
         String password = "john";
         ServerFacade.getInstance().setHost(host);
         ServerFacade.getInstance().setPort(port);
-        JSONObject goodResult = ServerFacade.getInstance().login(username,password);
+        JSONObject goodResult = ServerFacade.getInstance().login(username, password);
         assertEquals(false, goodResult.has("message"));
 
         //check with bad login credentials
         username = "bob";
         password = "bob";
-        JSONObject result = ServerFacade.getInstance().login(username,password);
+        JSONObject result = ServerFacade.getInstance().login(username, password);
         assertEquals(true, result.has("message"));
     }
 
-    /** Test the getPeople() method in the server facade.
+    /**
+     * Test the getPeople() method in the server facade.
      * The Strings host and port are hardcoded. Will need to be changed if server is restarted
      * on another network.
-     * peopleResult will have a "message" field if the getEvents() was unsuccessful.*/
+     * peopleResult will have a "message" field if the getEvents() was unsuccessful.
+     */
     public void testGetPeople() throws Exception {
         String host = "10.10.19.230";
         String port = "8080";
@@ -54,13 +58,15 @@ public class ServerFacadeTest extends TestCase {
         ModelData.getInstance().setCurrentUser(user);
 
         JSONObject peopleResult = ServerFacade.getInstance().getPeople();
-        assertEquals(false,peopleResult.has("message"));
+        assertEquals(false, peopleResult.has("message"));
     }
 
-    /** Test the getEvents() method in the server facade.
+    /**
+     * Test the getEvents() method in the server facade.
      * The Strings host and port are hardcoded. Will need to be changed if server is restarted
      * on another network.
-     * eventResult will have a "message" field if the getEvents() was unsuccessful.*/
+     * eventResult will have a "message" field if the getEvents() was unsuccessful.
+     */
     public void testGetEvents() throws Exception {
         String host = "10.10.19.230";
         String port = "8080";
@@ -76,6 +82,6 @@ public class ServerFacadeTest extends TestCase {
         ModelData.getInstance().setCurrentUser(user);
 
         JSONObject eventResult = ServerFacade.getInstance().getEvents();
-        assertEquals(false,eventResult.has("message"));
+        assertEquals(false, eventResult.has("message"));
     }
 }

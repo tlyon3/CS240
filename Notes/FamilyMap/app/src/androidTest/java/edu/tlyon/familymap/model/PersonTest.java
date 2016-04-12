@@ -58,17 +58,17 @@ public class PersonTest extends TestCase {
     }
 
     public void testGetLifeEvents() throws Exception {
-        Person person = new Person("john","personId","bob","jones","m","fatherId","motherId");
+        Person person = new Person("john", "personId", "bob", "jones", "m", "fatherId", "motherId");
         ModelData.getInstance().addPerson(person);
         List<Event> lifeEvents = person.getLifeEvents();
 
         //make sure lifeEvents is populated
-        assertNotSame(0,lifeEvents.size());
+        assertNotSame(0, lifeEvents.size());
 
         //check sorted
-        for(int i=0;i<lifeEvents.size()-1;i++){
+        for (int i = 0; i < lifeEvents.size() - 1; i++) {
             int year1 = Integer.parseInt(lifeEvents.get(i).getYear());
-            int year2 = Integer.parseInt(lifeEvents.get(i+1).getYear());
+            int year2 = Integer.parseInt(lifeEvents.get(i + 1).getYear());
             assertEquals(true, year1 < year2);
         }
     }

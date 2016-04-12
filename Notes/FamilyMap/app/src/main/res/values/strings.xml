@@ -7,4 +7,23 @@
     <string name="go_to_top">Home</string>
     <string name="filter">filter</string>
     <string name="title_activity_filter">FilterActivity</string>
+    <string name="resync_data_top">Re-Sync Data</string>
+    <string name="resync_data_bottom">From FamilyMap Server</string>
+    <string name="logout_top">Logout</string>
+    <string name="logout_bottom">Return to sign in page</string>
+    <string name="map_type_top">Map Type</string>
+    <string name="map_type_bottom">Background map displayed</string>
+    <string name="spouse_lines_top">Spouse Lines</string>
+    <string name="spouse_lines_bottom">Show spouse lines</string>
+    <string name="familytree_lines_top">Family Tree Lines</string>
+    <string name="familytree_lines_bottom">Show family tree lines</string>
+    <string name="lifestory_lines_top">Life Story</string>
+    <string name="lifestory_lines_bottom">Show life story lines</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="host">Server Host:</string>
+    <string name="port">Server Port:</string>
+    <string name="sign_in">Sign In</string>
+
+
 </resources>
