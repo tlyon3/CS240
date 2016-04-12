@@ -13,7 +13,6 @@ import java.util.Iterator;
 
 import edu.tlyon.familymap.model.ModelData;
 import edu.tlyon.familymap.model.Person;
-import edu.tlyon.familymap.ui.MainActivity;
 import edu.tlyon.familymap.webAccess.ServerFacade;
 
 /**
@@ -41,7 +40,6 @@ public class GetPeopleTask extends AsyncTask<String, Integer, JSONObject> {
                 Toast.makeText(this.context, object.getString("message"), Toast.LENGTH_SHORT).show();
             } catch (JSONException ex) {
                 Toast.makeText(this.context, "An error has occurred", Toast.LENGTH_SHORT).show();
-                return;
             }
         }
         //got json object of jsonarray of people

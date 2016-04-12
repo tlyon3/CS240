@@ -21,8 +21,6 @@ import edu.tlyon.familymap.R;
 import edu.tlyon.familymap.model.Event;
 import edu.tlyon.familymap.model.ModelData;
 import edu.tlyon.familymap.model.Person;
-import edu.tlyon.familymap.ui.recyclerview.ExpandableListAdapter;
-import edu.tlyon.familymap.ui.recyclerview.ExpandableListDataPump;
 import edu.tlyon.familymap.ui.recyclerview.SearchExpandableListAdapter;
 
 public class SearchActivity extends AppCompatActivity {

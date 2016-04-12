@@ -17,7 +17,7 @@
         <SearchView
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></SearchView>
+            android:layout_height="wrap_content"/>
 
         <ExpandableListView
             android:layout_below="@id/search_bar"

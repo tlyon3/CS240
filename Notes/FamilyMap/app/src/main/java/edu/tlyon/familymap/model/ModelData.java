@@ -68,7 +68,8 @@ public class ModelData {
             if(this.personEventsMap.get(personId) == null){
                 personEventsMap.put(personId, new ArrayList<String>());
             }
-            personEventsMap.get(personId).add(eventId);
+            if(!personEventsMap.get(personId).contains(eventId))
+                personEventsMap.get(personId).add(eventId);
         }
     }
 

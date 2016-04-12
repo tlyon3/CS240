@@ -2,7 +2,6 @@ package edu.tlyon.familymap.webAccess;
 
 import android.util.Log;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -49,8 +48,7 @@ public class ServerFacade {
             JSONObject postData = new JSONObject();
             postData.put("username", username);
             postData.put("password", password);
-            JSONObject returnedData = doPost(url, postData);
-            return returnedData;
+            return doPost(url, postData);
         } catch (MalformedURLException ex) {
             Log.e("ServerFacade.login()", ex.getMessage(), ex);
             JSONObject result = new JSONObject();
@@ -62,7 +60,7 @@ public class ServerFacade {
             }
 
         } catch (JSONException ex) {
-
+            Log.e("ServerFacade","Error created JSONObject");
         }
         return null;
     }
@@ -84,8 +82,7 @@ public class ServerFacade {
             String gender = result.getString("gender");
             String fatherId = result.getString("father");
             String motherId = result.getString("mother");
-            Person newPerson = new Person(descendant, personId, firstName, lastName, gender, fatherId, motherId);
-            return newPerson;
+            return new Person(descendant, personId, firstName, lastName, gender, fatherId, motherId);
         } catch (MalformedURLException e) {
             Log.e("ServerFacade", e.getMessage(), e);
             return null;
@@ -101,8 +98,7 @@ public class ServerFacade {
     public JSONObject getPeople() {
         try {
             URL url = new URL("http://" + host + ":" + port + "/person/");
-            JSONObject result = doGet(url);
-            return result;
+            return doGet(url);
         } catch (MalformedURLException ex) {
             Log.e("ServerFacade", "Malformed url in getPeople", ex);
             JSONObject result = new JSONObject();
@@ -165,8 +161,7 @@ public class ServerFacade {
                 // Convert response body bytes to a string
                 String responseBodyData = baos.toString();
                 try {
-                    JSONObject result = new JSONObject(responseBodyData);
-                    return result;
+                    return new JSONObject(responseBodyData);
                 } catch (JSONException ex) {
                     Log.e("ServerFacade", ex.getMessage(), ex);
                     return null;
@@ -218,8 +213,7 @@ public class ServerFacade {
                 // Convert response body bytes to a string
                 String responseBodyData = baos.toString();
                 try {
-                    JSONObject result = new JSONObject(responseBodyData);
-                    return result;
+                    return new JSONObject(responseBodyData);
                 } catch (JSONException ex) {
                     Log.e("ServerFacade", "Error creating jsonobject from returned string", ex);
                     return null;

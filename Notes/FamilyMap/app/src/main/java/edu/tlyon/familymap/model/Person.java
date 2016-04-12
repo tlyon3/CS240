@@ -66,10 +66,12 @@ public class Person {
     public List<Event> getLifeEvents(){
         List<String> lifeEventIds = ModelData.getInstance().getPersonEventsMap().get(this.personId);
         List<Event> lifeEvents = new ArrayList<>();
+
         for(String eventId:lifeEventIds){
             Event event = ModelData.getInstance().getEventIdMap().get(eventId);
             lifeEvents.add(event);
         }
+
         return sortLifeEvents(lifeEvents);
     }
 

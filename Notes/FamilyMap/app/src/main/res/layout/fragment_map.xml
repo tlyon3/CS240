@@ -14,7 +14,7 @@
         tools:context=".MapFrag">
 
         <RelativeLayout
-            android:id="@+id/eventDetails"
+            android:id="@+id/event_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -23,7 +23,8 @@
             android:paddingTop="@dimen/activity_vertical_margin">
 
             <ImageView
-                android:id="@+id/iconImage"
+                android:id="@+id/icon_image"
+                android:contentDescription="@string/image_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@android:drawable/sym_def_app_icon" />
@@ -31,33 +32,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:layout_toRightOf="@id/iconImage">
+                android:layout_toEndOf="@id/icon_image">
 
                 <TextView
-                    android:id="@+id/eventDetailText"
+                    android:id="@+id/event_detail_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="HelloWorld!"
                     android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
 
                 <TextView
-                    android:id="@+id/eventDetailDate"
+                    android:id="@+id/event_detail_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/eventDetailText"
-                    android:text="HelloUniverse"
+                    android:layout_below="@+id/event_detail_text"
                     android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
             </RelativeLayout>
         </RelativeLayout>
 
         <fragment
-            android:id="@+id/mapFragment"
+            android:id="@+id/map_fragment"
             class="com.amazon.geo.mapsv2.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/eventDetails"
+            android:layout_above="@id/event_details"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            tools:layout="@layout/fragment_map"></fragment>
+            tools:layout="@layout/fragment_map"/>
     </RelativeLayout>
 </RelativeLayout>

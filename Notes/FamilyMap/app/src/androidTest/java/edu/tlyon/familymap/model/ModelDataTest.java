@@ -88,4 +88,44 @@ public class ModelDataTest extends TestCase {
         ModelData.getInstance().getMaternalAncestors().clear();
         ModelData.getInstance().getEventTypes().clear();
     }
+
+    public void testPopulateMaternalAncestors() throws Exception {
+        User user = new User("authoKey");
+        Person person = new Person("bob", "personId", "john", "jones", "m", "fatherId", "motherId");
+        user.setOwnPerson(person);
+        Person mother = new Person("john", "motherId", "jill", "jones", "f", "grandfatherMId", "grandmotherMId");
+        Person grandfatherM = new Person("john", "grandfatherMId", "jim", "jones", "m", "", "");
+        Person grandmotherM = new Person("john", "grandmotherMId", "jane", "jones", "f", "", "");
+
+        ModelData.getInstance().setCurrentUser(user);
+        ModelData.getInstance().addPerson(person);
+        ModelData.getInstance().addPerson(mother);
+        ModelData.getInstance().addPerson(grandfatherM);
+        ModelData.getInstance().addPerson(grandmotherM);
+
+        ModelData.getInstance().populateMaternalAncestors();
+
+        assertNotSame(0, ModelData.getInstance().getMaternalAncestors());
+
+        Person actualMother = ModelData.getInstance().getPersonIdMap().get(person.getMotherId());
+        assertEquals(mother.getLastName(), actualMother.getLastName());
+        assertEquals(mother.getFirstName(), actualMother.getFirstName());
+    }
+
+    public void testPopulatePaternalAncestors() throws Exception {
+        User user = new User("authoKey");
+        Person person = new Person("bob", "personId", "john", "jones", "m", "fatherId", "motherId");
+        user.setOwnPerson(person);
+        Person father = new Person("john", "fatherId", "bob", "jones", "m", "", "");
+
+        ModelData.getInstance().setCurrentUser(user);
+        ModelData.getInstance().addPerson(person);
+        ModelData.getInstance().addPerson(father);
+        ModelData.getInstance().populatePaternalAncestors();
+        assertNotSame(0, ModelData.getInstance().getPaternalAncestors());
+
+        Person actualFather = ModelData.getInstance().getPersonIdMap().get(person.getFatherId());
+        assertEquals(father.getFirstName(), actualFather.getFirstName());
+        assertEquals(father.getLastName(), actualFather.getLastName());
+    }
 }

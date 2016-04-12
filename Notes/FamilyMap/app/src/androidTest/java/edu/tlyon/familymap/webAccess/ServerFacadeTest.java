@@ -8,6 +8,7 @@ import edu.tlyon.familymap.model.ModelData;
 import edu.tlyon.familymap.model.User;
 
 /**
+ *
  * Created by tlyon on 4/11/16.
  */
 public class ServerFacadeTest extends TestCase {

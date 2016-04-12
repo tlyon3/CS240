@@ -80,7 +80,7 @@ public class PersonActivity extends AppCompatActivity {
         }
 
         //set up expandable recycler view
-        expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
+        expandableListView = (ExpandableListView) findViewById(R.id.expandable_list_view);
         expandableListDetail = ExpandableListDataPump.getData(this.person);
         expandableListTitle = new ArrayList<>(expandableListDetail.keySet());
         expandableListAdapter = new ExpandableListAdapter(this, expandableListTitle, expandableListDetail, this.person);
@@ -110,6 +110,7 @@ public class PersonActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_person, menu);
 
+        //hide menu items
         filterButton = menu.findItem(R.id.person_filter);
         filterButton.setVisible(false);
 

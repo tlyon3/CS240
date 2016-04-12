@@ -22,7 +22,7 @@ import edu.tlyon.familymap.model.Settings;
 public class FilterAdapter extends ArrayAdapter<String> {
     private Context context;
     private List<String> eventTypes;
-    private int layoutResourceId;
+    private int layoutResourceId = R.layout.filter_list_item;
 
 
     public FilterAdapter(Context context, int layoutResourceId, List<String> eventTypes) {

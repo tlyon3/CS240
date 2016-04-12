@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.ArraySet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,13 +87,13 @@ public class MapFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_map, container, false);
         //get all members
-        this.eventDetailDate = (TextView) v.findViewById(R.id.eventDetailDate);
-        this.eventDetailName = (TextView) v.findViewById(R.id.eventDetailText);
-        this.icon = (ImageView) v.findViewById(R.id.iconImage);
-        this.eventDetails = (RelativeLayout) v.findViewById(R.id.eventDetails);
-        this.mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapFragment);
+        this.eventDetailDate = (TextView) v.findViewById(R.id.event_detail_date);
+        this.eventDetailName = (TextView) v.findViewById(R.id.event_detail_text);
+        this.icon = (ImageView) v.findViewById(R.id.icon_image);
+        this.eventDetails = (RelativeLayout) v.findViewById(R.id.event_details);
+        this.mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_fragment);
         //perform necessary setup
-        this.eventDetailName.setText("Click on marker to see more detail");
+        this.eventDetailName.setText(R.string.event_details);
         this.eventDetailDate.setText("");
         this.eventDetails.setOnClickListener(new View.OnClickListener() {
             @Override

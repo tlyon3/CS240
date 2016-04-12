@@ -1,7 +1,6 @@
 package edu.tlyon.familymap.webAccess.tasks;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -13,8 +12,6 @@ import org.json.JSONObject;
 import edu.tlyon.familymap.model.Event;
 import edu.tlyon.familymap.model.ModelData;
 import edu.tlyon.familymap.model.Settings;
-import edu.tlyon.familymap.ui.MainActivity;
-import edu.tlyon.familymap.ui.MapFrag;
 import edu.tlyon.familymap.ui.Utils;
 import edu.tlyon.familymap.webAccess.ServerFacade;
 

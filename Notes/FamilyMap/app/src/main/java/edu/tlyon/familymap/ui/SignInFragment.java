@@ -65,11 +65,11 @@ public class SignInFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_sign_in, container, false);
 
-        this.usernameEditText = (EditText) v.findViewById(R.id.usernameEditText);
-        this.passwordEditText = (EditText) v.findViewById(R.id.passwordEditText);
-        this.serverHostEditText = (EditText) v.findViewById(R.id.serverHostEditText);
-        this.serverPortEditText = (EditText) v.findViewById(R.id.serverPortEditText);
-        this.signInButton = (Button) v.findViewById(R.id.signInButton);
+        this.usernameEditText = (EditText) v.findViewById(R.id.username_edit_text);
+        this.passwordEditText = (EditText) v.findViewById(R.id.password_edit_text);
+        this.serverHostEditText = (EditText) v.findViewById(R.id.server_host_edit_text);
+        this.serverPortEditText = (EditText) v.findViewById(R.id.server_port_edit_text);
+        this.signInButton = (Button) v.findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,10 +94,8 @@ public class SignInFragment extends android.support.v4.app.Fragment {
      * Checks to see if any of the EditTexts have empty fields
      */
     private boolean hasEmptyFields() {
-        if (usernameEditText.toString().matches("") || passwordEditText.toString().matches("") ||
-                serverHostEditText.toString().matches("") || serverPortEditText.toString().matches(""))
-            return true;
-        else return false;
+        return usernameEditText.toString().matches("") || passwordEditText.toString().matches("") ||
+                serverHostEditText.toString().matches("") || serverPortEditText.toString().matches("");
     }
 
     /**

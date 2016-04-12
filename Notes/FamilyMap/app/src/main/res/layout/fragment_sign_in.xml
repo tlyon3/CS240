@@ -27,20 +27,22 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/username"/>
         <EditText
+            android:id="@+id/username_edit_text"
             android:inputType="text"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
-            android:id="@+id/usernameEditText"/>
+           />
 
         <!--Password-->
         <TextView
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/password"/>
         <EditText
+            android:id="@+id/password_edit_text"
             android:inputType="text"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
-            android:id="@+id/passwordEditText"
+
             android:password="true" />
 
         <!--Server Host-->
@@ -48,25 +50,28 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/host"/>
         <EditText
+            android:id="@+id/server_host_edit_text"
             android:inputType="number|text"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
-            android:id="@+id/serverHostEditText"/>
+            />
 
         <!--Server Port-->
         <TextView
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/port"/>
         <EditText
+            android:id="@+id/server_port_edit_text"
             android:inputType="number|text"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
-            android:id="@+id/serverPortEditText"/>
+            />
     </GridLayout>
 
     <Button
+        android:id="@+id/sign_in_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/signInButton"
+
         android:text="@string/sign_in"/>
 </LinearLayout>
